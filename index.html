@@ -3,107 +3,1912 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Japhette VMS | Social Media Manager Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Japhette Alec Pulido — AI Social Growth Studio</title>
+    
+    <style>
+        /* --- Core Engine Variables & Root Foundations --- */
+        :root {
+            --bg-prime: #0A0A0A;
+            --bg-card: #171717;
+            --text-prime: #FFFFFF;
+            --text-muted: #94A3B8;
+            --accent: #FF4D8D;
+            --accent-glow: rgba(255, 77, 141, 0.15);
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --corner: 24px;
+            --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-prime);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            cursor: none; /* Deploys custom cursor framework */
+        }
+
+        body {
+            background-color: var(--bg-prime);
+            color: var(--text-prime);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- Scroll Progress Metric --- */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            z-index: 200;
+            background: transparent;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        /* --- Interactive Micro-Cursor System --- */
+        .custom-cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            transform: translate(-50%, -50%);
+            transition: width 0.1s, height 0.1s;
+        }
+        .custom-cursor-outline {
+            width: 30px;
+            height: 30px;
+            border: 1.5px solid var(--accent);
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s;
+        }
+
+        /* --- Immersive Loading Screen --- */
+        .loading-screen {
+            position: fixed;
+            inset: 0;
+            background-color: var(--bg-prime);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .loading-content {
+            text-align: center;
+        }
+        .loading-logo {
+            font-family: var(--font-head);
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--text-prime);
+            margin-bottom: 20px;
+        }
+        .loading-logo span { color: var(--accent); }
+        .loading-bar-wrapper {
+            width: 200px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .loading-bar-progress {
+            width: 0%;
+            height: 100%;
+            background: var(--accent);
+            transition: width 0.1s linear;
+        }
+
+        /* --- Sticky Floating CTA --- */
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent);
+            color: var(--text-prime);
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 90;
+            box-shadow: 0 10px 30px rgba(255, 77, 141, 0.3);
+            transition: var(--transition-smooth);
+        }
+        .floating-cta:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(255, 77, 141, 0.5);
+        }
+
+        /* --- Premium Navigation --- */
+        nav {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 150;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            background: rgba(10, 10, 10, 0.01);
+            transition: var(--transition-smooth);
+        }
+        nav.scrolled {
+            background: rgba(10, 10, 10, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+        }
+        .logo {
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 20px;
+            letter-spacing: 1px;
+            text-decoration: none;
+            color: var(--text-prime);
+        }
+        .logo span { color: var(--accent); }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        .nav-menu a {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--accent);
+        }
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            width: 24px;
+        }
+        .mobile-toggle span {
+            width: 100%;
+            height: 2px;
+            background: var(--text-prime);
+            transition: var(--transition-smooth);
+        }
+
+        /* --- Immersive Hero Workspace --- */
+        .hero {
+            padding: 120px 0 80px 0;
+            text-align: center;
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+        }
+        .hero-bg-glow {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 77, 141, 0.07) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        .profile-frame {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 30px auto;
+        }
+        .hero-profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            padding: 4px;
+            background: var(--bg-prime);
+        }
+        .profile-verified {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background: var(--bg-prime);
+            border-radius: 50%;
+            padding: 2px;
+            display: flex;
+        }
+        .hero-name {
+            font-family: var(--font-head);
+            font-size: 54px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin-bottom: 8px;
+        }
+        .subheading {
+            font-family: var(--font-head);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+        .hero-headline {
+            font-size: 22px;
+            font-weight: 400;
+            color: #E5E5E5;
+            max-width: 740px;
+            margin: 0 auto 40px auto;
+            line-height: 1.5;
+        }
+        .reveal-text {
+            color: var(--text-prime);
+            font-weight: 600;
+            border-bottom: 2px solid var(--accent);
+        }
+        .hero-ctas {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .btn {
+            font-family: var(--font-head);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 15px 35px;
+            border-radius: 40px;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            border: 1px solid transparent;
+        }
+        .btn-primary {
+            background: var(--text-prime);
+            color: var(--bg-prime);
+        }
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--text-prime);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.08);
+            color: var(--text-prime);
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* --- Floating Reaction Items --- */
+        .floating-icon {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.25;
+            pointer-events: none;
+            animation: floatAnimation 6s ease-in-out infinite;
+        }
+        .reaction-1 { top: 20%; left: 15%; animation-delay: 0s; }
+        .reaction-2 { top: 45%; left: 22%; animation-delay: 1.5s; }
+        .reaction-3 { top: 15%; right: 18%; animation-delay: 0.7s; }
+        .reaction-4 { top: 60%; right: 12%; animation-delay: 2.2s; }
+        .reaction-5 { top: 75%; left: 30%; animation-delay: 3s; }
+
+        @keyframes floatAnimation {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.08); opacity: 0.4; }
+        }
+
+        /* --- Section Formatting Headers --- */
+        section { padding: 100px 0; }
+        h2 {
+            font-family: var(--font-head);
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 45px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, rgba(255, 77, 141, 0.2), transparent);
+        }
+
+        /* --- About Studio Spaces --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 24px;
+        }
+        .about-card-large {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: var(--corner);
+            padding: 40px;
+        }
+        .about-card-large h3 {
+            font-family: var(--font-head);
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .about-card-large p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .about-mini-dash {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .mini-stat {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 20px 24px;
+        }
+        .mini-stat span {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+        .mini-stat strong {
+            display: block;
+            font-family: var(--font-head);
+            font-size: 18px;
+            color: var(--accent);
+            margin-top: 4px;
+        }
+
+        /* --- Instagram Stories Circles Framework --- */
+        .stories-wrapper {
+            display: flex;
+            gap: 25px;
+            overflow-x: auto;
+            padding: 10px 0 25px 0;
+            scrollbar-width: none;
+        }
+        .stories-wrapper::-webkit-scrollbar { display: none; }
+        .story-circle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-width: 85px;
+        }
+        .story-ring {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #f99d3a, #e2336b, #2130b1);
+            padding: 2.5px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+        .story-circle:hover .story-ring {
+            transform: scale(1.05);
+        }
+        .story-img-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #111;
+            border: 2px solid var(--bg-prime);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+        .story-circle span {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .story-tooltip {
+            position: fixed;
+            background: #1E1E1E;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: var(--text-prime);
+            pointer-events: none;
+            opacity: 0;
+            transform: translate(-50%, -120%);
+            transition: opacity 0.2s ease;
+            z-index: 500;
+        }
+
+        /* --- Immersive Instagram-Feed Section Architecture --- */
+        .feed-container {
+            max-width: 680px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+        .ig-post {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: var(--corner);
+            overflow: hidden;
+            box-shadow: 0 30px 60px -20px rgba(0,0,0,0.7);
+        }
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        .post-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .post-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1.5px solid var(--accent);
+            object-fit: cover;
+        }
+        .post-username {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-prime);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .verified-badge { color: var(--accent); font-size: 10px; }
+        .post-location {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+        .post-options { color: var(--text-muted); font-size: 12px; }
+        .post-media-wrapper {
+            position: relative;
+            width: 100%;
+            background: #000;
+            overflow: hidden;
+        }
+        .post-image, .post-video {
+            width: 100%;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .ig-post:hover .post-image {
+            transform: scale(1.02);
+        }
+        .post-actions-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 20px 8px 20px;
+            font-size: 20px;
+        }
+        .actions-left {
+            display: flex;
+            gap: 18px;
+        }
+        .actions-left span, .actions-right span {
+            transition: transform 0.2s ease;
+        }
+        .actions-left span:hover, .actions-right span:hover {
+            transform: scale(1.15);
+        }
+        .like-btn { color: var(--accent); }
+        .post-likes {
+            padding: 4px 20px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+        .post-caption {
+            padding: 4px 20px 20px 20px;
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: #DDD;
+        }
+        .post-caption strong { color: var(--text-prime); }
+        .post-metrics-box {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 14px;
+            padding: 14px;
+            margin: 14px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .metric-pill {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .metric-pill span {
+            display: block;
+            font-family: var(--font-head);
+            font-size: 16px;
+            color: var(--accent);
+            margin-top: 2px;
+        }
+        .hashtags {
+            display: block;
+            color: #4da6ff;
+            font-size: 12.5px;
+            margin-top: 8px;
+        }
+        .post-date {
+            padding: 0 20px 20px 20px;
+            font-size: 10px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        /* --- Performance Analytics Dashboard Ecosystem --- */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .dash-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: var(--corner);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 190px;
+        }
+        .dash-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .dash-value {
+            font-family: var(--font-head);
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text-prime);
+            margin: 10px 0;
+        }
+        .dash-chart {
+            width: 100%;
+            height: 80px;
+            margin-top: auto;
+        }
+
+        /* --- Distribution Masonry Asset Repository --- */
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-auto-rows: 240px;
+            gap: 20px;
+        }
+        .masonry-item {
+            position: relative;
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        .item-vertical { grid-row: span 2; }
+        .item-wide { grid-column: span 2; }
+        .masonry-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s var(--transition-smooth);
+        }
+        .masonry-item:hover img { transform: scale(1.05); }
+        .masonry-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .masonry-item:hover .masonry-overlay { opacity: 1; }
+        .masonry-overlay span {
+            font-family: var(--font-head);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* --- Automation Stack Elements --- */
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .stack-card {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 20px;
+            padding: 30px;
+        }
+        .stack-card h3 {
+            font-family: var(--font-head);
+            font-size: 15px;
+            text-transform: uppercase;
+            color: var(--text-prime);
+            margin-bottom: 10px;
+        }
+        .stack-card p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* --- Services & Pricing Grid Layout --- */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .pricing-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: var(--corner);
+            padding: 40px 30px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .pricing-card.premium-card {
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(255, 77, 141, 0.1);
+        }
+        .premium-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: var(--text-prime);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+        .price-tier {
+            font-family: var(--font-head);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .price-val {
+            font-family: var(--font-head);
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        .price-val span { font-size: 14px; color: var(--text-muted); }
+        .price-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 40px;
+        }
+        .price-features li {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            position: relative;
+            padding-left: 20px;
+        }
+        .price-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* --- Infinite Carousel Testimonials Slider --- */
+        .slider-wrapper {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            padding: 20px 0;
+        }
+        .slider-track {
+            display: flex;
+            gap: 24px;
+            width: max-content;
+        }
+        .testimonial-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: var(--corner);
+            padding: 35px;
+            width: 450px;
+        }
+        .test-text {
+            font-size: 15px;
+            color: #E2E8F0;
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+        .test-user {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .test-user img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .test-name {
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .test-role {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 30px;
+        }
+        .dot {
+            width: 6px;
+            height: 6px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transition: var(--transition-smooth);
+        }
+        .dot.active { background: var(--accent); width: 18px; border-radius: 4px; }
+
+        /* --- Contact & Production Delivery Forms --- */
+        .contact-layout-box {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: var(--corner);
+            padding: 50px;
+        }
+        .cta-title { font-size: 36px; margin-bottom: 12px; }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .form-group label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .form-group input, .form-group textarea {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 14px;
+            color: var(--text-prime);
+            font-family: var(--font-body);
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        /* --- Minimal Footer Layout --- */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 40px 0;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-center { display: flex; gap: 20px; }
+        .footer-center a { color: var(--text-muted); text-decoration: none; }
+        .back-to-top-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-prime);
+            font-weight: 600;
+        }
+
+        /* --- Scroll Reveal Mechanism Animation Engine --- */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Component Media Queries Breakpoints --- */
+        @media (max-width: 968px) {
+            .about-grid, .dashboard-grid, .pricing-grid, .stack-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .item-wide { grid-column: span 1; }
+            .nav-menu { display: none; }
+            .mobile-toggle { display: flex; }
+            .hero-name { font-size: 38px; }
+        }
+    </style>
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="logo">JAPHETTE<span>VMS</span></div>
-        <nav class="nav-links">
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#work">Work</a>
-            <a href="#contact" class="nav-btn">Let's Connect</a>
-        </nav>
-    </header>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="about" class="hero-section">
-            <div class="hero-container">
-                <div class="hero-text">
-                    <span class="hero-tagline">SOCIAL MEDIA MANAGER & STRATEGIST</span>
-                    <h1>Transforming Digital Presences Through <span class="highlight">Strategic Content</span></h1>
-                    <p>I help brands build high-converting online ecosystems, engage target communities, and drive measurable growth through custom content curation and performance metrics.</p>
-                    <div class="hero-actions">
-                        <a href="#work" class="btn-main">View My Work</a>
-                        <a href="#contact" class="btn-sub">Get In Touch</a>
-                    </div>
+    <div class="custom-cursor-dot" id="cursorDot"></div>
+    <div class="custom-cursor-outline" id="cursorOutline"></div>
+
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-logo">JAP<span>.STUDIO</span></div>
+            <div class="loading-bar-wrapper">
+                <div class="loading-bar-progress" id="loadingProgress"></div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#contact" class="floating-cta">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
+        <span>Hire Me</span>
+    </a>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">JAP<span>.STUDIO</span></a>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#stories">Stories</a></li>
+                <li><a href="#feed">Portfolio</a></li>
+                <li><a href="#dashboard">Results</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-toggle" id="mobileToggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-bg-glow"></div>
+        
+        <div class="floating-icon reaction-1">❤️</div>
+        <div class="floating-icon reaction-2">🔥</div>
+        <div class="floating-icon reaction-3">🚀</div>
+        <div class="floating-icon reaction-4">💬</div>
+        <div class="floating-icon reaction-5">✨</div>
+
+        <div class="hero-container">
+            <div class="profile-frame">
+                <img src="profile.jpg" alt="Japhette Alec Pulido" class="hero-profile-img" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80'">
+                <div class="profile-verified">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="#00D4FF"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
                 </div>
-                <div class="hero-visual">
-                    <div class="profile-glow-ring">
-                        <!-- Updated to use your new main branch profile image -->
-                        <img src="profile.jpg" alt="Japhette Profile Picture" class="profile-img">
+            </div>
+            
+            <h1 class="hero-name">Japhette Alec Pulido</h1>
+            <div class="hero-tagline subheading">SOCIAL MEDIA MANAGER</div>
+            
+            <h2 class="hero-headline">
+                I create content that attracts <span class="reveal-text">attention</span>, builds <span class="reveal-text">communities</span>, and converts followers into customers.
+            </h2>
+
+            <div class="hero-ctas">
+                <a href="#feed" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Let's Work Together</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section scroll-reveal">
+        <div class="container">
+            <h2>About The Studio</h2>
+            <div class="about-grid">
+                <div class="about-card-large">
+                    <h3>Mixing Creative Concepts with AI Workflows</h3>
+                    <p>I am a Social Media Manager who focuses on building a real online presence that actually brings in customers. I don't just drop generic graphics onto a feed; I love scripting videos, designing clean layouts, and coming up with original campaign ideas from scratch. By mixing creative concepts with smart AI tools, I keep content pipelines active, run e-commerce shops smoothly, and convert attention into real business leads.</p>
+                </div>
+                <div class="about-mini-dash">
+                    <div class="mini-stat">
+                        <span>Core Strategy</span>
+                        <strong>Trend Hijacking</strong>
+                    </div>
+                    <div class="mini-stat">
+                        <span>Focus</span>
+                        <strong>Organic Leadhunting</strong>
+                    </div>
+                    <div class="mini-stat">
+                        <span>Speed</span>
+                        <strong>Real-Time Response</strong>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Services Section -->
-        <section id="services" class="services-section">
-            <h2 class="section-title">Core Services</h2>
-            <div class="services-grid">
-                <div class="service-box">
-                    <div class="service-icon">📊</div>
-                    <h3>Social Media Strategy</h3>
-                    <p>In-depth competitor audits, targeted audience demographic positioning, and high-performance content calendars engineered for continuous organic growth.</p>
+    <section id="stories" class="stories-section scroll-reveal">
+        <div class="container">
+            <h2>Highlights & Competencies</h2>
+            <div class="stories-wrapper">
+                
+                <div class="story-circle" data-preview="Branding Strategy & Identity Design">
+                    <div class="story-ring">
+                        <div class="story-img-placeholder">🎨</div>
+                    </div>
+                    <span>Branding</span>
                 </div>
-                <div class="service-box">
-                    <div class="service-icon">🎨</div>
-                    <h3>Content Curation & Design</h3>
-                    <p>Creating high-converting visual assets, custom carousels, and engaging copy completely tailored to capture and reflect your unique brand voice.</p>
+
+                <div class="story-circle" data-preview="Short-Form High-Retention Reels Engine">
+                    <div class="story-ring">
+                        <div class="story-img-placeholder">🎬</div>
+                    </div>
+                    <span>Reels</span>
                 </div>
-                <div class="service-box">
-                    <div class="service-icon">📱</div>
-                    <h3>Short-Form Video</h3>
-                    <p>End-to-end production strategy for Reels and TikToks, specializing in viral hooks, trends analysis, clear editing pacing, and high retention.</p>
+
+                <div class="story-circle" data-preview="Meta Paid & Organic Social Frameworks">
+                    <div class="story-ring">
+                        <div class="story-img-placeholder">📘</div>
+                    </div>
+                    <span>Facebook</span>
+                </div>
+
+                <div class="story-circle" data-preview="TikTok Viral Hook & Concept Architecture">
+                    <div class="story-ring">
+                        <div class="story-img-placeholder">🎵</div>
+                    </div>
+                    <span>TikTok</span>
+                </div>
+
+                <div class="story-circle" data-preview="Advanced Deep-Dive Performance Analytics">
+                    <div class="story-ring">
+                        <div class="story-img-placeholder">📊</div>
+                    </div>
+                    <span>Analytics</span>
+                </div>
+
+                <div class="story-circle" data-preview="Conversion-Optimized Paid Meta / TikTok Ads">
+                    <div class="story-ring">
+                        <div class="story-img-placeholder">💰</div>
+                    </div>
+                    <span>Ads</span>
+                </div>
+
+                <div class="story-circle" data-preview="User Generated Content Creator Sourcing">
+                    <div class="story-ring">
+                        <div class="story-img-placeholder">🤳</div>
+                    </div>
+                    <span>UGC</span>
+                </div>
+
+                <div class="story-circle" data-preview="Automated Multi-Channel Content Workflows">
+                    <div class="story-ring">
+                        <div class="story-img-placeholder">🤖</div>
+                    </div>
+                    <span>Automation</span>
+                </div>
+
+            </div>
+        </div>
+        <div class="story-tooltip" id="storyTooltip">Preview</div>
+    </section>
+
+    <section id="feed" class="feed-section">
+        <div class="container">
+            <h2>Featured Framework Feed</h2>
+            <div class="feed-container">
+
+                <article class="ig-post scroll-reveal">
+                    <div class="post-header">
+                        <div class="post-header-left">
+                            <img src="profile.jpg" class="post-avatar" alt="Avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'">
+                            <div>
+                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
+                                <div class="post-location">Chicken Chingu — Social Media Creative</div>
+                            </div>
+                        </div>
+                        <div class="post-options">•••</div>
+                    </div>
+                    <div class="post-media-wrapper">
+                        <video controls src="chicken1.mp4.mp4" class="post-video" poster="https://images.unsplash.com/photo-1562967914-608f82629710?w=800&auto=format&fit=crop&q=80"></video>
+                    </div>
+                    <div class="post-actions-bar">
+                        <div class="actions-left">
+                            <span class="like-btn">❤️</span>
+                            <span>💬</span>
+                            <span>🚀</span>
+                        </div>
+                        <div class="actions-right">
+                            <span>📥</span>
+                        </div>
+                    </div>
+                    <div class="post-likes"><span class="counter" data-target="1420">0</span> likes</div>
+                    <div class="post-caption">
+                        <strong>jap.studio</strong> 🚀 <strong>Project:</strong> High-Retention Food Reels Engine.<br>
+                        🎯 <strong>Objective:</strong> Capture Gen-Z food culture markers to stimulate local foot traffic and digital customer conversion patterns.<br>
+                        💡 <strong>Strategy:</strong> Bypassed static template layouts. Engineered original micro-scripts with high-retention video hooks and fast-paced aesthetic sequencing.
+                        <div class="post-metrics-box">
+                            <div class="metric-pill">Reach <span>+340%</span></div>
+                            <div class="metric-pill">Followers <span>+2,800</span></div>
+                            <div class="metric-pill">Engagement <span>11.4%</span></div>
+                        </div>
+                        <span class="hashtags">#chickenchingu #foodmarketing #reelsstrategy #organicgrowth</span>
+                    </div>
+                    <div class="post-date">MARCH 15, 2024</div>
+                </article>
+
+                <article class="ig-post scroll-reveal">
+                    <div class="post-header">
+                        <div class="post-header-left">
+                            <img src="profile.jpg" class="post-avatar" alt="Avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'">
+                            <div>
+                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
+                                <div class="post-location">Angkas — Real-Time Trend Hijacking</div>
+                            </div>
+                        </div>
+                        <div class="post-options">•••</div>
+                    </div>
+                    <div class="post-media-wrapper">
+                        <img src="angkas1.jpg.jpg" class="post-image" alt="Angkas Campaign" onerror="this.src='https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&auto=format&fit=crop&q=80'">
+                    </div>
+                    <div class="post-actions-bar">
+                        <div class="actions-left">
+                            <span class="like-btn">❤️</span>
+                            <span>💬</span>
+                            <span>🚀</span>
+                        </div>
+                        <div class="actions-right">
+                            <span>📥</span>
+                        </div>
+                    </div>
+                    <div class="post-likes"><span class="counter" data-target="3850">0</span> likes</div>
+                    <div class="post-caption">
+                        <strong>jap.studio</strong> 🔥 <strong>Project:</strong> Real-Time Standby Trend Capture Framework.<br>
+                        🎯 <strong>Objective:</strong> Explode brand visibility anchors and organic shares via dynamic newsjacking operations.<br>
+                        💡 <strong>Strategy:</strong> Monitored breakneck internet subcultures and current events on live alert to ship high-context, witty visual graphics within minutes.
+                        <div class="post-metrics-box">
+                            <div class="metric-pill">Reach <span>+512%</span></div>
+                            <div class="metric-pill">Shares <span>+14.3k</span></div>
+                            <div class="metric-pill">Engagement <span>18.2%</span></div>
+                        </div>
+                        <span class="hashtags">#angkas #trendhijacking #newsjacking #viralmarketing</span>
+                    </div>
+                    <div class="post-date">APRIL 20, 2025</div>
+                </article>
+
+                <article class="ig-post scroll-reveal">
+                    <div class="post-header">
+                        <div class="post-header-left">
+                            <img src="profile.jpg" class="post-avatar" alt="Avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'">
+                            <div>
+                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
+                                <div class="post-location">Zapatos — Direct E-Commerce Growth</div>
+                            </div>
+                        </div>
+                        <div class="post-options">•••</div>
+                    </div>
+                    <div class="post-media-wrapper">
+                        <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&auto=format&fit=crop&q=80" class="post-image" alt="E-Commerce Shoe Grid">
+                    </div>
+                    <div class="post-actions-bar">
+                        <div class="actions-left">
+                            <span class="like-btn">❤️</span>
+                            <span>💬</span>
+                            <span>🚀</span>
+                        </div>
+                        <div class="actions-right">
+                            <span>📥</span>
+                        </div>
+                    </div>
+                    <div class="post-likes"><span class="counter" data-target="2190">0</span> likes</div>
+                    <div class="post-caption">
+                        <strong>jap.studio</strong> 👟 <strong>Project:</strong> Full Storefront Content Funneling.<br>
+                        🎯 <strong>Objective:</strong> Convert casual lifestyle attention markers into directly trackable direct message product orders.<br>
+                        💡 <strong>Strategy:</strong> Orchestrated comprehensive catalog design visual directions, product staging parameters, organic reels, and conversion handling mechanics within user DMs.
+                        <div class="post-metrics-box">
+                            <div class="metric-pill">DM Leads <span>+3.4k</span></div>
+                            <div class="metric-pill">Sales Conversion <span>+42%</span></div>
+                            <div class="metric-pill">ROAS <span>4.6x</span></div>
+                        </div>
+                        <span class="hashtags">#zapatos #ecommercemarketing #dmconversion #socialsales</span>
+                    </div>
+                    <div class="post-date">OCTOBER 12, 2024</div>
+                </article>
+
+                <article class="ig-post scroll-reveal">
+                    <div class="post-header">
+                        <div class="post-header-left">
+                            <img src="profile.jpg" class="post-avatar" alt="Avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'">
+                            <div>
+                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
+                                <div class="post-location">The Grind Cafe — Aesthetic Launch</div>
+                            </div>
+                        </div>
+                        <div class="post-options">•••</div>
+                    </div>
+                    <div class="post-media-wrapper">
+                        <img src="https://images.unsplash.com/photo-1507133750040-4a8f57021571?w=800&auto=format&fit=crop&q=80" class="post-image" alt="Coffee Campaign">
+                    </div>
+                    <div class="post-actions-bar">
+                        <div class="actions-left">
+                            <span class="like-btn">❤️</span>
+                            <span>💬</span>
+                            <span>🚀</span>
+                        </div>
+                        <div class="actions-right">
+                            <span>📥</span>
+                        </div>
+                    </div>
+                    <div class="post-likes"><span class="counter" data-target="1890">0</span> likes</div>
+                    <div class="post-caption">
+                        <strong>jap.studio</strong> ☕️ <strong>Project:</strong> Neighborhood Aesthetic Stabilization.<br>
+                        🎯 <strong>Objective:</strong> Establish a premium lifestyle footprint to scale repeat morning visits.<br>
+                        💡 <strong>Strategy:</strong> Implemented ASMR audio trends, clean grid micro-vlogs, and micro-influencer content loops.
+                        <div class="post-metrics-box">
+                            <div class="metric-pill">Foot Traffic <span>+180%</span></div>
+                            <div class="metric-pill">Reach <span>+94k</span></div>
+                            <div class="metric-pill">Engagement <span>9.2%</span></div>
+                        </div>
+                        <span class="hashtags">#coffeemarketing #asmrreels #localbranding #cafeculture</span>
+                    </div>
+                    <div class="post-date">JANUARY 08, 2026</div>
+                </article>
+
+                <article class="ig-post scroll-reveal">
+                    <div class="post-header">
+                        <div class="post-header-left">
+                            <img src="profile.jpg" class="post-avatar" alt="Avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'">
+                            <div>
+                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
+                                <div class="post-location">Fit Body Boot Camp — Client Growth Engine</div>
+                            </div>
+                        </div>
+                        <div class="post-options">•••</div>
+                    </div>
+                    <div class="post-media-wrapper">
+                        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=800&auto=format&fit=crop&q=80" class="post-image" alt="Fitness Campaign">
+                    </div>
+                    <div class="post-actions-bar">
+                        <div class="actions-left">
+                            <span class="like-btn">❤️</span>
+                            <span>💬</span>
+                            <span>🚀</span>
+                        </div>
+                        <div class="actions-right">
+                            <span>📥</span>
+                        </div>
+                    </div>
+                    <div class="post-likes"><span class="counter" data-target="2940">0</span> likes</div>
+                    <div class="post-caption">
+                        <strong>jap.studio</strong> 💪 <strong>Project:</strong> Local Organic Acquisition Models.<br>
+                        🎯 <strong>Objective:</strong> Accelerate physical membership enrollments and scale consultation tracking.<br>
+                        💡 <strong>Strategy:</strong> Curated high-retention short-form instructional videos, automated caption copy hooks via GenAI, and triaged target community engagement channels.
+                        <div class="post-metrics-box">
+                            <div class="metric-pill">Leads Mapped <span>+240</span></div>
+                            <div class="metric-pill">Reach <span>+120k</span></div>
+                            <div class="metric-pill">Engagement <span>12.1%</span></div>
+                        </div>
+                        <span class="hashtags">#fitbodybootcamp #fitnessmarketing #organicacquisitions #leadgeneration</span>
+                    </div>
+                    <div class="post-date">FEBRUARY 14, 2026</div>
+                </article>
+
+                <article class="ig-post scroll-reveal">
+                    <div class="post-header">
+                        <div class="post-header-left">
+                            <img src="profile.jpg" class="post-avatar" alt="Avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'">
+                            <div>
+                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
+                                <div class="post-location">Wanderlust Horizons — Booking Funnels</div>
+                            </div>
+                        </div>
+                        <div class="post-options">•••</div>
+                    </div>
+                    <div class="post-media-wrapper">
+                        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&auto=format&fit=crop&q=80" class="post-image" alt="Travel Campaign">
+                    </div>
+                    <div class="post-actions-bar">
+                        <div class="actions-left">
+                            <span class="like-btn">❤️</span>
+                            <span>💬</span>
+                            <span>🚀</span>
+                        </div>
+                        <div class="actions-right">
+                            <span>📥</span>
+                        </div>
+                    </div>
+                    <div class="post-likes"><span class="counter" data-target="4120">0</span> likes</div>
+                    <div class="post-caption">
+                        <strong>jap.studio</strong> ✈️ <strong>Project:</strong> High-Intent Booking Accelerators.<br>
+                        🎯 <strong>Objective:</strong> Generate luxury outbound custom itinerary inquiries via storytelling loops.<br>
+                        💡 <strong>Strategy:</strong> Executed point-of-view landscape reels, dynamic itinerary breakdowns, and target-audience curated carousels.
+                        <div class="post-metrics-box">
+                            <div class="metric-pill">Bookings <span>+210%</span></div>
+                            <div class="metric-pill">Saves <span>+8.9k</span></div>
+                            <div class="metric-pill">Engagement <span>14.5%</span></div>
+                        </div>
+                        <span class="hashtags">#travelmarketing #luxurytravel #itineraryplanning #creativecontent</span>
+                    </div>
+                    <div class="post-date">MAY 02, 2026</div>
+                </article>
+
+                <article class="ig-post scroll-reveal">
+                    <div class="post-header">
+                        <div class="post-header-left">
+                            <img src="profile.jpg" class="post-avatar" alt="Avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'">
+                            <div>
+                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
+                                <div class="post-location">Aura Thread Co. — Visual Editorial</div>
+                            </div>
+                        </div>
+                        <div class="post-options">•••</div>
+                    </div>
+                    <div class="post-media-wrapper">
+                        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&auto=format&fit=crop&q=80" class="post-image" alt="Fashion Campaign">
+                    </div>
+                    <div class="post-actions-bar">
+                        <div class="actions-left">
+                            <span class="like-btn">❤️</span>
+                            <span>💬</span>
+                            <span>🚀</span>
+                        </div>
+                        <div class="actions-right">
+                            <span>📥</span>
+                        </div>
+                    </div>
+                    <div class="post-likes"><span class="counter" data-target="3110">0</span> likes</div>
+                    <div class="post-caption">
+                        <strong>jap.studio</strong> 🕶️ <strong>Project:</strong> Streetwear Identity Positioning.<br>
+                        🎯 <strong>Objective:</strong> Establish micro-community cult status to trigger seasonal product drops.<br>
+                        💡 <strong>Strategy:</strong> Implemented styling guides, rapid flash video edits, and user-generated conversion lookbooks.
+                        <div class="post-metrics-box">
+                            <div class="metric-pill">Drop Sales <span>+195%</span></div>
+                            <div class="metric-pill">Followers <span>+6.2k</span></div>
+                            <div class="metric-pill">Engagement <span>10.8%</span></div>
+                        </div>
+                        <span class="hashtags">#fashionmarketing #streetwearculture #dropstrategy #lookbookedit</span>
+                    </div>
+                    <div class="post-date">JUNE 19, 2026</div>
+                </article>
+
+                <article class="ig-post scroll-reveal">
+                    <div class="post-header">
+                        <div class="post-header-left">
+                            <img src="profile.jpg" class="post-avatar" alt="Avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'">
+                            <div>
+                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
+                                <div class="post-location">Radiant Dental — Patient Acquisition</div>
+                            </div>
+                        </div>
+                        <div class="post-options">•••</div>
+                    </div>
+                    <div class="post-media-wrapper">
+                        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&auto=format&fit=crop&q=80" class="post-image" alt="Dental Campaign">
+                    </div>
+                    <div class="post-actions-bar">
+                        <div class="actions-left">
+                            <span class="like-btn">❤️</span>
+                            <span>💬</span>
+                            <span>🚀</span>
+                        </div>
+                        <div class="actions-right">
+                            <span>📥</span>
+                        </div>
+                    </div>
+                    <div class="post-likes"><span class="counter" data-target="1520">0</span> likes</div>
+                    <div class="post-caption">
+                        <strong>jap.studio</strong> 🦷 <strong>Project:</strong> Localized High-Value Patient Funnels.<br>
+                        🎯 <strong>Objective:</strong> Humanize cosmetic procedures and increase high-margin veneer consultations.<br>
+                        💡 <strong>Strategy:</strong> Deployed side-by-side case shifts, educational myth-busting reels, and conversational setup automations.
+                        <div class="post-metrics-box">
+                            <div class="metric-pill">New Patients <span>+88%</span></div>
+                            <div class="metric-pill">Inquiries <span>+310%</span></div>
+                            <div class="metric-pill">Engagement <span>7.9%</span></div>
+                        </div>
+                        <span class="hashtags">#dentalmarketing #medicalgrowth #cosmeticdentistry #localleads</span>
+                    </div>
+                    <div class="post-date">JULY 01, 2026</div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="dashboard" class="dashboard-section scroll-reveal">
+        <div class="container">
+            <h2>Analytics Ecosystem Studio</h2>
+            <div class="dashboard-grid">
+                
+                <div class="dash-card">
+                    <div class="dash-label">Followers Gained</div>
+                    <div class="dash-value"><span class="counter" data-target="48200">0</span>+</div>
+                    <canvas id="chartFollowers" class="dash-chart" width="220" height="80"></canvas>
+                </div>
+
+                <div class="dash-card">
+                    <div class="dash-label">Total Organic Reach</div>
+                    <div class="dash-value"><span class="counter" data-target="1200000">0</span>+</div>
+                    <canvas id="chartReach" class="dash-chart" width="220" height="80"></canvas>
+                </div>
+
+                <div class="dash-card">
+                    <div class="dash-label">Avg Engagement Rate</div>
+                    <div class="dash-value"><span class="counter" data-target="11" data-decimals="1">0</span>.%</div>
+                    <canvas id="chartEngagement" class="dash-chart" width="220" height="80"></canvas>
+                </div>
+
+                <div class="dash-card">
+                    <div class="dash-label">Leads Generated</div>
+                    <div class="dash-value"><span class="counter" data-target="3400">0</span></div>
+                    <canvas id="chartLeads" class="dash-chart" width="220" height="80"></canvas>
+                </div>
+
+                <div class="dash-card">
+                    <div class="dash-label">Avg Campaign ROAS</div>
+                    <div class="dash-value"><span class="counter" data-target="4" data-decimals="1">0</span>.x</div>
+                    <canvas id="chartROAS" class="dash-chart" width="220" height="80"></canvas>
+                </div>
+
+                <div class="dash-card">
+                    <div class="dash-label">Video Content Views</div>
+                    <div class="dash-value"><span class="counter" data-target="870000">0</span></div>
+                    <canvas id="chartViews" class="dash-chart" width="220" height="80"></canvas>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section scroll-reveal">
+        <div class="container">
+            <h2>Distribution Asset Repository</h2>
+            <div class="masonry-grid">
+                
+                <div class="masonry-item item-vertical">
+                    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&auto=format&fit=crop&q=80" alt="Asset">
+                    <div class="masonry-overlay"><span>Instagram Reels Format</span></div>
+                </div>
+
+                <div class="masonry-item">
+                    <img src="https://images.unsplash.com/photo-1616469829581-73993eb86b02?w=600&auto=format&fit=crop&q=80" alt="Asset">
+                    <div class="masonry-overlay"><span>Carousel Strategy Post</span></div>
+                </div>
+
+                <div class="masonry-item item-wide">
+                    <img src="https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=800&auto=format&fit=crop&q=80" alt="Asset">
+                    <div class="masonry-overlay"><span>High-Conversion Facebook Ad Placement</span></div>
+                </div>
+
+                <div class="masonry-item item-vertical">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&auto=format&fit=crop&q=80" alt="Asset">
+                    <div class="masonry-overlay"><span>Dynamic TikTok Format Hook</span></div>
+                </div>
+
+                <div class="masonry-item">
+                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&auto=format&fit=crop&q=80" alt="Asset">
+                    <div class="masonry-overlay"><span>Stories Distribution Layout</span></div>
+                </div>
+
+                <div class="masonry-item">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&auto=format&fit=crop&q=80" alt="Asset">
+                    <div class="masonry-overlay"><span>UGC Strategic Content Piece</span></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="stack-section scroll-reveal">
+        <div class="container">
+            <h2>AI Workflows & Technology Infrastructure</h2>
+            <div class="stack-grid">
+                <div class="stack-card">
+                    <h3>AI Optimization Ecosystem</h3>
+                    <p>Google Gemini, ChatGPT, Claude AI, Midjourney. Applied advanced prompt engineering structures for hyper-converting copy hooks, asset scripts, and layout generation.</p>
+                </div>
+                <div class="stack-card">
+                    <h3>Workflow & System Automations</h3>
+                    <p>Make.com, n8n, Notion, Trello, Asana, Slack. Constructed operational dashboards to eliminate content delivery lag and structural friction.</p>
+                </div>
+                <div class="stack-card">
+                    <h3>Creative & Deployment Suites</h3>
+                    <p>Meta Business Suite, Buffer, Later, Hootsuite, Canva, CapCut, VN Video Editor, Adobe Lightroom Mobile.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Work/Portfolio Section -->
-        <section id="work" class="portfolio-section">
-            <h2 class="section-title">Selected Case Studies</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="item-preview">
-                        <span>E-Commerce Case Study</span>
-                    </div>
-                    <div class="item-details">
-                        <span class="item-tag">Growth & Strategy</span>
-                        <h3>Instagram Community Scale</h3>
-                        <p>Driving organic view engagement and direct profile conversions via tailored short-form video campaigns over an intensive 90-day sprint.</p>
-                    </div>
+    <section id="services" class="services-section scroll-reveal">
+        <div class="container">
+            <h2>Growth Acceleration Services</h2>
+            <div class="pricing-grid">
+                
+                <div class="pricing-card">
+                    <div class="price-tier">Starter</div>
+                    <div class="price-val">$1,499<span>/mo</span></div>
+                    <ul class="price-features">
+                        <li>3 Optimized Platforms Managed</li>
+                        <li>12 Custom Content Assets / Reels</li>
+                        <li>Basic Copy Hook Scripting</li>
+                        <li>Monthly Analytical Core Review</li>
+                        <li>Standard Community Direct Reply</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary" style="width:100%; text-align:center;">Deploy Layer</a>
                 </div>
-                <div class="portfolio-item">
-                    <div class="item-preview">
-                        <span>Brand Identity Case Study</span>
+
+                <div class="pricing-card premium-card">
+                    <div class="premium-badge">Most Popular</div>
+                    <div class="price-tier" style="color: #00D4FF;">Growth</div>
+                    <div class="price-val">$2,899<span>/mo</span></div>
+                    <ul class="price-features">
+                        <li>4 Target Platforms Managed</li>
+                        <li>24 Custom Assets & High-Retention Video</li>
+                        <li>Advanced AI Prompt Strategy Integration</li>
+                        <li>Bi-Weekly Custom Analytics Syncs</li>
+                        <li>Active Trend-Hijacking Response Command</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary" style="width:100%; text-align:center;">Deploy Layer</a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="price-tier">Premium Enterprise</div>
+                    <div class="price-val">$4,999<span>/mo</span></div>
+                    <ul class="price-features">
+                        <li>Omnichannel Platform Saturation</li>
+                        <li>Unlimited Fluid Video & Carousel Drops</li>
+                        <li>End-To-End Inbound DM Sales Conversion Funneling</li>
+                        <li>Real-Time Performance Dashboards</li>
+                        <li>Dedicated UGC & Influencer Outlining</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary" style="width:100%; text-align:center;">Deploy Layer</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials-section scroll-reveal">
+        <div class="container">
+            <h2>Verified Enterprise Endorsements</h2>
+            <div class="slider-wrapper">
+                <div class="slider-track" id="sliderTrack">
+                    
+                    <div class="testimonial-card">
+                        <p class="test-text">"Japhette completely turned around our fitness member acquisition model. The high-retention video loops systematically funneled leads directly into booked client appointments."</p>
+                        <div class="test-user">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&auto=format&fit=crop&q=80" alt="Client">
+                            <div>
+                                <div class="test-name">Marcus Vance</div>
+                                <div class="test-role">Operations, Fit Body Boot Camp</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="item-details">
-                        <span class="item-tag">Content Design</span>
-                        <h3>B2B Carousel Refresh</h3>
-                        <p>Re-engineering a static educational carousel pipeline to dramatically elevate post shares, saves, and overall organic distribution.</p>
+
+                    <div class="testimonial-card">
+                        <p class="test-text">"Our corporate identity went from non-existent to driving consistent commercial contracts through organic social networks. Unbelievable eye for enterprise lead conversion."</p>
+                        <div class="test-user">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&auto=format&fit=crop&q=80" alt="Client">
+                            <div>
+                                <div class="test-name">Engr. W. Juco</div>
+                                <div class="test-role">Managing Director, WJ Construction</div>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="testimonial-card">
+                        <p class="test-text">"The real-time trend hijacking engine is world-class. Being able to conceptualize and ship highly viral, witty social graphic assets inside minutes is an incredible competitive edge."</p>
+                        <div class="test-user">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&auto=format&fit=crop&q=80" alt="Client">
+                            <div>
+                                <div class="test-name">Sarah Castelo</div>
+                                <div class="test-role">Brand Marketing Lead (Standby Systems)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <p class="test-text">"Bypassed standard layout templates completely. The original campaign angles engineered for our food brand exploded our metrics among trend-focused consumers."</p>
+                        <div class="test-user">
+                            <img src="https://images.unsplash.com/photo-1628157582853-a796fa650a6a?w=100&auto=format&fit=crop&q=80" alt="Client">
+                            <div>
+                                <div class="test-name">Chef K. Mendoza</div>
+                                <div class="test-role">Founder, Chicken Chingu</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <p class="test-text">"Running an independent e-commerce shoe store requires incredible conversion focus. Japhette managed the visual catalog and DM sales loops to scale our revenue effortlessly."</p>
+                        <div class="test-user">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=80" alt="Client">
+                            <div>
+                                <div class="test-name">A. Pulido</div>
+                                <div class="test-role">Operations Principal, Zapatos</div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </section>
+            <div class="slider-dots" id="sliderDots"></div>
+        </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact-section">
-            <div class="contact-box">
-                <h2>Let's Build Something Impactful</h2>
-                <p>Ready to update your digital footprint and execute a social roadmap that scales metrics? Drop a message directly to get started.</p>
-                <a href="mailto:your-email@example.com" class="contact-btn">Send An Email</a>
+    <section id="contact" class="contact-section scroll-reveal">
+        <div class="container">
+            <div class="contact-layout-box">
+                <h2 class="cta-title">Let's Build Your Next Viral Campaign.</h2>
+                <p style="color:#64748B; font-size:14px; margin-bottom:40px; max-width:600px;">Combine creative visual strategy, target audience data loops, and smart AI workflow scaling to capture undisputed digital presence.</p>
+                
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Transmission initialized.');">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name / Enterprise Title</label>
+                            <input type="text" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Corporate Contact Email</label>
+                            <input type="email" placeholder="john@company.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Distribution Parameters / Message Details</label>
+                        <textarea rows="5" placeholder="Outline your current audience metric road-blocks or campaign objectives..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="align-self: flex-start;">Initialize Growth Sync</button>
+                </form>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <footer>
-        <p>&copy; 2026 Japhette VMS. All rights reserved.</p>
+        <div class="container footer-container">
+            <div class="footer-left">
+                © 2026 JAP.STUDIO. Built via structural vanilla architectures.
+            </div>
+            <div class="footer-center">
+                <a href="mailto:jap.pulido789@gmail.com">jap.pulido789@gmail.com</a>
+                <a href="tel:09569027896">09569027896</a>
+            </div>
+            <div class="footer-right">
+                <button class="back-to-top-btn" onclick="window.scrollTo({top:0, behavior:'smooth'});">Back to Top ↑</button>
+            </div>
+        </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // --- 1. Framework Custom Loading Screen Controller ---
+            const loadingScreen = document.getElementById("loadingScreen");
+            const loadingProgress = document.getElementById("loadingProgress");
+            let progress = 0;
+            
+            const interval = setInterval(() => {
+                progress += Math.floor(Math.random() * 15) + 5;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        loadingScreen.style.opacity = "0";
+                        setTimeout(() => loadingScreen.style.display = "none", 600);
+                    }, 200);
+                }
+                loadingProgress.style.width = `${progress}%`;
+            }, 40);
+
+            // --- 2. Advanced Adaptive Mouse Micro-Cursor Engine ---
+            const dot = document.getElementById("cursorDot");
+            const outline = document.getElementById("cursorOutline");
+            
+            let mouseX = 0, mouseY = 0;
+            let dotX = 0, dotY = 0;
+            let outX = 0, outY = 0;
+
+            document.addEventListener("mousemove", (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            function renderCursor() {
+                dotX += (mouseX - dotX) * 0.2;
+                dotY += (mouseY - dotY) * 0.2;
+                outX += (mouseX - outX) * 0.1;
+                outY += (mouseY - outY) * 0.1;
+
+                dot.style.left = `${dotX}px`;
+                dot.style.top = `${dotY}px`;
+                outline.style.left = `${outX}px`;
+                outline.style.top = `${outY}px`;
+
+                requestAnimationFrame(renderCursor);
+            }
+            requestAnimationFrame(renderCursor);
+
+            // Interactive Hover Tracking expansion
+            const targetElements = document.querySelectorAll("a, button, .story-circle, .ig-post, input, textarea");
+            targetElements.forEach(elem => {
+                elem.addEventListener("mouseenter", () => {
+                    outline.style.transform = "translate(-50%, -50%) scale(1.6)";
+                    outline.style.backgroundColor = "rgba(255, 77, 141, 0.05)";
+                });
+                elem.addEventListener("mouseleave", () => {
+                    outline.style.transform = "translate(-50%, -50%) scale(1)";
+                    outline.style.backgroundColor = "transparent";
+                });
+            });
+
+            // --- 3. Progress Tracking & Sticky Nav blur ---
+            const nav = document.querySelector("nav");
+            const progressBar = document.getElementById("progressBar");
+
+            window.addEventListener("scroll", () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                progressBar.style.width = `${scrolled}%`;
+
+                if (window.scrollY > 50) {
+                    nav.classList.add("scrolled");
+                } else {
+                    nav.classList.remove("scrolled");
+                }
+            });
+
+            // --- 4. Instagram Highlight Stories Tooltip Render engine ---
+            const stories = document.querySelectorAll(".story-circle");
+            const tooltip = document.getElementById("storyTooltip");
+
+            stories.forEach(story => {
+                story.addEventListener("mousemove", (e) => {
+                    const text = story.getAttribute("data-preview");
+                    tooltip.textContent = text;
+                    tooltip.style.opacity = "1";
+                    tooltip.style.left = `${e.clientX}px`;
+                    tooltip.style.top = `${e.clientY}px`;
+                });
+                story.addEventListener("mouseleave", () => {
+                    tooltip.style.opacity = "0";
+                });
+            });
+
+            // --- 5. Pure JavaScript Analytical Rendering Engine (No External Canvas Libs) ---
+            function generateMockPathData(width, height, pointsCount) {
+                let coords = [];
+                for (let i = 0; i < pointsCount; i++) {
+                    let x = (width / (pointsCount - 1)) * i;
+                    let y = height - (Math.random() * (height * 0.6) + (height * 0.2));
+                    coords.push({x, y});
+                }
+                return coords;
+            }
+
+            function drawVanillaMiniLineChart(canvasId) {
+                const canvas = document.getElementById(canvasId);
+                if (!canvas) return;
+                const ctx = canvas.getContext("2d");
+                const w = canvas.width;
+                const h = canvas.height;
+                
+                ctx.clearRect(0, 0, w, h);
+                const points = generateMockPathData(w, h, 7);
+                
+                // Draw Fill Gradient
+                ctx.beginPath();
+                ctx.moveTo(0, h);
+                points.forEach(p => ctx.lineTo(p.x, p.y));
+                ctx.lineTo(w, h);
+                ctx.closePath();
+                let fillGlow = ctx.createLinearGradient(0, 0, 0, h);
+                fillGlow.addColorStop(0, "rgba(255, 77, 141, 0.15)");
+                fillGlow.addColorStop(1, "transparent");
+                ctx.fillStyle = fillGlow;
+                ctx.fill();
+
+                // Draw Stroke Trend Line
+                ctx.beginPath();
+                ctx.moveTo(points[0].x, points[0].y);
+                for(let i=1; i<points.length; i++){
+                    ctx.lineTo(points[i].x, points[i].y);
+                }
+                ctx.strokeStyle = "#FF4D8D";
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+
+            // --- 6. Intersectional Viewport Counter Metric Engine ---
+            const counters = document.querySelectorAll(".counter");
+            
+            function initializeCounters(elements) {
+                elements.forEach(counter => {
+                    const target = +counter.getAttribute("data-target");
+                    const decimals = counter.getAttribute("data-decimals") ? parseInt(counter.getAttribute("data-decimals")) : 0;
+                    let current = 0;
+                    const step = target / 60; // 60 frame rendering loops
+
+                    function increment() {
+                        current += step;
+                        if (current < target) {
+                            counter.textContent = current.toLocaleString(undefined, {minimumFractionDigits: decimals, maximumFractionDigits: decimals});
+                            requestAnimationFrame(increment);
+                        } else {
+                            counter.textContent = target.toLocaleString(undefined, {minimumFractionDigits: decimals, maximumFractionDigits: decimals});
+                        }
+                    }
+                    increment();
+                });
+            }
+
+            // --- 7. Intersection Observer for Scroll Reveals and Counters ---
+            const revealItems = document.querySelectorAll(".scroll-reveal, .ig-post");
+            let dashboardTriggered = false;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("revealed");
+                        
+                        // Trigger nested layout counters inside post feeds or metrics
+                        const innerCounters = entry.target.querySelectorAll(".counter");
+                        if (innerCounters.length > 0 && !entry.target.classList.contains('counted-done')) {
+                            initializeCounters(innerCounters);
+                            entry.target.classList.add('counted-done');
+                        }
+
+                        // Initialize canvas drawings if dashboard arrives
+                        if (entry.target.id === "dashboard" && !dashboardTriggered) {
+                            dashboardTriggered = true;
+                            setTimeout(() => {
+                                drawVanillaMiniLineChart("chartFollowers");
+                                drawVanillaMiniLineChart("chartReach");
+                                drawVanillaMiniLineChart("chartEngagement");
+                                drawVanillaMiniLineChart("chartLeads");
+                                drawVanillaMiniLineChart("chartROAS");
+                                drawVanillaMiniLineChart("chartViews");
+                            }, 300);
+                        }
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            revealItems.forEach(item => observer.observe(item));
+            const dashSec = document.getElementById("dashboard");
+            if(dashSec) observer.observe(dashSec);
+
+            // --- 8. Testimonial Carousel Infinite Loop Handler ---
+            const track = document.getElementById("sliderTrack");
+            const dotsContainer = document.getElementById("sliderDots");
+            const initialCards = document.querySelectorAll(".testimonial-card");
+            const cardWidth = 450; 
+            const gap = 24; 
+            let activeIdx = 0;
+
+            // Build functional indicator dots
+            initialCards.forEach((_, idx) => {
+                const dotElem = document.createElement("div");
+                dotElem.classList.add("dot");
+                if(idx === 0) dotElem.classList.add("active");
+                dotElem.addEventListener("click", () => shiftTo(idx));
+                dotsContainer.appendChild(dotElem);
+            });
+
+            const totalDots = dotsContainer.children;
+
+            function shiftTo(idx) {
+                activeIdx = idx;
+                const offset = activeIdx * (cardWidth + gap);
+                track.style.transform = `translateX(-${offset}px)`;
+                track.style.transition = "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)";
+                
+                // Update Indicator Layouts
+                Array.from(totalDots).forEach((d, i) => {
+                    d.classList.toggle("active", i === activeIdx);
+                });
+            }
+
+            // Auto Advance Loop Logic
+            setInterval(() => {
+                activeIdx = (activeIdx + 1) % initialCards.length;
+                shiftTo(activeIdx);
+            }, 4500);
+
+            // --- 9. Mobile Responsive Menu Toggle ---
+            const mobileToggle = document.getElementById("mobileToggle");
+            const navMenu = document.querySelector(".nav-menu");
+
+            mobileToggle.addEventListener("click", () => {
+                navMenu.style.display = navMenu.style.display === "flex" ? "none" : "flex";
+                if(navMenu.style.display === "flex") {
+                    navMenu.style.position = "absolute";
+                    navMenu.style.top = "100%";
+                    navMenu.style.left = "0";
+                    navMenu.style.width = "100%";
+                    navMenu.style.flexDirection = "column";
+                    navMenu.style.background = "#0A0A0A";
+                    navMenu.style.padding = "20px";
+                    navMenu.style.borderBottom = "1px solid rgba(255,255,255,0.05)";
+                }
+            });
+        });
+    </script>
 </body>
 </html>

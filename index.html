@@ -1,1914 +1,2002 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Japhette Alec Pulido — AI Social Growth Studio</title>
-    
-    <style>
-        /* --- Core Engine Variables & Root Foundations --- */
-        :root {
-            --bg-prime: #0A0A0A;
-            --bg-card: #171717;
-            --text-prime: #FFFFFF;
-            --text-muted: #94A3B8;
-            --accent: #FF4D8D;
-            --accent-glow: rgba(255, 77, 141, 0.15);
-            --font-head: 'Space Grotesk', sans-serif;
-            --font-body: 'Inter', sans-serif;
-            --corner: 24px;
-            --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ship Utah Consulting — Build a Mail Center That Ships</title>
+<meta name="description" content="Ship Utah Consulting helps private mail center owners boost profit, master PostalMate & CashMate, and build a store that runs itself — from first lease to full buildout.">
+<meta property="og:title" content="Ship Utah Consulting — Build a Mail Center That Ships">
+<meta property="og:description" content="Elite mentorship, PostalMate optimization, store buildouts, and carrier invoice auditing for private mail center owners.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ship Utah Consulting">
+<meta name="twitter:description" content="Elite mentorship, PostalMate optimization, and store buildouts for private mail center owners.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%238B5E34'/%3E%3Crect x='29' y='6' width='6' height='52' fill='%23C9A667'/%3E%3Crect x='6' y='29' width='52' height='6' fill='%23C9A667'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:      #EDE3CE;
+    --cream-lt:   #F7F1E2;
+    --brown-deep: #3A2A1C;
+    --brown-mid:  #6B4423;
+    --kraft:      #8B5E34;
+    --kraft-lt:   #A97A4B;
+    --tape:       #C9A667;
+    --stamp-red:  #A6402D;
+    --line:       rgba(58,42,28,0.18);
+  }
 
-        html {
-            scroll-behavior: smooth;
-            background-color: var(--bg-prime);
-        }
+  *{ box-sizing:border-box; margin:0; padding:0; }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            cursor: none; /* Deploys custom cursor framework */
-        }
+  html{ scroll-behavior:smooth; }
 
-        body {
-            background-color: var(--bg-prime);
-            color: var(--text-prime);
-            font-family: var(--font-body);
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
+  body{
+    background:var(--cream);
+    color:var(--brown-deep);
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    line-height:1.05;
+    letter-spacing:-0.01em;
+  }
 
-        /* --- Scroll Progress Metric --- */
-        .progress-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            z-index: 200;
-            background: transparent;
-        }
-        .progress-bar {
-            height: 100%;
-            width: 0%;
-            background: var(--accent);
-            box-shadow: 0 0 10px var(--accent);
-        }
+  .label{
+    font-family:'Space Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:0.72rem;
+  }
 
-        /* --- Interactive Micro-Cursor System --- */
-        .custom-cursor-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent);
-            position: fixed;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 1000;
-            transform: translate(-50%, -50%);
-            transition: width 0.1s, height 0.1s;
-        }
-        .custom-cursor-outline {
-            width: 30px;
-            height: 30px;
-            border: 1.5px solid var(--accent);
-            position: fixed;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 999;
-            transform: translate(-50%, -50%);
-            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s;
-        }
+  a{ color:inherit; text-decoration:none; }
 
-        /* --- Immersive Loading Screen --- */
-        .loading-screen {
-            position: fixed;
-            inset: 0;
-            background-color: var(--bg-prime);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .loading-content {
-            text-align: center;
-        }
-        .loading-logo {
-            font-family: var(--font-head);
-            font-size: 32px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: var(--text-prime);
-            margin-bottom: 20px;
-        }
-        .loading-logo span { color: var(--accent); }
-        .loading-bar-wrapper {
-            width: 200px;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 2px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-        .loading-bar-progress {
-            width: 0%;
-            height: 100%;
-            background: var(--accent);
-            transition: width 0.1s linear;
-        }
+  img,svg{ display:block; max-width:100%; }
 
-        /* --- Sticky Floating CTA --- */
-        .floating-cta {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--accent);
-            color: var(--text-prime);
-            padding: 12px 24px;
-            border-radius: 40px;
-            font-family: var(--font-head);
-            font-weight: 700;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 90;
-            box-shadow: 0 10px 30px rgba(255, 77, 141, 0.3);
-            transition: var(--transition-smooth);
-        }
-        .floating-cta:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(255, 77, 141, 0.5);
-        }
+  :focus-visible{
+    outline:3px solid var(--stamp-red);
+    outline-offset:3px;
+  }
 
-        /* --- Premium Navigation --- */
-        nav {
-            position: sticky;
-            top: 0;
-            width: 100%;
-            z-index: 150;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-            background: rgba(10, 10, 10, 0.01);
-            transition: var(--transition-smooth);
-        }
-        nav.scrolled {
-            background: rgba(10, 10, 10, 0.75);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 24px;
-        }
-        .logo {
-            font-family: var(--font-head);
-            font-weight: 700;
-            font-size: 20px;
-            letter-spacing: 1px;
-            text-decoration: none;
-            color: var(--text-prime);
-        }
-        .logo span { color: var(--accent); }
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-        .nav-menu a {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .nav-menu a:hover, .nav-menu a.active {
-            color: var(--accent);
-        }
-        .mobile-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            width: 24px;
-        }
-        .mobile-toggle span {
-            width: 100%;
-            height: 2px;
-            background: var(--text-prime);
-            transition: var(--transition-smooth);
-        }
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 28px;
+  }
 
-        /* --- Immersive Hero Workspace --- */
-        .hero {
-            padding: 120px 0 80px 0;
-            text-align: center;
-            position: relative;
-            min-height: 85vh;
-            display: flex;
-            align-items: center;
-        }
-        .hero-bg-glow {
-            position: absolute;
-            top: 25%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 700px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255, 77, 141, 0.07) 0%, transparent 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
-        .profile-frame {
-            position: relative;
-            width: 130px;
-            height: 130px;
-            margin: 0 auto 30px auto;
-        }
-        .hero-profile-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--accent);
-            padding: 4px;
-            background: var(--bg-prime);
-        }
-        .profile-verified {
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-            background: var(--bg-prime);
-            border-radius: 50%;
-            padding: 2px;
-            display: flex;
-        }
-        .hero-name {
-            font-family: var(--font-head);
-            font-size: 54px;
-            font-weight: 700;
-            letter-spacing: -1.5px;
-            margin-bottom: 8px;
-        }
-        .subheading {
-            font-family: var(--font-head);
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--accent);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-        }
-        .hero-headline {
-            font-size: 22px;
-            font-weight: 400;
-            color: #E5E5E5;
-            max-width: 740px;
-            margin: 0 auto 40px auto;
-            line-height: 1.5;
-        }
-        .reveal-text {
-            color: var(--text-prime);
-            font-weight: 600;
-            border-bottom: 2px solid var(--accent);
-        }
-        .hero-ctas {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        .btn {
-            font-family: var(--font-head);
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 15px 35px;
-            border-radius: 40px;
-            text-decoration: none;
-            transition: var(--transition-smooth);
-            border: 1px solid transparent;
-        }
-        .btn-primary {
-            background: var(--text-prime);
-            color: var(--bg-prime);
-        }
-        .btn-primary:hover {
-            background: transparent;
-            color: var(--text-prime);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.03);
-            border-color: rgba(255, 255, 255, 0.08);
-            color: var(--text-prime);
-        }
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:var(--cream-lt);
+    border-bottom:2px dashed var(--line);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 28px;
+    max-width:1120px;
+    margin:0 auto;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    font-size:1.15rem;
+    letter-spacing:-0.01em;
+  }
+  .brand-mark{
+    width:30px; height:30px;
+    background:var(--kraft);
+    border-radius:3px;
+    position:relative;
+    flex-shrink:0;
+  }
+  .brand-mark::before,.brand-mark::after{
+    content:"";
+    position:absolute;
+    background:var(--tape);
+  }
+  .brand-mark::before{ top:0; bottom:0; left:47%; width:3px; }
+  .brand-mark::after{ left:0; right:0; top:47%; height:3px; }
 
-        /* --- Floating Reaction Items --- */
-        .floating-icon {
-            position: absolute;
-            font-size: 24px;
-            opacity: 0.25;
-            pointer-events: none;
-            animation: floatAnimation 6s ease-in-out infinite;
-        }
-        .reaction-1 { top: 20%; left: 15%; animation-delay: 0s; }
-        .reaction-2 { top: 45%; left: 22%; animation-delay: 1.5s; }
-        .reaction-3 { top: 15%; right: 18%; animation-delay: 0.7s; }
-        .reaction-4 { top: 60%; right: 12%; animation-delay: 2.2s; }
-        .reaction-5 { top: 75%; left: 30%; animation-delay: 3s; }
+  nav.links{ display:flex; gap:28px; align-items:center; }
+  nav.links a{
+    font-family:'Space Mono', monospace;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--brown-mid);
+    padding-bottom:2px;
+    border-bottom:2px solid transparent;
+    transition:border-color .2s, color .2s;
+  }
+  nav.links a:hover{ color:var(--stamp-red); border-color:var(--stamp-red); }
+  .nav-cta{
+    background:var(--brown-deep);
+    color:var(--cream-lt) !important;
+    padding:9px 18px;
+    border-radius:2px;
+  }
+  .nav-cta:hover{ background:var(--stamp-red); }
 
-        @keyframes floatAnimation {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-15px) scale(1.08); opacity: 0.4; }
-        }
+  @media (max-width:760px){
+    nav.links a:not(.nav-cta){ display:none; }
+  }
 
-        /* --- Section Formatting Headers --- */
-        section { padding: 100px 0; }
-        h2 {
-            font-family: var(--font-head);
-            font-size: 26px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 45px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        h2::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(to right, rgba(255, 77, 141, 0.2), transparent);
-        }
+  /* ---------- BOX OPENING OVERLAY ---------- */
+  .box-overlay{
+    position:fixed;
+    inset:0;
+    z-index:200;
+    perspective:1400px;
+    background:var(--brown-deep);
+  }
+  .flap{
+    position:absolute;
+    background:
+      repeating-linear-gradient(135deg, rgba(0,0,0,0.08) 0 6px, transparent 6px 14px),
+      var(--kraft);
+    box-shadow:inset 0 0 40px rgba(0,0,0,0.25);
+  }
+  .flap .stamp{
+    position:absolute;
+    font-family:'Space Mono', monospace;
+    font-size:clamp(11px,1.4vw,16px);
+    letter-spacing:0.18em;
+    color:rgba(58,42,28,0.55);
+    border:2px solid rgba(58,42,28,0.4);
+    padding:4px 10px;
+    transform:rotate(-8deg);
+  }
+  .flap-top{
+    top:0; left:0; right:0; height:52%;
+    transform-origin:top center;
+    clip-path:polygon(0 0,100% 0,50% 100%);
+  }
+  .flap-top .stamp{ top:10%; left:50%; translate:-50% 0; }
+  .flap-bottom{
+    bottom:0; left:0; right:0; height:52%;
+    transform-origin:bottom center;
+    clip-path:polygon(0 100%,100% 100%,50% 0);
+  }
+  .flap-left{
+    top:0; bottom:0; left:0; width:52%;
+    transform-origin:center left;
+    clip-path:polygon(0 0,0 100%,100% 50%);
+  }
+  .flap-right{
+    top:0; bottom:0; right:0; width:52%;
+    transform-origin:center right;
+    clip-path:polygon(100% 0,100% 100%,0 50%);
+  }
+  .flap-right .stamp{ bottom:14%; right:8%; }
 
-        /* --- About Studio Spaces --- */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1.6fr 1fr;
-            gap: 24px;
-        }
-        .about-card-large {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: var(--corner);
-            padding: 40px;
-        }
-        .about-card-large h3 {
-            font-family: var(--font-head);
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
-        .about-card-large p {
-            color: var(--text-muted);
-            font-size: 15px;
-            line-height: 1.6;
-        }
-        .about-mini-dash {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-        .mini-stat {
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            padding: 20px 24px;
-        }
-        .mini-stat span {
-            font-size: 11px;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-        }
-        .mini-stat strong {
-            display: block;
-            font-family: var(--font-head);
-            font-size: 18px;
-            color: var(--accent);
-            margin-top: 4px;
-        }
+  .tape{
+    position:absolute;
+    left:50%; top:0; bottom:0;
+    width:64px;
+    margin-left:-32px;
+    background:linear-gradient(180deg, var(--tape), #b3894f);
+    box-shadow:0 0 0 2px rgba(58,42,28,0.15) inset;
+  }
+  .tape.tape-l{ transform-origin:right center; }
+  .tape.tape-r{ left:auto; right:calc(50% - 32px); transform-origin:left center; }
 
-        /* --- Instagram Stories Circles Framework --- */
-        .stories-wrapper {
-            display: flex;
-            gap: 25px;
-            overflow-x: auto;
-            padding: 10px 0 25px 0;
-            scrollbar-width: none;
-        }
-        .stories-wrapper::-webkit-scrollbar { display: none; }
-        .story-circle {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            min-width: 85px;
-        }
-        .story-ring {
-            width: 76px;
-            height: 76px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #f99d3a, #e2336b, #2130b1);
-            padding: 2.5px;
-            margin-bottom: 10px;
-            transition: transform 0.3s ease;
-        }
-        .story-circle:hover .story-ring {
-            transform: scale(1.05);
-        }
-        .story-img-placeholder {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: #111;
-            border: 2px solid var(--bg-prime);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-        }
-        .story-circle span {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-        .story-tooltip {
-            position: fixed;
-            background: #1E1E1E;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 8px 14px;
-            border-radius: 8px;
-            font-size: 12px;
-            color: var(--text-prime);
-            pointer-events: none;
-            opacity: 0;
-            transform: translate(-50%, -120%);
-            transition: opacity 0.2s ease;
-            z-index: 500;
-        }
+  .box-overlay.play .tape-l{ animation:tapeOpenL .5s .15s cubic-bezier(.6,0,.2,1) forwards; }
+  .box-overlay.play .tape-r{ animation:tapeOpenR .5s .15s cubic-bezier(.6,0,.2,1) forwards; }
+  .box-overlay.play .flap-top{ animation:openTop .85s .55s cubic-bezier(.5,-0.2,.2,1.15) forwards; }
+  .box-overlay.play .flap-left{ animation:openLeft .85s .68s cubic-bezier(.5,-0.2,.2,1.15) forwards; }
+  .box-overlay.play .flap-right{ animation:openRight .85s .78s cubic-bezier(.5,-0.2,.2,1.15) forwards; }
+  .box-overlay.play .flap-bottom{ animation:openBottom .85s .9s cubic-bezier(.5,-0.2,.2,1.15) forwards; }
+  .box-overlay.done{ display:none; }
 
-        /* --- Immersive Instagram-Feed Section Architecture --- */
-        .feed-container {
-            max-width: 680px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 50px;
-        }
-        .ig-post {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: var(--corner);
-            overflow: hidden;
-            box-shadow: 0 30px 60px -20px rgba(0,0,0,0.7);
-        }
-        .post-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-        }
-        .post-header-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .post-avatar {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            border: 1.5px solid var(--accent);
-            object-fit: cover;
-        }
-        .post-username {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--text-prime);
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .verified-badge { color: var(--accent); font-size: 10px; }
-        .post-location {
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-        .post-options { color: var(--text-muted); font-size: 12px; }
-        .post-media-wrapper {
-            position: relative;
-            width: 100%;
-            background: #000;
-            overflow: hidden;
-        }
-        .post-image, .post-video {
-            width: 100%;
-            display: block;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .ig-post:hover .post-image {
-            transform: scale(1.02);
-        }
-        .post-actions-bar {
-            display: flex;
-            justify-content: space-between;
-            padding: 16px 20px 8px 20px;
-            font-size: 20px;
-        }
-        .actions-left {
-            display: flex;
-            gap: 18px;
-        }
-        .actions-left span, .actions-right span {
-            transition: transform 0.2s ease;
-        }
-        .actions-left span:hover, .actions-right span:hover {
-            transform: scale(1.15);
-        }
-        .like-btn { color: var(--accent); }
-        .post-likes {
-            padding: 4px 20px;
-            font-size: 13px;
-            font-weight: 700;
-        }
-        .post-caption {
-            padding: 4px 20px 20px 20px;
-            font-size: 13.5px;
-            line-height: 1.6;
-            color: #DDD;
-        }
-        .post-caption strong { color: var(--text-prime); }
-        .post-metrics-box {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 14px;
-            padding: 14px;
-            margin: 14px 0;
-            display: flex;
-            justify-content: space-between;
-        }
-        .metric-pill {
-            font-size: 11px;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            font-weight: 600;
-        }
-        .metric-pill span {
-            display: block;
-            font-family: var(--font-head);
-            font-size: 16px;
-            color: var(--accent);
-            margin-top: 2px;
-        }
-        .hashtags {
-            display: block;
-            color: #4da6ff;
-            font-size: 12.5px;
-            margin-top: 8px;
-        }
-        .post-date {
-            padding: 0 20px 20px 20px;
-            font-size: 10px;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
-        }
+  .open-btn{
+    position:absolute;
+    top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    z-index:210;
+    font-family:'Space Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    font-size:0.85rem;
+    background:var(--cream-lt);
+    color:var(--brown-deep);
+    border:2px solid var(--brown-deep);
+    border-radius:3px;
+    padding:18px 30px;
+    cursor:pointer;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    box-shadow:4px 4px 0 rgba(0,0,0,0.35);
+    animation:btnPulse 1.8s ease-in-out infinite;
+    transition:opacity .3s ease, transform .3s ease;
+  }
+  .open-btn .tab-icon{ font-size:1.3rem; }
+  .open-btn small{ font-size:0.6rem; color:var(--brown-mid); letter-spacing:0.08em; }
+  .open-btn:hover{ background:var(--stamp-red); color:var(--cream-lt); border-color:var(--stamp-red); }
+  .open-btn:hover small{ color:rgba(247,241,226,0.8); }
+  .box-overlay.play .open-btn{ opacity:0; pointer-events:none; transform:translate(-50%,-50%) scale(0.9); }
+  @keyframes btnPulse{ 0%,100%{ box-shadow:4px 4px 0 rgba(0,0,0,0.35); } 50%{ box-shadow:6px 6px 0 rgba(0,0,0,0.35); } }
 
-        /* --- Performance Analytics Dashboard Ecosystem --- */
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-        .dash-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: var(--corner);
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 190px;
-        }
-        .dash-label {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            font-weight: 600;
-        }
-        .dash-value {
-            font-family: var(--font-head);
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--text-prime);
-            margin: 10px 0;
-        }
-        .dash-chart {
-            width: 100%;
-            height: 80px;
-            margin-top: auto;
-        }
+  .mute-toggle{
+    position:absolute;
+    top:24px; right:24px;
+    z-index:211;
+    width:42px; height:42px;
+    border-radius:50%;
+    background:rgba(247,241,226,0.9);
+    border:2px solid var(--brown-deep);
+    font-size:1.1rem;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:opacity .3s ease;
+  }
+  .box-overlay.play .mute-toggle{ opacity:0; pointer-events:none; }
 
-        /* --- Distribution Masonry Asset Repository --- */
-        .masonry-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            grid-auto-rows: 240px;
-            gap: 20px;
-        }
-        .masonry-item {
-            position: relative;
-            background: var(--bg-card);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-        }
-        .item-vertical { grid-row: span 2; }
-        .item-wide { grid-column: span 2; }
-        .masonry-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s var(--transition-smooth);
-        }
-        .masonry-item:hover img { transform: scale(1.05); }
-        .masonry-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            display: flex;
-            align-items: flex-end;
-            padding: 20px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .masonry-item:hover .masonry-overlay { opacity: 1; }
-        .masonry-overlay span {
-            font-family: var(--font-head);
-            font-size: 14px;
-            font-weight: 600;
-        }
+  @keyframes tapeOpenL{ to{ transform:scaleX(0.02) translateX(2px); opacity:0; } }
+  @keyframes tapeOpenR{ to{ transform:scaleX(0.02) translateX(-2px); opacity:0; } }
+  @keyframes openTop{ to{ transform:rotateX(-115deg); opacity:0.3; } }
+  @keyframes openBottom{ to{ transform:rotateX(115deg); opacity:0.3; } }
+  @keyframes openLeft{ to{ transform:rotateY(115deg); opacity:0.3; } }
+  @keyframes openRight{ to{ transform:rotateY(-115deg); opacity:0.3; } }
 
-        /* --- Automation Stack Elements --- */
-        .stack-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-        .stack-card {
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 20px;
-            padding: 30px;
-        }
-        .stack-card h3 {
-            font-family: var(--font-head);
-            font-size: 15px;
-            text-transform: uppercase;
-            color: var(--text-prime);
-            margin-bottom: 10px;
-        }
-        .stack-card p {
-            font-size: 13.5px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
+  .hero-inner{ opacity:0; transform:translateY(14px); }
+  .box-overlay.play ~ main .hero-inner,
+  body.opened .hero-inner{
+    animation:heroIn .7s 1.35s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  @keyframes heroIn{ to{ opacity:1; transform:translateY(0); } }
 
-        /* --- Services & Pricing Grid Layout --- */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-        .pricing-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: var(--corner);
-            padding: 40px 30px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-        .pricing-card.premium-card {
-            border-color: var(--accent);
-            box-shadow: 0 20px 40px rgba(255, 77, 141, 0.1);
-        }
-        .premium-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--accent);
-            color: var(--text-prime);
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            padding: 4px 10px;
-            border-radius: 20px;
-            letter-spacing: 0.5px;
-        }
-        .price-tier {
-            font-family: var(--font-head);
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        .price-val {
-            font-family: var(--font-head);
-            font-size: 40px;
-            font-weight: 700;
-            margin-bottom: 30px;
-        }
-        .price-val span { font-size: 14px; color: var(--text-muted); }
-        .price-features {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            margin-bottom: 40px;
-        }
-        .price-features li {
-            font-size: 13.5px;
-            color: var(--text-muted);
-            position: relative;
-            padding-left: 20px;
-        }
-        .price-features li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-        }
+  body:not(.opened){ overflow:hidden; height:100vh; }
 
-        /* --- Infinite Carousel Testimonials Slider --- */
-        .slider-wrapper {
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-            padding: 20px 0;
-        }
-        .slider-track {
-            display: flex;
-            gap: 24px;
-            width: max-content;
-        }
-        .testimonial-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: var(--corner);
-            padding: 35px;
-            width: 450px;
-        }
-        .test-text {
-            font-size: 15px;
-            color: #E2E8F0;
-            line-height: 1.6;
-            font-style: italic;
-            margin-bottom: 25px;
-        }
-        .test-user {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        .test-user img {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-        .test-name {
-            font-size: 14px;
-            font-weight: 700;
-        }
-        .test-role {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 30px;
-        }
-        .dot {
-            width: 6px;
-            height: 6px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            transition: var(--transition-smooth);
-        }
-        .dot.active { background: var(--accent); width: 18px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce){
+    .flap, .tape{ animation:none !important; transition:opacity .4s ease; }
+    .box-overlay.play .flap, .box-overlay.play .tape{ opacity:0; }
+  }
 
-        /* --- Contact & Production Delivery Forms --- */
-        .contact-layout-box {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: var(--corner);
-            padding: 50px;
-        }
-        .cta-title { font-size: 36px; margin-bottom: 12px; }
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .form-group label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            font-weight: 600;
-        }
-        .form-group input, .form-group textarea {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 12px;
-            padding: 14px;
-            color: var(--text-prime);
-            font-family: var(--font-body);
-            font-size: 14px;
-            transition: border-color 0.3s;
-        }
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:96px 0 88px;
+    border-bottom:2px dashed var(--line);
+  }
+  .hero-inner{ max-width:760px; }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--cream-lt);
+    border:1.5px solid var(--brown-deep);
+    padding:6px 14px;
+    border-radius:3px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{ content:"◆"; color:var(--stamp-red); font-size:0.7rem; }
+  h1.hero-title{
+    font-size:clamp(2.4rem, 5.6vw, 4.1rem);
+    margin-bottom:22px;
+  }
+  h1.hero-title em{
+    font-style:italic;
+    color:var(--kraft);
+  }
+  .hero-sub{
+    font-size:1.15rem;
+    color:var(--brown-mid);
+    max-width:52ch;
+    margin-bottom:36px;
+  }
+  .hero-ctas{ display:flex; gap:16px; flex-wrap:wrap; }
+  .stamp-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:28px;
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--brown-mid);
+    border:2px dashed var(--kraft-lt);
+    border-radius:40px;
+    padding:8px 16px;
+    transform:rotate(-2deg);
+  }
+  .btn{
+    font-family:'Space Mono', monospace;
+    font-size:0.82rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    padding:15px 26px;
+    border-radius:2px;
+    display:inline-block;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn-primary{
+    background:var(--stamp-red);
+    color:var(--cream-lt);
+    box-shadow:3px 3px 0 var(--brown-deep);
+  }
+  .btn-primary:hover{ transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--brown-deep); }
+  .btn-ghost{
+    background:transparent;
+    border:1.5px solid var(--brown-deep);
+    color:var(--brown-deep);
+  }
+  .btn-ghost:hover{ background:var(--brown-deep); color:var(--cream-lt); }
 
-        /* --- Minimal Footer Layout --- */
-        footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 40px 0;
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .footer-center { display: flex; gap: 20px; }
-        .footer-center a { color: var(--text-muted); text-decoration: none; }
-        .back-to-top-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-prime);
-            font-weight: 600;
-        }
+  /* ---------- SECTION HEADERS ---------- */
+  section{ padding:88px 0; }
+  .section-head{ margin-bottom:52px; max-width:640px; }
+  .section-head .label{ color:var(--stamp-red); display:block; margin-bottom:12px; }
+  .section-head h2{ font-size:clamp(1.8rem,3.6vw,2.6rem); }
+  .section-head p{ color:var(--brown-mid); margin-top:14px; font-size:1.05rem; }
 
-        /* --- Scroll Reveal Mechanism Animation Engine --- */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .scroll-reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
+  /* ---------- MANIFEST / SERVICES ---------- */
+  .manifest{ border-top:2px solid var(--brown-deep); }
+  .manifest-row{
+    display:grid;
+    grid-template-columns:64px 1fr 1fr;
+    gap:28px;
+    padding:34px 0;
+    border-bottom:2px dashed var(--line);
+    align-items:start;
+  }
+  .manifest-row:hover{ background:var(--cream-lt); }
+  .qty{
+    font-family:'Space Mono', monospace;
+    font-size:0.85rem;
+    color:var(--kraft-lt);
+    padding-top:4px;
+  }
+  .manifest-row h3{ font-size:1.35rem; margin-bottom:8px; }
+  .manifest-row p{ color:var(--brown-mid); }
+  .manifest-tag{
+    display:inline-block;
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--stamp-red);
+    border:1px solid var(--stamp-red);
+    padding:3px 8px;
+    border-radius:2px;
+    margin-top:12px;
+  }
+  .price-line{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.25rem;
+    color:var(--brown-deep);
+    margin-bottom:14px;
+  }
+  .price-line small{
+    display:block;
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    font-size:0.78rem;
+    color:var(--brown-mid);
+    margin-top:4px;
+  }
+  .btn-sm{ font-size:0.72rem; padding:10px 16px; }
+  @media (max-width:700px){
+    .manifest-row{ grid-template-columns:40px 1fr; }
+    .manifest-row > div:last-child{ grid-column:2; }
+  }
 
-        /* --- Component Media Queries Breakpoints --- */
-        @media (max-width: 968px) {
-            .about-grid, .dashboard-grid, .pricing-grid, .stack-grid { grid-template-columns: 1fr; }
-            .form-row { grid-template-columns: 1fr; }
-            .item-wide { grid-column: span 1; }
-            .nav-menu { display: none; }
-            .mobile-toggle { display: flex; }
-            .hero-name { font-size: 38px; }
-        }
-    </style>
+  /* ---------- TRACKING TIMELINE ---------- */
+  .tracking-line{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+    position:relative;
+    padding-top:8px;
+  }
+  .tracking-line::before{
+    content:"";
+    position:absolute;
+    top:20px; left:4%; right:4%;
+    height:2px;
+    background:repeating-linear-gradient(90deg, var(--kraft-lt) 0 10px, transparent 10px 18px);
+  }
+  .track-stop{ position:relative; padding-top:36px; }
+  .track-dot{
+    position:absolute;
+    top:12px; left:0;
+    width:16px; height:16px;
+    border-radius:50%;
+    background:var(--stamp-red);
+    border:3px solid var(--cream);
+    box-shadow:0 0 0 2px var(--brown-deep);
+  }
+  .track-label{
+    color:var(--stamp-red);
+    display:block;
+    margin-bottom:8px;
+    font-family:'Space Mono', monospace;
+    font-size:0.65rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+  }
+  .track-stop h3{ font-size:1.1rem; margin-bottom:8px; }
+  .track-stop p{ color:var(--brown-mid); font-size:0.92rem; }
+  @media (max-width:820px){
+    .tracking-line{ grid-template-columns:1fr; gap:0; }
+    .tracking-line::before{ top:0; bottom:0; left:8px; right:auto; width:2px; height:auto; background:repeating-linear-gradient(180deg, var(--kraft-lt) 0 10px, transparent 10px 18px); }
+    .track-stop{ padding:0 0 32px 34px; }
+    .track-dot{ top:2px; left:0; }
+  }
+
+  /* ---------- CALCULATOR ---------- */
+  .calc-card{
+    background:var(--brown-deep);
+    color:var(--cream-lt);
+    border-radius:8px;
+    padding:52px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:52px;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .calc-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0 14px, transparent 14px 28px);
+    pointer-events:none;
+  }
+  .calc-copy h2{ font-size:clamp(1.6rem,3vw,2.1rem); margin:10px 0 14px; }
+  .calc-copy p{ color:rgba(247,241,226,0.78); margin-bottom:18px; }
+  .calc-tool{
+    background:var(--cream-lt);
+    color:var(--brown-deep);
+    border-radius:6px;
+    padding:28px;
+    position:relative;
+  }
+  .calc-tool label{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--brown-mid);
+    margin-bottom:10px;
+  }
+  .calc-input-wrap{
+    display:flex;
+    align-items:center;
+    border:2px solid var(--brown-deep);
+    border-radius:4px;
+    padding:10px 14px;
+    margin-bottom:14px;
+    background:var(--cream);
+  }
+  .calc-input-wrap span{ font-family:'Fraunces', serif; font-weight:700; font-size:1.2rem; margin-right:6px; }
+  .calc-input-wrap input{
+    border:none;
+    background:none;
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.2rem;
+    color:var(--brown-deep);
+    width:100%;
+  }
+  .calc-input-wrap input:focus{ outline:none; }
+  #calcSlider{
+    width:100%;
+    accent-color:var(--stamp-red);
+    margin-bottom:22px;
+  }
+  .calc-result{
+    background:var(--cream);
+    border:2px dashed var(--kraft-lt);
+    border-radius:6px;
+    padding:18px;
+    text-align:center;
+    margin-bottom:14px;
+  }
+  .calc-result-label{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--brown-mid);
+    margin-bottom:6px;
+  }
+  .calc-result-value{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    font-size:2rem;
+    color:var(--stamp-red);
+  }
+  .calc-result-sub{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    color:var(--brown-mid);
+    margin-top:4px;
+  }
+  .calc-footnote{ font-size:0.74rem; color:var(--brown-mid); }
+  @media (max-width:820px){
+    .calc-card{ grid-template-columns:1fr; padding:32px 24px; }
+  }
+
+  /* ---------- WORK GALLERY ---------- */
+  .work-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:22px;
+  }
+  .work-item{
+    aspect-ratio:4/3;
+    border-radius:4px;
+    overflow:hidden;
+    border:3px solid var(--cream-lt);
+    box-shadow:0 0 0 2px var(--brown-deep), 4px 4px 0 rgba(0,0,0,0.18);
+    background:var(--kraft);
+    transform:rotate(-1.2deg);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .work-item:nth-child(even){ transform:rotate(1.2deg); }
+  .work-item:nth-child(3n){ transform:rotate(-0.6deg); }
+  .work-item:hover{ transform:rotate(0deg) scale(1.02); box-shadow:0 0 0 2px var(--stamp-red), 5px 5px 0 rgba(0,0,0,0.22); }
+  .work-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  @media (max-width:820px){
+    .work-grid{ grid-template-columns:repeat(2, 1fr); }
+  }
+  @media (max-width:520px){
+    .work-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{ background:var(--brown-deep); color:var(--cream-lt); }
+  .about .section-head p{ color:rgba(247,241,226,0.75); }
+  .about .label{ color:var(--tape); }
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .about-photo{
+    aspect-ratio:4/5;
+    background:var(--kraft);
+    border-radius:3px;
+    position:relative;
+    overflow:hidden;
+    border:3px solid var(--tape);
+    box-shadow:5px 5px 0 rgba(0,0,0,0.2);
+  }
+  .about-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .about-copy p{ margin-bottom:16px; color:rgba(247,241,226,0.85); }
+  .about-stats{
+    display:flex;
+    gap:36px;
+    margin-top:28px;
+    flex-wrap:wrap;
+  }
+  .about-stats div strong{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-size:2rem;
+    color:var(--tape);
+  }
+  .about-stats div span{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:rgba(247,241,226,0.65);
+  }
+  @media (max-width:760px){ .about-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- TESTIMONIAL ---------- */
+  .postcard{
+    background:var(--cream-lt);
+    border:2px solid var(--brown-deep);
+    border-radius:4px;
+    padding:44px;
+    position:relative;
+    max-width:760px;
+    margin:0 auto;
+  }
+  .postcard::before{
+    content:"VIA PRIORITY MAIL";
+    position:absolute;
+    top:-14px; left:36px;
+    background:var(--stamp-red);
+    color:var(--cream-lt);
+    font-family:'Space Mono', monospace;
+    font-size:0.65rem;
+    letter-spacing:0.12em;
+    padding:5px 12px;
+    border-radius:2px;
+  }
+  .postcard blockquote{
+    font-family:'Fraunces', serif;
+    font-size:1.4rem;
+    font-style:italic;
+    line-height:1.4;
+    margin-bottom:22px;
+  }
+  .postcard cite{
+    font-family:'Space Mono', monospace;
+    font-size:0.78rem;
+    font-style:normal;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--brown-mid);
+  }
+
+  .postcard-list{
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+    max-width:760px;
+    margin:0 auto;
+  }
+  .postcard-details{ cursor:pointer; }
+  .postcard-details summary{
+    list-style:none;
+    cursor:pointer;
+  }
+  .postcard-details summary::-webkit-details-marker{ display:none; }
+  .postcard-details .teaser{ margin-bottom:14px; }
+  .postcard-details cite{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .read-more{
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--stamp-red);
+    border:1px solid var(--stamp-red);
+    padding:3px 9px;
+    border-radius:12px;
+  }
+  .postcard-details[open] .read-more{ visibility:hidden; }
+  .postcard-full{
+    margin-top:20px;
+    padding-top:20px;
+    border-top:2px dashed var(--line);
+  }
+  .postcard-full p{ margin-bottom:14px; color:var(--brown-mid); }
+  .postcard-full p:last-child{ margin-bottom:0; }
+
+  /* ---------- PRICING ---------- */
+  .tiers{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .tier{
+    border:2px solid var(--brown-deep);
+    border-radius:4px;
+    padding:32px 26px;
+    background:var(--cream-lt);
+    display:flex;
+    flex-direction:column;
+  }
+  .tier.featured{
+    background:var(--brown-deep);
+    color:var(--cream-lt);
+    transform:translateY(-10px);
+    box-shadow:6px 6px 0 var(--tape);
+  }
+  .tier.featured .tier-desc,
+  .tier.featured .tier-price small{ color:rgba(247,241,226,0.7); }
+  .tier-speed{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--stamp-red);
+    margin-bottom:10px;
+  }
+  .tier.featured .tier-speed{ color:var(--tape); }
+  .tier h3{ font-size:1.5rem; margin-bottom:8px; }
+  .tier-price{ font-family:'Fraunces', serif; font-size:1.9rem; margin:14px 0; }
+  .tier-price small{ font-family:'Space Mono', monospace; font-size:0.62rem; color:var(--brown-mid); display:block; margin-top:4px; }
+  .tier-desc{ color:var(--brown-mid); margin-bottom:20px; flex-grow:1; }
+  .tier ul{ list-style:none; margin-bottom:26px; }
+  .tier li{ padding:7px 0; border-top:1px dashed var(--line); font-size:0.92rem; }
+  .tier.featured li{ border-color:rgba(247,241,226,0.2); }
+  .tier li:first-child{ border-top:none; }
+  .tier .btn{ text-align:center; }
+  @media (max-width:820px){
+    .tiers{ grid-template-columns:1fr; }
+    .tier.featured{ transform:none; }
+  }
+
+  .guarantee-banner{
+    margin-top:44px;
+    display:flex;
+    align-items:center;
+    gap:24px;
+    background:var(--cream-lt);
+    border:2px solid var(--brown-deep);
+    border-radius:8px;
+    padding:28px 32px;
+  }
+  .guarantee-seal{
+    flex-shrink:0;
+    width:64px; height:64px;
+    border-radius:50%;
+    border:3px double var(--stamp-red);
+    color:var(--stamp-red);
+    font-size:1.8rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Fraunces', serif;
+    transform:rotate(-6deg);
+  }
+  .guarantee-banner h3{ font-size:1.15rem; margin-bottom:6px; }
+  .guarantee-banner p{ color:var(--brown-mid); font-size:0.92rem; }
+  @media (max-width:600px){
+    .guarantee-banner{ flex-direction:column; text-align:center; }
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-item{
+    border-bottom:2px dashed var(--line);
+  }
+  .faq-q{
+    width:100%;
+    text-align:left;
+    background:none;
+    border:none;
+    font-family:'Fraunces', serif;
+    font-size:1.15rem;
+    font-weight:600;
+    color:var(--brown-deep);
+    padding:22px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    cursor:pointer;
+  }
+  .faq-q .mark{
+    font-family:'Space Mono', monospace;
+    color:var(--stamp-red);
+    flex-shrink:0;
+    transition:transform .2s;
+  }
+  .faq-item[open] .faq-q .mark{ transform:rotate(45deg); }
+  .faq-a{ color:var(--brown-mid); padding-bottom:22px; max-width:65ch; }
+
+  /* ---------- BOOK / LABEL ---------- */
+  .book{
+    background:var(--cream-lt);
+  }
+  .label-card{
+    border:3px solid var(--brown-deep);
+    border-radius:4px;
+    max-width:640px;
+    margin:0 auto;
+    padding:40px;
+    background:var(--cream);
+    position:relative;
+  }
+  .label-card::after{
+    content:"";
+    position:absolute;
+    inset:10px;
+    border:1.5px dashed var(--kraft-lt);
+    border-radius:2px;
+    pointer-events:none;
+  }
+  .barcode{
+    display:flex;
+    gap:3px;
+    align-items:flex-end;
+    height:38px;
+    margin:22px 0;
+  }
+  .barcode span{ background:var(--brown-deep); width:3px; }
+  .book h2{ font-size:1.9rem; margin-bottom:10px; }
+  .book p.book-sub{ color:var(--brown-mid); margin-bottom:26px; }
+  .book .btn-primary{ width:100%; text-align:center; }
+  .book-note{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    color:var(--brown-mid);
+    margin-top:16px;
+    text-align:center;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:2px solid var(--brown-deep);
+    padding:44px 0 28px;
+  }
+  .footer-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+  }
+  .footer-inner .label{ color:var(--brown-mid); }
+
+  /* ---------- MOBILE STICKY CTA ---------- */
+  .mobile-sticky-cta{
+    display:none;
+  }
+  @media (max-width:760px){
+    .mobile-sticky-cta{
+      display:block;
+      position:fixed;
+      left:0; right:0; bottom:0;
+      z-index:140;
+      background:var(--cream-lt);
+      border-top:2px solid var(--brown-deep);
+      padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+      transform:translateY(100%);
+      transition:transform .3s ease;
+      box-shadow:0 -4px 12px rgba(0,0,0,0.12);
+    }
+    .mobile-sticky-cta.show{ transform:translateY(0); }
+    .mobile-sticky-cta .btn{ display:block; text-align:center; width:100%; }
+  }
+
+  /* ---------- CHAT WIDGET ---------- */
+  .chat-widget{ position:fixed; bottom:24px; right:24px; z-index:150; }
+
+  .status-dot{
+    width:11px; height:11px;
+    border-radius:50%;
+    background:#8a8a8a;
+    display:inline-block;
+    flex-shrink:0;
+  }
+  .status-dot.online{ background:#4C9A5B; box-shadow:0 0 0 0 rgba(76,154,91,0.6); animation:dotPulse 1.8s ease-out infinite; }
+  @keyframes dotPulse{
+    0%{ box-shadow:0 0 0 0 rgba(76,154,91,0.55); }
+    70%{ box-shadow:0 0 0 8px rgba(76,154,91,0); }
+    100%{ box-shadow:0 0 0 0 rgba(76,154,91,0); }
+  }
+
+  .chat-launcher{
+    width:76px; height:76px;
+    border-radius:50%;
+    background:var(--stamp-red);
+    border:3px solid var(--brown-deep);
+    box-shadow:4px 4px 0 var(--brown-deep);
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    transition:transform .15s ease, box-shadow .15s ease;
+    opacity:0;
+    transform:scale(0.3) rotate(-20deg);
+    pointer-events:none;
+  }
+  .chat-widget.ready .chat-launcher{
+    pointer-events:auto;
+    animation:launcherIn .6s cubic-bezier(.34,1.56,.64,1) forwards,
+              launcherFloat 3.2s .6s ease-in-out infinite;
+  }
+  .chat-launcher::before{
+    content:"";
+    position:absolute;
+    inset:-10px;
+    border-radius:50%;
+    border:2px solid var(--stamp-red);
+    opacity:0;
+    animation:ringPulse 2.6s 1.5s ease-out infinite;
+  }
+  @keyframes launcherIn{ to{ opacity:1; transform:scale(1) rotate(0deg); } }
+  @keyframes launcherFloat{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-5px); } }
+  @keyframes ringPulse{
+    0%{ opacity:0.7; transform:scale(0.85); }
+    70%{ opacity:0; transform:scale(1.35); }
+    100%{ opacity:0; transform:scale(1.35); }
+  }
+  .chat-launcher:hover{ transform:translate(-2px,-3px) scale(1.04); box-shadow:6px 6px 0 var(--brown-deep); }
+  .chat-widget.open .chat-launcher{ animation:none; transform:none; }
+  .chat-launcher-icon{ font-size:1.9rem; filter:drop-shadow(0 1px 1px rgba(0,0,0,0.2)); }
+  .chat-launcher .status-dot{
+    position:absolute;
+    top:3px; right:3px;
+    border:2px solid var(--cream-lt);
+  }
+
+  .chat-bubble-tip{
+    position:absolute;
+    bottom:14px;
+    right:92px;
+    max-width:220px;
+    background:var(--cream-lt);
+    border:2px solid var(--brown-deep);
+    border-radius:10px;
+    padding:12px 14px;
+    font-family:'Work Sans', sans-serif;
+    font-size:0.86rem;
+    line-height:1.4;
+    box-shadow:3px 3px 0 rgba(0,0,0,0.2);
+    opacity:0;
+    transform:translateX(10px) scale(0.95);
+    pointer-events:none;
+    transition:opacity .3s ease, transform .3s ease;
+  }
+  .chat-bubble-tip.show{ opacity:1; transform:translateX(0) scale(1); pointer-events:auto; cursor:pointer; }
+  .chat-bubble-tip::after{
+    content:"";
+    position:absolute;
+    right:-9px; bottom:26px;
+    width:0; height:0;
+    border-top:8px solid transparent;
+    border-bottom:8px solid transparent;
+    border-left:9px solid var(--brown-deep);
+  }
+  .chat-bubble-tip::before{
+    content:"";
+    position:absolute;
+    right:-6px; bottom:27px;
+    width:0; height:0;
+    border-top:7px solid transparent;
+    border-bottom:7px solid transparent;
+    border-left:8px solid var(--cream-lt);
+    z-index:1;
+  }
+
+  .chat-panel{
+    position:absolute;
+    bottom:90px;
+    right:0;
+    width:min(420px, 92vw);
+    height:min(600px, 78vh);
+    background:var(--cream-lt);
+    border:3px solid var(--brown-deep);
+    border-radius:8px;
+    box-shadow:6px 6px 0 rgba(0,0,0,0.25);
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    opacity:0;
+    transform:translateY(24px) scale(0.92);
+    pointer-events:none;
+    transform-origin:bottom right;
+    transition:opacity .3s cubic-bezier(.34,1.56,.64,1), transform .35s cubic-bezier(.34,1.56,.64,1);
+  }
+  .chat-widget.open .chat-panel{ opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
+
+  .chat-head{
+    background:var(--brown-deep);
+    color:var(--cream-lt);
+    padding:18px 20px;
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:10px;
+  }
+  .chat-head strong{ font-family:'Fraunces', serif; font-size:1.15rem; }
+  .chat-status{ display:flex; align-items:center; gap:7px; margin-top:6px; font-family:'Space Mono', monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:rgba(247,241,226,0.8); }
+  .chat-close{ background:none; border:none; color:var(--cream-lt); font-size:1.5rem; line-height:1; cursor:pointer; padding:0 4px; }
+
+  .chat-body{
+    flex:1;
+    overflow-y:auto;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    min-height:220px;
+  }
+  .msg{
+    max-width:85%;
+    padding:12px 15px;
+    border-radius:6px;
+    font-size:0.95rem;
+    line-height:1.5;
+    opacity:0;
+    animation:msgIn .3s ease forwards;
+  }
+  @keyframes msgIn{ from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:translateY(0); } }
+  .msg.bot{ background:var(--cream); border:1px solid var(--line); align-self:flex-start; }
+  .msg.user{ background:var(--brown-deep); color:var(--cream-lt); align-self:flex-end; }
+  .msg a{ text-decoration:underline; }
+
+  .typing-dots{ display:inline-flex; gap:4px; align-self:flex-start; background:var(--cream); border:1px solid var(--line); padding:12px 15px; border-radius:6px; }
+  .typing-dots span{ width:6px; height:6px; border-radius:50%; background:var(--brown-mid); animation:typingBounce 1.1s ease-in-out infinite; }
+  .typing-dots span:nth-child(2){ animation-delay:.15s; }
+  .typing-dots span:nth-child(3){ animation-delay:.3s; }
+  @keyframes typingBounce{ 0%,60%,100%{ transform:translateY(0); opacity:.5; } 30%{ transform:translateY(-4px); opacity:1; } }
+
+  .chat-suggestions{ display:flex; flex-wrap:wrap; gap:9px; }
+  .chat-suggestions button{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    background:transparent;
+    border:1.5px solid var(--kraft-lt);
+    color:var(--brown-mid);
+    padding:7px 12px;
+    border-radius:14px;
+    cursor:pointer;
+    transition:background .15s ease, color .15s ease, transform .15s ease;
+  }
+  .chat-suggestions button:hover{ background:var(--stamp-red); border-color:var(--stamp-red); color:var(--cream-lt); transform:translateY(-1px); }
+  .chat-suggestions button.segment-btn{
+    display:block;
+    width:100%;
+    text-align:left;
+    background:var(--cream);
+    border:2px solid var(--brown-deep);
+    color:var(--brown-deep);
+    border-radius:6px;
+    padding:12px 14px;
+    font-family:'Work Sans', sans-serif;
+    text-transform:none;
+    letter-spacing:0;
+    font-size:0.9rem;
+    font-weight:500;
+  }
+  .chat-suggestions button.segment-btn:hover{ background:var(--brown-deep); color:var(--cream-lt); }
+
+  .chat-input-row{
+    display:flex;
+    border-top:2px dashed var(--line);
+    padding:14px;
+    gap:10px;
+  }
+  .chat-input-row input{
+    flex:1;
+    border:1.5px solid var(--line);
+    border-radius:4px;
+    padding:12px 14px;
+    font-family:'Work Sans', sans-serif;
+    font-size:0.95rem;
+    background:var(--cream);
+    color:var(--brown-deep);
+  }
+  .chat-input-row input:focus{ outline:none; border-color:var(--brown-deep); }
+  .chat-input-row button{
+    background:var(--stamp-red);
+    color:var(--cream-lt);
+    border:none;
+    border-radius:4px;
+    width:46px;
+    font-size:1.1rem;
+    cursor:pointer;
+    transition:background .15s ease;
+  }
+  .chat-input-row button:hover{ background:var(--brown-deep); }
+
+  .chat-live{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+
+  @media (max-width:480px){
+    .chat-panel{ right:-12px; width:96vw; height:min(560px, 80vh); }
+    .chat-bubble-tip{ display:none; }
+  }
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+</style>
 </head>
 <body>
 
-    <div class="progress-container">
-        <div class="progress-bar" id="progressBar"></div>
-    </div>
+<div class="box-overlay" id="boxOverlay">
+  <button class="mute-toggle" id="muteToggle" type="button" aria-label="Mute sound">🔊</button>
+  <button class="open-btn" id="openBtn" type="button" aria-label="Open the package to enter the site">
+    <span class="tab-icon">📦</span>
+    Tap to open
+    <small>Ship Utah Consulting</small>
+  </button>
+  <div class="tape tape-l"></div>
+  <div class="tape tape-r"></div>
+  <div class="flap flap-top"><span class="stamp">FRAGILE</span></div>
+  <div class="flap flap-left"></div>
+  <div class="flap flap-right"><span class="stamp">THIS SIDE UP</span></div>
+  <div class="flap flap-bottom"></div>
+</div>
 
-    <div class="custom-cursor-dot" id="cursorDot"></div>
-    <div class="custom-cursor-outline" id="cursorOutline"></div>
-
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loading-content">
-            <div class="loading-logo">JAP<span>.STUDIO</span></div>
-            <div class="loading-bar-wrapper">
-                <div class="loading-bar-progress" id="loadingProgress"></div>
-            </div>
-        </div>
-    </div>
-
-    <a href="#contact" class="floating-cta">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
-        <span>Hire Me</span>
-    </a>
-
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">JAP<span>.STUDIO</span></a>
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#stories">Stories</a></li>
-                <li><a href="#feed">Portfolio</a></li>
-                <li><a href="#dashboard">Results</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#testimonials">Reviews</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="mobile-toggle" id="mobileToggle">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand"><span class="brand-mark"></span>Ship Utah Consulting</div>
+    <nav class="links">
+      <a href="#manifest">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#work">Our Work</a>
+      <a href="#testimonial">Testimonials</a>
+      <a href="#calculator">Savings Calculator</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a href="#book" class="nav-cta">Book a Call</a>
     </nav>
+  </div>
+</header>
 
-    <section id="home" class="hero">
-        <div class="hero-bg-glow"></div>
-        
-        <div class="floating-icon reaction-1">❤️</div>
-        <div class="floating-icon reaction-2">🔥</div>
-        <div class="floating-icon reaction-3">🚀</div>
-        <div class="floating-icon reaction-4">💬</div>
-        <div class="floating-icon reaction-5">✨</div>
+<main>
 
-        <div class="hero-container">
-            <div class="profile-frame">
-                <img src="profile.jpg" alt="Japhette Alec Pulido" class="hero-profile-img" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80'">
-                <div class="profile-verified">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="#00D4FF"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                </div>
-            </div>
-            
-            <h1 class="hero-name">Japhette Alec Pulido</h1>
-            <div class="hero-tagline subheading">SOCIAL MEDIA MANAGER</div>
-            
-            <h2 class="hero-headline">
-                I create content that attracts <span class="reveal-text">attention</span>, builds <span class="reveal-text">communities</span>, and converts followers into customers.
-            </h2>
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <span class="eyebrow label">Postal &amp; parcel center consulting</span>
+      <h1 class="hero-title">Build a mail center that <em>ships.</em></h1>
+      <p class="hero-sub">We help private mail center owners boost profit per package, get more out of PostalMate, and design a store that runs without you standing behind the counter all day.</p>
+      <div class="hero-ctas">
+        <a href="#book" class="btn btn-primary">Book a Strategy Call</a>
+        <a href="#manifest" class="btn btn-ghost">See How We Help</a>
+      </div>
+      <div class="stamp-badge">
+        <span>No contracts</span>
+        <span>·</span>
+        <span>Cancel anytime</span>
+      </div>
+    </div>
+  </section>
 
-            <div class="hero-ctas">
-                <a href="#feed" class="btn btn-primary">View My Work</a>
-                <a href="#contact" class="btn btn-secondary">Let's Work Together</a>
-            </div>
+  <section id="manifest">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="label">Packing manifest — contents of this engagement</span>
+        <h2>How we help you grow</h2>
+        <p>From launch to growth — six ways to work together, depending on where your center is today.</p>
+      </div>
+      <div class="manifest">
+        <div class="manifest-row reveal">
+          <div class="qty">01</div>
+          <div>
+            <h3>Elite Membership</h3>
+            <p>1:1 mentorship, goal setting, weekly calls, and industry insights — plus a private members community and shared documents.</p>
+            <span class="manifest-tag">Recurring</span>
+          </div>
+          <div>
+            <p class="price-line">$5,997 <small>/ 6-month membership, payment plans available</small></p>
+            <a href="https://shiputahconsulting.com/payment-type" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Become a member</a>
+          </div>
         </div>
-    </section>
-
-    <section id="about" class="about-section scroll-reveal">
-        <div class="container">
-            <h2>About The Studio</h2>
-            <div class="about-grid">
-                <div class="about-card-large">
-                    <h3>Mixing Creative Concepts with AI Workflows</h3>
-                    <p>I am a Social Media Manager who focuses on building a real online presence that actually brings in customers. I don't just drop generic graphics onto a feed; I love scripting videos, designing clean layouts, and coming up with original campaign ideas from scratch. By mixing creative concepts with smart AI tools, I keep content pipelines active, run e-commerce shops smoothly, and convert attention into real business leads.</p>
-                </div>
-                <div class="about-mini-dash">
-                    <div class="mini-stat">
-                        <span>Core Strategy</span>
-                        <strong>Trend Hijacking</strong>
-                    </div>
-                    <div class="mini-stat">
-                        <span>Focus</span>
-                        <strong>Organic Leadhunting</strong>
-                    </div>
-                    <div class="mini-stat">
-                        <span>Speed</span>
-                        <strong>Real-Time Response</strong>
-                    </div>
-                </div>
-            </div>
+        <div class="manifest-row reveal">
+          <div class="qty">02</div>
+          <div>
+            <h3>In-Store Training</h3>
+            <p>Hands-on training at Ship Utah — live role-based practice, packing demonstrations, customer service, and systems walk-throughs.</p>
+            <span class="manifest-tag">Per day</span>
+          </div>
+          <div>
+            <p class="price-line">$997&ndash;$1,497 <small>/ day (member vs. non-member rate, 3&ndash;5 days recommended)</small></p>
+            <a href="https://shiputahconsulting.com/in-store-training-3730" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Purchase training</a>
+          </div>
         </div>
-    </section>
-
-    <section id="stories" class="stories-section scroll-reveal">
-        <div class="container">
-            <h2>Highlights & Competencies</h2>
-            <div class="stories-wrapper">
-                
-                <div class="story-circle" data-preview="Branding Strategy & Identity Design">
-                    <div class="story-ring">
-                        <div class="story-img-placeholder">🎨</div>
-                    </div>
-                    <span>Branding</span>
-                </div>
-
-                <div class="story-circle" data-preview="Short-Form High-Retention Reels Engine">
-                    <div class="story-ring">
-                        <div class="story-img-placeholder">🎬</div>
-                    </div>
-                    <span>Reels</span>
-                </div>
-
-                <div class="story-circle" data-preview="Meta Paid & Organic Social Frameworks">
-                    <div class="story-ring">
-                        <div class="story-img-placeholder">📘</div>
-                    </div>
-                    <span>Facebook</span>
-                </div>
-
-                <div class="story-circle" data-preview="TikTok Viral Hook & Concept Architecture">
-                    <div class="story-ring">
-                        <div class="story-img-placeholder">🎵</div>
-                    </div>
-                    <span>TikTok</span>
-                </div>
-
-                <div class="story-circle" data-preview="Advanced Deep-Dive Performance Analytics">
-                    <div class="story-ring">
-                        <div class="story-img-placeholder">📊</div>
-                    </div>
-                    <span>Analytics</span>
-                </div>
-
-                <div class="story-circle" data-preview="Conversion-Optimized Paid Meta / TikTok Ads">
-                    <div class="story-ring">
-                        <div class="story-img-placeholder">💰</div>
-                    </div>
-                    <span>Ads</span>
-                </div>
-
-                <div class="story-circle" data-preview="User Generated Content Creator Sourcing">
-                    <div class="story-ring">
-                        <div class="story-img-placeholder">🤳</div>
-                    </div>
-                    <span>UGC</span>
-                </div>
-
-                <div class="story-circle" data-preview="Automated Multi-Channel Content Workflows">
-                    <div class="story-ring">
-                        <div class="story-img-placeholder">🤖</div>
-                    </div>
-                    <span>Automation</span>
-                </div>
-
-            </div>
+        <div class="manifest-row reveal">
+          <div class="qty">03</div>
+          <div>
+            <h3>PostalMate Masterclass</h3>
+            <p>A complete remote walk-through of PostalMate, CashMate, and mailbox management — done in a single day.</p>
+            <span class="manifest-tag">One-time</span>
+          </div>
+          <div>
+            <p class="price-line">$1,297 <small>one-time fee</small></p>
+            <a href="https://shiputahconsulting.com/postalmate-masterclass-checkout-8079" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Purchase now</a>
+          </div>
         </div>
-        <div class="story-tooltip" id="storyTooltip">Preview</div>
-    </section>
-
-    <section id="feed" class="feed-section">
-        <div class="container">
-            <h2>Featured Framework Feed</h2>
-            <div class="feed-container">
-
-                <article class="ig-post scroll-reveal">
-                    <div class="post-header">
-                        <div class="post-header-left">
-                            <img src="profile.jpg" class="post-avatar" alt="Avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'">
-                            <div>
-                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
-                                <div class="post-location">Chicken Chingu — Social Media Creative</div>
-                            </div>
-                        </div>
-                        <div class="post-options">•••</div>
-                    </div>
-                    <div class="post-media-wrapper">
-                        <video controls src="chicken1.mp4.mp4" class="post-video" poster="https://images.unsplash.com/photo-1562967914-608f82629710?w=800&auto=format&fit=crop&q=80"></video>
-                    </div>
-                    <div class="post-actions-bar">
-                        <div class="actions-left">
-                            <span class="like-btn">❤️</span>
-                            <span>💬</span>
-                            <span>🚀</span>
-                        </div>
-                        <div class="actions-right">
-                            <span>📥</span>
-                        </div>
-                    </div>
-                    <div class="post-likes"><span class="counter" data-target="1420">0</span> likes</div>
-                    <div class="post-caption">
-                        <strong>jap.studio</strong> 🚀 <strong>Project:</strong> High-Retention Food Reels Engine.<br>
-                        🎯 <strong>Objective:</strong> Capture Gen-Z food culture markers to stimulate local foot traffic and digital customer conversion patterns.<br>
-                        💡 <strong>Strategy:</strong> Bypassed static template layouts. Engineered original micro-scripts with high-retention video hooks and fast-paced aesthetic sequencing.
-                        <div class="post-metrics-box">
-                            <div class="metric-pill">Reach <span>+340%</span></div>
-                            <div class="metric-pill">Followers <span>+2,800</span></div>
-                            <div class="metric-pill">Engagement <span>11.4%</span></div>
-                        </div>
-                        <span class="hashtags">#chickenchingu #foodmarketing #reelsstrategy #organicgrowth</span>
-                    </div>
-                    <div class="post-date">MARCH 15, 2024</div>
-                </article>
-
-                <article class="ig-post scroll-reveal">
-                    <div class="post-header">
-                        <div class="post-header-left">
-                            <img src="profile.jpg" class="post-avatar" alt="Avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'">
-                            <div>
-                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
-                                <div class="post-location">Angkas — Real-Time Trend Hijacking</div>
-                            </div>
-                        </div>
-                        <div class="post-options">•••</div>
-                    </div>
-                    <div class="post-media-wrapper">
-                        <img src="angkas1.jpg.jpg" class="post-image" alt="Angkas Campaign" onerror="this.src='https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&auto=format&fit=crop&q=80'">
-                    </div>
-                    <div class="post-actions-bar">
-                        <div class="actions-left">
-                            <span class="like-btn">❤️</span>
-                            <span>💬</span>
-                            <span>🚀</span>
-                        </div>
-                        <div class="actions-right">
-                            <span>📥</span>
-                        </div>
-                    </div>
-                    <div class="post-likes"><span class="counter" data-target="3850">0</span> likes</div>
-                    <div class="post-caption">
-                        <strong>jap.studio</strong> 🔥 <strong>Project:</strong> Real-Time Standby Trend Capture Framework.<br>
-                        🎯 <strong>Objective:</strong> Explode brand visibility anchors and organic shares via dynamic newsjacking operations.<br>
-                        💡 <strong>Strategy:</strong> Monitored breakneck internet subcultures and current events on live alert to ship high-context, witty visual graphics within minutes.
-                        <div class="post-metrics-box">
-                            <div class="metric-pill">Reach <span>+512%</span></div>
-                            <div class="metric-pill">Shares <span>+14.3k</span></div>
-                            <div class="metric-pill">Engagement <span>18.2%</span></div>
-                        </div>
-                        <span class="hashtags">#angkas #trendhijacking #newsjacking #viralmarketing</span>
-                    </div>
-                    <div class="post-date">APRIL 20, 2025</div>
-                </article>
-
-                <article class="ig-post scroll-reveal">
-                    <div class="post-header">
-                        <div class="post-header-left">
-                            <img src="profile.jpg" class="post-avatar" alt="Avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'">
-                            <div>
-                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
-                                <div class="post-location">Zapatos — Direct E-Commerce Growth</div>
-                            </div>
-                        </div>
-                        <div class="post-options">•••</div>
-                    </div>
-                    <div class="post-media-wrapper">
-                        <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&auto=format&fit=crop&q=80" class="post-image" alt="E-Commerce Shoe Grid">
-                    </div>
-                    <div class="post-actions-bar">
-                        <div class="actions-left">
-                            <span class="like-btn">❤️</span>
-                            <span>💬</span>
-                            <span>🚀</span>
-                        </div>
-                        <div class="actions-right">
-                            <span>📥</span>
-                        </div>
-                    </div>
-                    <div class="post-likes"><span class="counter" data-target="2190">0</span> likes</div>
-                    <div class="post-caption">
-                        <strong>jap.studio</strong> 👟 <strong>Project:</strong> Full Storefront Content Funneling.<br>
-                        🎯 <strong>Objective:</strong> Convert casual lifestyle attention markers into directly trackable direct message product orders.<br>
-                        💡 <strong>Strategy:</strong> Orchestrated comprehensive catalog design visual directions, product staging parameters, organic reels, and conversion handling mechanics within user DMs.
-                        <div class="post-metrics-box">
-                            <div class="metric-pill">DM Leads <span>+3.4k</span></div>
-                            <div class="metric-pill">Sales Conversion <span>+42%</span></div>
-                            <div class="metric-pill">ROAS <span>4.6x</span></div>
-                        </div>
-                        <span class="hashtags">#zapatos #ecommercemarketing #dmconversion #socialsales</span>
-                    </div>
-                    <div class="post-date">OCTOBER 12, 2024</div>
-                </article>
-
-                <article class="ig-post scroll-reveal">
-                    <div class="post-header">
-                        <div class="post-header-left">
-                            <img src="profile.jpg" class="post-avatar" alt="Avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'">
-                            <div>
-                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
-                                <div class="post-location">The Grind Cafe — Aesthetic Launch</div>
-                            </div>
-                        </div>
-                        <div class="post-options">•••</div>
-                    </div>
-                    <div class="post-media-wrapper">
-                        <img src="https://images.unsplash.com/photo-1507133750040-4a8f57021571?w=800&auto=format&fit=crop&q=80" class="post-image" alt="Coffee Campaign">
-                    </div>
-                    <div class="post-actions-bar">
-                        <div class="actions-left">
-                            <span class="like-btn">❤️</span>
-                            <span>💬</span>
-                            <span>🚀</span>
-                        </div>
-                        <div class="actions-right">
-                            <span>📥</span>
-                        </div>
-                    </div>
-                    <div class="post-likes"><span class="counter" data-target="1890">0</span> likes</div>
-                    <div class="post-caption">
-                        <strong>jap.studio</strong> ☕️ <strong>Project:</strong> Neighborhood Aesthetic Stabilization.<br>
-                        🎯 <strong>Objective:</strong> Establish a premium lifestyle footprint to scale repeat morning visits.<br>
-                        💡 <strong>Strategy:</strong> Implemented ASMR audio trends, clean grid micro-vlogs, and micro-influencer content loops.
-                        <div class="post-metrics-box">
-                            <div class="metric-pill">Foot Traffic <span>+180%</span></div>
-                            <div class="metric-pill">Reach <span>+94k</span></div>
-                            <div class="metric-pill">Engagement <span>9.2%</span></div>
-                        </div>
-                        <span class="hashtags">#coffeemarketing #asmrreels #localbranding #cafeculture</span>
-                    </div>
-                    <div class="post-date">JANUARY 08, 2026</div>
-                </article>
-
-                <article class="ig-post scroll-reveal">
-                    <div class="post-header">
-                        <div class="post-header-left">
-                            <img src="profile.jpg" class="post-avatar" alt="Avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'">
-                            <div>
-                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
-                                <div class="post-location">Fit Body Boot Camp — Client Growth Engine</div>
-                            </div>
-                        </div>
-                        <div class="post-options">•••</div>
-                    </div>
-                    <div class="post-media-wrapper">
-                        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=800&auto=format&fit=crop&q=80" class="post-image" alt="Fitness Campaign">
-                    </div>
-                    <div class="post-actions-bar">
-                        <div class="actions-left">
-                            <span class="like-btn">❤️</span>
-                            <span>💬</span>
-                            <span>🚀</span>
-                        </div>
-                        <div class="actions-right">
-                            <span>📥</span>
-                        </div>
-                    </div>
-                    <div class="post-likes"><span class="counter" data-target="2940">0</span> likes</div>
-                    <div class="post-caption">
-                        <strong>jap.studio</strong> 💪 <strong>Project:</strong> Local Organic Acquisition Models.<br>
-                        🎯 <strong>Objective:</strong> Accelerate physical membership enrollments and scale consultation tracking.<br>
-                        💡 <strong>Strategy:</strong> Curated high-retention short-form instructional videos, automated caption copy hooks via GenAI, and triaged target community engagement channels.
-                        <div class="post-metrics-box">
-                            <div class="metric-pill">Leads Mapped <span>+240</span></div>
-                            <div class="metric-pill">Reach <span>+120k</span></div>
-                            <div class="metric-pill">Engagement <span>12.1%</span></div>
-                        </div>
-                        <span class="hashtags">#fitbodybootcamp #fitnessmarketing #organicacquisitions #leadgeneration</span>
-                    </div>
-                    <div class="post-date">FEBRUARY 14, 2026</div>
-                </article>
-
-                <article class="ig-post scroll-reveal">
-                    <div class="post-header">
-                        <div class="post-header-left">
-                            <img src="profile.jpg" class="post-avatar" alt="Avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'">
-                            <div>
-                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
-                                <div class="post-location">Wanderlust Horizons — Booking Funnels</div>
-                            </div>
-                        </div>
-                        <div class="post-options">•••</div>
-                    </div>
-                    <div class="post-media-wrapper">
-                        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&auto=format&fit=crop&q=80" class="post-image" alt="Travel Campaign">
-                    </div>
-                    <div class="post-actions-bar">
-                        <div class="actions-left">
-                            <span class="like-btn">❤️</span>
-                            <span>💬</span>
-                            <span>🚀</span>
-                        </div>
-                        <div class="actions-right">
-                            <span>📥</span>
-                        </div>
-                    </div>
-                    <div class="post-likes"><span class="counter" data-target="4120">0</span> likes</div>
-                    <div class="post-caption">
-                        <strong>jap.studio</strong> ✈️ <strong>Project:</strong> High-Intent Booking Accelerators.<br>
-                        🎯 <strong>Objective:</strong> Generate luxury outbound custom itinerary inquiries via storytelling loops.<br>
-                        💡 <strong>Strategy:</strong> Executed point-of-view landscape reels, dynamic itinerary breakdowns, and target-audience curated carousels.
-                        <div class="post-metrics-box">
-                            <div class="metric-pill">Bookings <span>+210%</span></div>
-                            <div class="metric-pill">Saves <span>+8.9k</span></div>
-                            <div class="metric-pill">Engagement <span>14.5%</span></div>
-                        </div>
-                        <span class="hashtags">#travelmarketing #luxurytravel #itineraryplanning #creativecontent</span>
-                    </div>
-                    <div class="post-date">MAY 02, 2026</div>
-                </article>
-
-                <article class="ig-post scroll-reveal">
-                    <div class="post-header">
-                        <div class="post-header-left">
-                            <img src="profile.jpg" class="post-avatar" alt="Avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'">
-                            <div>
-                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
-                                <div class="post-location">Aura Thread Co. — Visual Editorial</div>
-                            </div>
-                        </div>
-                        <div class="post-options">•••</div>
-                    </div>
-                    <div class="post-media-wrapper">
-                        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&auto=format&fit=crop&q=80" class="post-image" alt="Fashion Campaign">
-                    </div>
-                    <div class="post-actions-bar">
-                        <div class="actions-left">
-                            <span class="like-btn">❤️</span>
-                            <span>💬</span>
-                            <span>🚀</span>
-                        </div>
-                        <div class="actions-right">
-                            <span>📥</span>
-                        </div>
-                    </div>
-                    <div class="post-likes"><span class="counter" data-target="3110">0</span> likes</div>
-                    <div class="post-caption">
-                        <strong>jap.studio</strong> 🕶️ <strong>Project:</strong> Streetwear Identity Positioning.<br>
-                        🎯 <strong>Objective:</strong> Establish micro-community cult status to trigger seasonal product drops.<br>
-                        💡 <strong>Strategy:</strong> Implemented styling guides, rapid flash video edits, and user-generated conversion lookbooks.
-                        <div class="post-metrics-box">
-                            <div class="metric-pill">Drop Sales <span>+195%</span></div>
-                            <div class="metric-pill">Followers <span>+6.2k</span></div>
-                            <div class="metric-pill">Engagement <span>10.8%</span></div>
-                        </div>
-                        <span class="hashtags">#fashionmarketing #streetwearculture #dropstrategy #lookbookedit</span>
-                    </div>
-                    <div class="post-date">JUNE 19, 2026</div>
-                </article>
-
-                <article class="ig-post scroll-reveal">
-                    <div class="post-header">
-                        <div class="post-header-left">
-                            <img src="profile.jpg" class="post-avatar" alt="Avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'">
-                            <div>
-                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
-                                <div class="post-location">Radiant Dental — Patient Acquisition</div>
-                            </div>
-                        </div>
-                        <div class="post-options">•••</div>
-                    </div>
-                    <div class="post-media-wrapper">
-                        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&auto=format&fit=crop&q=80" class="post-image" alt="Dental Campaign">
-                    </div>
-                    <div class="post-actions-bar">
-                        <div class="actions-left">
-                            <span class="like-btn">❤️</span>
-                            <span>💬</span>
-                            <span>🚀</span>
-                        </div>
-                        <div class="actions-right">
-                            <span>📥</span>
-                        </div>
-                    </div>
-                    <div class="post-likes"><span class="counter" data-target="1520">0</span> likes</div>
-                    <div class="post-caption">
-                        <strong>jap.studio</strong> 🦷 <strong>Project:</strong> Localized High-Value Patient Funnels.<br>
-                        🎯 <strong>Objective:</strong> Humanize cosmetic procedures and increase high-margin veneer consultations.<br>
-                        💡 <strong>Strategy:</strong> Deployed side-by-side case shifts, educational myth-busting reels, and conversational setup automations.
-                        <div class="post-metrics-box">
-                            <div class="metric-pill">New Patients <span>+88%</span></div>
-                            <div class="metric-pill">Inquiries <span>+310%</span></div>
-                            <div class="metric-pill">Engagement <span>7.9%</span></div>
-                        </div>
-                        <span class="hashtags">#dentalmarketing #medicalgrowth #cosmeticdentistry #localleads</span>
-                    </div>
-                    <div class="post-date">JULY 01, 2026</div>
-                </article>
-
-            </div>
+        <div class="manifest-row reveal">
+          <div class="qty">04</div>
+          <div>
+            <h3>PostalMate Profit Maximizer</h3>
+            <p>Complete setup and optimization of PostalMate, CashMate, and mailboxes, plus pricing best practices and inventory setup.</p>
+            <span class="manifest-tag">One-time</span>
+          </div>
+          <div>
+            <p class="price-line">$1,997 <small>one-time fee</small></p>
+            <a href="https://shiputahconsulting.com/postalmate-profit-maximizer-checkout-8487" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Purchase now</a>
+          </div>
         </div>
-    </section>
-
-    <section id="dashboard" class="dashboard-section scroll-reveal">
-        <div class="container">
-            <h2>Analytics Ecosystem Studio</h2>
-            <div class="dashboard-grid">
-                
-                <div class="dash-card">
-                    <div class="dash-label">Followers Gained</div>
-                    <div class="dash-value"><span class="counter" data-target="48200">0</span>+</div>
-                    <canvas id="chartFollowers" class="dash-chart" width="220" height="80"></canvas>
-                </div>
-
-                <div class="dash-card">
-                    <div class="dash-label">Total Organic Reach</div>
-                    <div class="dash-value"><span class="counter" data-target="1200000">0</span>+</div>
-                    <canvas id="chartReach" class="dash-chart" width="220" height="80"></canvas>
-                </div>
-
-                <div class="dash-card">
-                    <div class="dash-label">Avg Engagement Rate</div>
-                    <div class="dash-value"><span class="counter" data-target="11" data-decimals="1">0</span>.%</div>
-                    <canvas id="chartEngagement" class="dash-chart" width="220" height="80"></canvas>
-                </div>
-
-                <div class="dash-card">
-                    <div class="dash-label">Leads Generated</div>
-                    <div class="dash-value"><span class="counter" data-target="3400">0</span></div>
-                    <canvas id="chartLeads" class="dash-chart" width="220" height="80"></canvas>
-                </div>
-
-                <div class="dash-card">
-                    <div class="dash-label">Avg Campaign ROAS</div>
-                    <div class="dash-value"><span class="counter" data-target="4" data-decimals="1">0</span>.x</div>
-                    <canvas id="chartROAS" class="dash-chart" width="220" height="80"></canvas>
-                </div>
-
-                <div class="dash-card">
-                    <div class="dash-label">Video Content Views</div>
-                    <div class="dash-value"><span class="counter" data-target="870000">0</span></div>
-                    <canvas id="chartViews" class="dash-chart" width="220" height="80"></canvas>
-                </div>
-
-            </div>
+        <div class="manifest-row reveal">
+          <div class="qty">05</div>
+          <div>
+            <h3>Store Buildout</h3>
+            <p>From space and plan design to an opened store — layout, materials, sourcing, and full installation of customer stations, mailbox holders, and package shelving.</p>
+            <span class="manifest-tag">Project-based</span>
+          </div>
+          <div>
+            <p class="price-line">$14,997+ <small>starting price · travel &amp; lodging included</small></p>
+            <a href="https://shiputahconsulting.com/store-buildout-consultation-checkout" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Book consultation</a>
+          </div>
         </div>
-    </section>
-
-    <section class="gallery-section scroll-reveal">
-        <div class="container">
-            <h2>Distribution Asset Repository</h2>
-            <div class="masonry-grid">
-                
-                <div class="masonry-item item-vertical">
-                    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&auto=format&fit=crop&q=80" alt="Asset">
-                    <div class="masonry-overlay"><span>Instagram Reels Format</span></div>
-                </div>
-
-                <div class="masonry-item">
-                    <img src="https://images.unsplash.com/photo-1616469829581-73993eb86b02?w=600&auto=format&fit=crop&q=80" alt="Asset">
-                    <div class="masonry-overlay"><span>Carousel Strategy Post</span></div>
-                </div>
-
-                <div class="masonry-item item-wide">
-                    <img src="https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=800&auto=format&fit=crop&q=80" alt="Asset">
-                    <div class="masonry-overlay"><span>High-Conversion Facebook Ad Placement</span></div>
-                </div>
-
-                <div class="masonry-item item-vertical">
-                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&auto=format&fit=crop&q=80" alt="Asset">
-                    <div class="masonry-overlay"><span>Dynamic TikTok Format Hook</span></div>
-                </div>
-
-                <div class="masonry-item">
-                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&auto=format&fit=crop&q=80" alt="Asset">
-                    <div class="masonry-overlay"><span>Stories Distribution Layout</span></div>
-                </div>
-
-                <div class="masonry-item">
-                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&auto=format&fit=crop&q=80" alt="Asset">
-                    <div class="masonry-overlay"><span>UGC Strategic Content Piece</span></div>
-                </div>
-
-            </div>
+        <div class="manifest-row reveal">
+          <div class="qty">06</div>
+          <div>
+            <h3>Google Business Profile</h3>
+            <p>A full profile audit, optimization, photo setup, and a review-management strategy to turn searches into customers.</p>
+            <span class="manifest-tag">One-time</span>
+          </div>
+          <div>
+            <p class="price-line">$197 <small>one-time fee</small></p>
+            <a href="https://shiputahconsulting.com/google-business-profile-checkout" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Purchase now</a>
+          </div>
         </div>
-    </section>
-
-    <section class="stack-section scroll-reveal">
-        <div class="container">
-            <h2>AI Workflows & Technology Infrastructure</h2>
-            <div class="stack-grid">
-                <div class="stack-card">
-                    <h3>AI Optimization Ecosystem</h3>
-                    <p>Google Gemini, ChatGPT, Claude AI, Midjourney. Applied advanced prompt engineering structures for hyper-converting copy hooks, asset scripts, and layout generation.</p>
-                </div>
-                <div class="stack-card">
-                    <h3>Workflow & System Automations</h3>
-                    <p>Make.com, n8n, Notion, Trello, Asana, Slack. Constructed operational dashboards to eliminate content delivery lag and structural friction.</p>
-                </div>
-                <div class="stack-card">
-                    <h3>Creative & Deployment Suites</h3>
-                    <p>Meta Business Suite, Buffer, Later, Hootsuite, Canva, CapCut, VN Video Editor, Adobe Lightroom Mobile.</p>
-                </div>
-            </div>
+        <div class="manifest-row reveal">
+          <div class="qty">07</div>
+          <div>
+            <h3>PostageSync</h3>
+            <p>Software that automatically cross-checks your carrier invoices (UPS, FedEx, DHL, USPS) against your PostalMate/ShipRite quotes to catch overcharges in under 5 minutes.</p>
+            <span class="manifest-tag">Monthly</span>
+          </div>
+          <div>
+            <p class="price-line">$19&ndash;$49 <small>/mo &middot; Basic or Pro plan</small></p>
+            <a href="#book" class="btn btn-ghost btn-sm">Get started</a>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section id="services" class="services-section scroll-reveal">
-        <div class="container">
-            <h2>Growth Acceleration Services</h2>
-            <div class="pricing-grid">
-                
-                <div class="pricing-card">
-                    <div class="price-tier">Starter</div>
-                    <div class="price-val">$1,499<span>/mo</span></div>
-                    <ul class="price-features">
-                        <li>3 Optimized Platforms Managed</li>
-                        <li>12 Custom Content Assets / Reels</li>
-                        <li>Basic Copy Hook Scripting</li>
-                        <li>Monthly Analytical Core Review</li>
-                        <li>Standard Community Direct Reply</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-secondary" style="width:100%; text-align:center;">Deploy Layer</a>
-                </div>
-
-                <div class="pricing-card premium-card">
-                    <div class="premium-badge">Most Popular</div>
-                    <div class="price-tier" style="color: #00D4FF;">Growth</div>
-                    <div class="price-val">$2,899<span>/mo</span></div>
-                    <ul class="price-features">
-                        <li>4 Target Platforms Managed</li>
-                        <li>24 Custom Assets & High-Retention Video</li>
-                        <li>Advanced AI Prompt Strategy Integration</li>
-                        <li>Bi-Weekly Custom Analytics Syncs</li>
-                        <li>Active Trend-Hijacking Response Command</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-primary" style="width:100%; text-align:center;">Deploy Layer</a>
-                </div>
-
-                <div class="pricing-card">
-                    <div class="price-tier">Premium Enterprise</div>
-                    <div class="price-val">$4,999<span>/mo</span></div>
-                    <ul class="price-features">
-                        <li>Omnichannel Platform Saturation</li>
-                        <li>Unlimited Fluid Video & Carousel Drops</li>
-                        <li>End-To-End Inbound DM Sales Conversion Funneling</li>
-                        <li>Real-Time Performance Dashboards</li>
-                        <li>Dedicated UGC & Influencer Outlining</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-secondary" style="width:100%; text-align:center;">Deploy Layer</a>
-                </div>
-
-            </div>
+  <section id="tracking">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="label">Tracking status — where your center is headed</span>
+        <h2>What working together looks like</h2>
+        <p>The same engagement, start to finish, every time.</p>
+      </div>
+      <div class="tracking-line reveal">
+        <div class="track-stop">
+          <div class="track-dot"></div>
+          <span class="track-label">Order placed</span>
+          <h3>Discovery call</h3>
+          <p>We look at your numbers, your PostalMate setup, and your goals.</p>
         </div>
-    </section>
-
-    <section id="testimonials" class="testimonials-section scroll-reveal">
-        <div class="container">
-            <h2>Verified Enterprise Endorsements</h2>
-            <div class="slider-wrapper">
-                <div class="slider-track" id="sliderTrack">
-                    
-                    <div class="testimonial-card">
-                        <p class="test-text">"Japhette completely turned around our fitness member acquisition model. The high-retention video loops systematically funneled leads directly into booked client appointments."</p>
-                        <div class="test-user">
-                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&auto=format&fit=crop&q=80" alt="Client">
-                            <div>
-                                <div class="test-name">Marcus Vance</div>
-                                <div class="test-role">Operations, Fit Body Boot Camp</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card">
-                        <p class="test-text">"Our corporate identity went from non-existent to driving consistent commercial contracts through organic social networks. Unbelievable eye for enterprise lead conversion."</p>
-                        <div class="test-user">
-                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&auto=format&fit=crop&q=80" alt="Client">
-                            <div>
-                                <div class="test-name">Engr. W. Juco</div>
-                                <div class="test-role">Managing Director, WJ Construction</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card">
-                        <p class="test-text">"The real-time trend hijacking engine is world-class. Being able to conceptualize and ship highly viral, witty social graphic assets inside minutes is an incredible competitive edge."</p>
-                        <div class="test-user">
-                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&auto=format&fit=crop&q=80" alt="Client">
-                            <div>
-                                <div class="test-name">Sarah Castelo</div>
-                                <div class="test-role">Brand Marketing Lead (Standby Systems)</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card">
-                        <p class="test-text">"Bypassed standard layout templates completely. The original campaign angles engineered for our food brand exploded our metrics among trend-focused consumers."</p>
-                        <div class="test-user">
-                            <img src="https://images.unsplash.com/photo-1628157582853-a796fa650a6a?w=100&auto=format&fit=crop&q=80" alt="Client">
-                            <div>
-                                <div class="test-name">Chef K. Mendoza</div>
-                                <div class="test-role">Founder, Chicken Chingu</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card">
-                        <p class="test-text">"Running an independent e-commerce shoe store requires incredible conversion focus. Japhette managed the visual catalog and DM sales loops to scale our revenue effortlessly."</p>
-                        <div class="test-user">
-                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=80" alt="Client">
-                            <div>
-                                <div class="test-name">A. Pulido</div>
-                                <div class="test-role">Operations Principal, Zapatos</div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="slider-dots" id="sliderDots"></div>
+        <div class="track-stop">
+          <div class="track-dot"></div>
+          <span class="track-label">Processing</span>
+          <h3>Custom plan</h3>
+          <p>You get a specific, prioritized plan — not a generic checklist.</p>
         </div>
-    </section>
-
-    <section id="contact" class="contact-section scroll-reveal">
-        <div class="container">
-            <div class="contact-layout-box">
-                <h2 class="cta-title">Let's Build Your Next Viral Campaign.</h2>
-                <p style="color:#64748B; font-size:14px; margin-bottom:40px; max-width:600px;">Combine creative visual strategy, target audience data loops, and smart AI workflow scaling to capture undisputed digital presence.</p>
-                
-                <form class="contact-form" onsubmit="event.preventDefault(); alert('Transmission initialized.');">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Full Name / Enterprise Title</label>
-                            <input type="text" placeholder="John Doe" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Corporate Contact Email</label>
-                            <input type="email" placeholder="john@company.com" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Distribution Parameters / Message Details</label>
-                        <textarea rows="5" placeholder="Outline your current audience metric road-blocks or campaign objectives..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="align-self: flex-start;">Initialize Growth Sync</button>
-                </form>
-            </div>
+        <div class="track-stop">
+          <div class="track-dot"></div>
+          <span class="track-label">Out for delivery</span>
+          <h3>Implementation</h3>
+          <p>We work side by side on pricing, layout, or lease terms.</p>
         </div>
-    </section>
-
-    <footer>
-        <div class="container footer-container">
-            <div class="footer-left">
-                © 2026 JAP.STUDIO. Built via structural vanilla architectures.
-            </div>
-            <div class="footer-center">
-                <a href="mailto:jap.pulido789@gmail.com">jap.pulido789@gmail.com</a>
-                <a href="tel:09569027896">09569027896</a>
-            </div>
-            <div class="footer-right">
-                <button class="back-to-top-btn" onclick="window.scrollTo({top:0, behavior:'smooth'});">Back to Top ↑</button>
-            </div>
+        <div class="track-stop">
+          <div class="track-dot"></div>
+          <span class="track-label">Delivered</span>
+          <h3>Ongoing support</h3>
+          <p>Check-ins to keep the changes working as your center grows.</p>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            
-            // --- 1. Framework Custom Loading Screen Controller ---
-            const loadingScreen = document.getElementById("loadingScreen");
-            const loadingProgress = document.getElementById("loadingProgress");
-            let progress = 0;
-            
-            const interval = setInterval(() => {
-                progress += Math.floor(Math.random() * 15) + 5;
-                if (progress >= 100) {
-                    progress = 100;
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        loadingScreen.style.opacity = "0";
-                        setTimeout(() => loadingScreen.style.display = "none", 600);
-                    }, 200);
-                }
-                loadingProgress.style.width = `${progress}%`;
-            }, 40);
+  <section id="calculator">
+    <div class="wrap">
+      <div class="calc-card reveal">
+        <div class="calc-copy">
+          <span class="label" style="color:var(--tape);">PostageSync estimator</span>
+          <h2>What's hiding in your carrier invoices?</h2>
+          <p>Stores routinely find billing errors buried in UPS, FedEx, DHL, and USPS invoices &mdash; duplicate charges, wrong dimensional weights, missed refunds. See a rough estimate of what that could mean for you.</p>
+          <a href="#book" class="btn btn-primary" style="margin-top:8px;">Get PostageSync</a>
+        </div>
+        <div class="calc-tool">
+          <label for="calcSpend">Your average monthly shipping spend</label>
+          <div class="calc-input-wrap">
+            <span>$</span>
+            <input type="number" id="calcSpend" placeholder="e.g. 4000" min="0" inputmode="numeric">
+          </div>
+          <input type="range" id="calcSlider" min="500" max="30000" step="100" value="4000">
+          <div class="calc-result">
+            <div>
+              <span class="calc-result-label">Estimated overcharges found*</span>
+              <span class="calc-result-value" id="calcLow">$0&ndash;$0</span>
+              <span class="calc-result-sub">per month</span>
+            </div>
+          </div>
+          <p class="calc-footnote">*Estimate based on typical 5&ndash;15% invoice discrepancy rates industry-wide. Your actual results depend on your carriers and shipping volume.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            // --- 2. Advanced Adaptive Mouse Micro-Cursor Engine ---
-            const dot = document.getElementById("cursorDot");
-            const outline = document.getElementById("cursorOutline");
-            
-            let mouseX = 0, mouseY = 0;
-            let dotX = 0, dotY = 0;
-            let outX = 0, outY = 0;
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="label">Return address</span>
+        <h2>Who's behind the counter</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-photo reveal">
+          <img src="anthony.jpeg" alt="Anthony Difederico, founder of Ship Utah Consulting" loading="lazy">
+        </div>
+        <div class="about-copy reveal">
+          <p>Ship Utah Consulting is led by Anthony Difederico, who works directly, in person, inside client stores — flying out to spend real days on the floor teaching PostalMate, CashMate, and customer interactions, not just walking through slides on a call.</p>
+          <p>From negotiating a store purchase down from $35K to $10K, to helping first-time owners choose a location, sign a lease, and manage contractors through a full build-out — the goal is the same every time: you walk away with systems, not just advice.</p>
+          <div class="about-stats">
+            <div><strong>750+</strong><span>Miles flown for one client</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            document.addEventListener("mousemove", (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-            });
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="label">Proof of delivery — photos from the field</span>
+        <h2>Our work</h2>
+        <p>A look at real store buildouts and in-store training sessions.</p>
+      </div>
+      <div class="work-grid">
+        <div class="work-item reveal"><img src="work1.jpg" alt="Ship Utah Consulting project photo 1" loading="lazy"></div>
+        <div class="work-item reveal"><img src="work2.jpg" alt="Ship Utah Consulting project photo 2" loading="lazy"></div>
+        <div class="work-item reveal"><img src="work3.jpg" alt="Ship Utah Consulting project photo 3" loading="lazy"></div>
+        <div class="work-item reveal"><img src="work4.jpg" alt="Ship Utah Consulting project photo 4" loading="lazy"></div>
+        <div class="work-item reveal"><img src="work5.jpg" alt="Ship Utah Consulting project photo 5" loading="lazy"></div>
+        <div class="work-item reveal"><img src="work6.jpg" alt="Ship Utah Consulting project photo 6" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
 
-            function renderCursor() {
-                dotX += (mouseX - dotX) * 0.2;
-                dotY += (mouseY - dotY) * 0.2;
-                outX += (mouseX - outX) * 0.1;
-                outY += (mouseY - outY) * 0.1;
+  <section id="testimonial">
+    <div class="wrap">
+      <div class="section-head reveal" style="margin:0 auto 52px; text-align:center;">
+        <span class="label">Delivery confirmation</span>
+        <h2>What owners are saying</h2>
+      </div>
+      <div class="postcard-list">
+        <details class="postcard postcard-details reveal">
+          <summary>
+            <blockquote class="teaser">"Working with Anthony has truly been one of the best decisions I've made as a new business owner... he flew over 750 miles to spend several days in my store."</blockquote>
+            <cite>— Bsarida Tran, Mail Center Owner <span class="read-more">Read full story →</span></cite>
+          </summary>
+          <div class="postcard-full">
+            <p>He flew over 750 miles to spend several days in my store, walking me through systems like Postalmate and Cashmate, guiding me through real customer interactions, and making sure I avoided costly mistakes.</p>
+            <p>With his expertise, I was able to negotiate my store purchase down from $35K to just $10K as an asset sale — something I could never have accomplished on my own. He even helped me sign up my very first PMB customer before he left.</p>
+            <p>Anthony's mentorship is purposeful, patient, and filled with real-world knowledge. Every moment with him was intentional — setting goals, creating strategies, and building the confidence I needed to succeed.</p>
+          </div>
+        </details>
 
-                dot.style.left = `${dotX}px`;
-                dot.style.top = `${dotY}px`;
-                outline.style.left = `${outX}px`;
-                outline.style.top = `${outY}px`;
+        <details class="postcard postcard-details reveal">
+          <summary>
+            <blockquote class="teaser">"I'm beyond grateful for the incredible mentorship Anthony has provided me. His unmatched expertise has completely transformed the way I run my business."</blockquote>
+            <cite>— Romelyn Losner, Mail Center Owner <span class="read-more">Read full story →</span></cite>
+          </summary>
+          <div class="postcard-full">
+            <p>Anthony doesn't just share knowledge — he invests in your growth, challenges you to aim higher, and equips you with practical tools to succeed.</p>
+            <p>Because of Anthony's guidance, I've streamlined my operations, improved customer satisfaction, and grown more confident as a business owner. His passion for excellence and willingness to share his experience make him an extraordinary mentor.</p>
+          </div>
+        </details>
 
-                requestAnimationFrame(renderCursor);
-            }
-            requestAnimationFrame(renderCursor);
+        <details class="postcard postcard-details reveal">
+          <summary>
+            <blockquote class="teaser">"Anthony and his team at Ship Utah have truly gone above and beyond in his mentorship, guiding me through this entire process — from formation to location."</blockquote>
+            <cite>— Abigail Hernandez, Mail Center Owner <span class="read-more">Read full story →</span></cite>
+          </summary>
+          <div class="postcard-full">
+            <p>From the very beginning, he made sure I didn't just settle for any location, but helped me find the right one — carefully looking at demographics, traffic flow, and long-term growth. He walked me through the LOI step by step and guided me through lease negotiations, where he even helped me secure free rent periods.</p>
+            <p>His support didn't stop there — he's been right by my side with build-out questions, even stepping in to communicate with my contractor so I never felt overwhelmed or alone. Every question I had, he answered with patience and depth.</p>
+            <p>His insight, persistence, and encouragement have shaped not only where I chose to open, but how prepared and confident I feel stepping into ownership.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
 
-            // Interactive Hover Tracking expansion
-            const targetElements = document.querySelectorAll("a, button, .story-circle, .ig-post, input, textarea");
-            targetElements.forEach(elem => {
-                elem.addEventListener("mouseenter", () => {
-                    outline.style.transform = "translate(-50%, -50%) scale(1.6)";
-                    outline.style.backgroundColor = "rgba(255, 77, 141, 0.05)";
-                });
-                elem.addEventListener("mouseleave", () => {
-                    outline.style.transform = "translate(-50%, -50%) scale(1)";
-                    outline.style.backgroundColor = "transparent";
-                });
-            });
+  <section id="pricing">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="label">Shipping speed — choose your service level</span>
+        <h2>Popular packages</h2>
+        <p>Our three most-booked services. Full details and the rest of the lineup are in the manifest above.</p>
+      </div>
+      <div class="tiers">
+        <div class="tier reveal">
+          <span class="tier-speed">Standard</span>
+          <h3>PostalMate Profit Maximizer</h3>
+          <div class="tier-price">$1,997<small>one-time fee, remote, one day</small></div>
+          <p class="tier-desc">Complete setup and optimization of PostalMate, CashMate, and mailboxes to maximize daily profit.</p>
+          <ul>
+            <li>Optimized pricing best practices</li>
+            <li>Inventory &amp; department setup</li>
+            <li>Boosts resale value of your business</li>
+          </ul>
+          <a href="https://shiputahconsulting.com/postalmate-profit-maximizer-checkout-8487" target="_blank" rel="noopener" class="btn btn-ghost">Purchase now</a>
+        </div>
+        <div class="tier featured reveal">
+          <span class="tier-speed">Express</span>
+          <h3>Elite Membership</h3>
+          <div class="tier-price">$5,997<small>6-month membership, payment plans available</small></div>
+          <p class="tier-desc">1:1 mentorship for owners who want an ongoing partner in the business.</p>
+          <ul>
+            <li>4 monthly 1:1 video calls</li>
+            <li>Weekly group calls &amp; goal-setting</li>
+            <li>Private members community</li>
+          </ul>
+          <a href="https://shiputahconsulting.com/payment-type" target="_blank" rel="noopener" class="btn btn-primary">Become a member</a>
+        </div>
+        <div class="tier reveal">
+          <span class="tier-speed">Priority</span>
+          <h3>Store Buildout</h3>
+          <div class="tier-price">$14,997+<small>starting price · quoted per project</small></div>
+          <p class="tier-desc">Layout, sourcing, and full installation — from an empty space to an opened store.</p>
+          <ul>
+            <li>Design &amp; material sourcing</li>
+            <li>Customer stations &amp; mailbox install</li>
+            <li>Travel &amp; lodging included</li>
+          </ul>
+          <a href="https://shiputahconsulting.com/store-buildout-consultation-checkout" target="_blank" rel="noopener" class="btn btn-ghost">Book consultation</a>
+        </div>
+      </div>
 
-            // --- 3. Progress Tracking & Sticky Nav blur ---
-            const nav = document.querySelector("nav");
-            const progressBar = document.getElementById("progressBar");
+      <div class="guarantee-banner reveal">
+        <div class="guarantee-seal">✓</div>
+        <div>
+          <h3>The Ship Utah Buildout Guarantee</h3>
+          <p>If your store isn't ready to open on the timeline we agree to at kickoff, we keep working it — on-site or remote — at no additional cost until it is. That's the deal on every Buildout, every time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            window.addEventListener("scroll", () => {
-                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                const scrolled = (winScroll / height) * 100;
-                progressBar.style.width = `${scrolled}%`;
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="label">Packing slip — before you open this</span>
+        <h2>Frequently asked</h2>
+      </div>
+      <div class="faq-list reveal">
+        <details class="faq-item" open>
+          <summary class="faq-q">Do I need to already own a mail center?<span class="mark">+</span></summary>
+          <p class="faq-a">No. We work with owners at every stage — from picking a location and negotiating a lease, to running an established center that's plateaued.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">What if I already know PostalMate pretty well?<span class="mark">+</span></summary>
+          <p class="faq-a">Most owners know the software's basics but aren't using it to make pricing and staffing decisions. The audit is about turning your existing data into decisions, not teaching you buttons.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">How is this different from just calling PostalMate support?<span class="mark">+</span></summary>
+          <p class="faq-a">Support can tell you how a feature works. We tell you whether your pricing, staffing, and layout are actually costing you money — and what to change first.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Can we start with a single call before committing to mentorship?<span class="mark">+</span></summary>
+          <p class="faq-a">Yes — the strategy call is the starting point for every engagement, no packages required upfront.</p>
+        </details>
+      </div>
+    </div>
+  </section>
 
-                if (window.scrollY > 50) {
-                    nav.classList.add("scrolled");
-                } else {
-                    nav.classList.remove("scrolled");
-                }
-            });
+  <section class="book" id="book">
+    <div class="wrap" style="text-align:center;">
+      <span class="label" style="color:var(--stamp-red);">Schedule a pickup</span>
+      <div class="label-card reveal" style="margin-top:20px; text-align:left;">
+        <h2>Book your strategy call</h2>
+        <p class="book-sub">30 minutes, no cost. We'll look at where your center stands and what to fix first.</p>
 
-            // --- 4. Instagram Highlight Stories Tooltip Render engine ---
-            const stories = document.querySelectorAll(".story-circle");
-            const tooltip = document.getElementById("storyTooltip");
+        <!-- Replace this placeholder with your real Calendly / scheduling embed, e.g.:
+             <div class="calendly-inline-widget" data-url="https://calendly.com/your-link" style="min-width:280px;height:560px;"></div>
+             <script src="https://assets.calendly.com/assets/external/widget.js"></script>
+        -->
+        <a href="#" class="btn btn-primary">Book a Strategy Call →</a>
 
-            stories.forEach(story => {
-                story.addEventListener("mousemove", (e) => {
-                    const text = story.getAttribute("data-preview");
-                    tooltip.textContent = text;
-                    tooltip.style.opacity = "1";
-                    tooltip.style.left = `${e.clientX}px`;
-                    tooltip.style.top = `${e.clientY}px`;
-                });
-                story.addEventListener("mouseleave", () => {
-                    tooltip.style.opacity = "0";
-                });
-            });
+        <div class="barcode" aria-hidden="true">
+          <span style="width:2px;height:100%;"></span><span style="width:4px;height:70%;"></span><span style="width:2px;height:100%;"></span><span style="width:6px;height:55%;"></span><span style="width:2px;height:90%;"></span><span style="width:3px;height:100%;"></span><span style="width:2px;height:65%;"></span><span style="width:5px;height:100%;"></span><span style="width:2px;height:80%;"></span><span style="width:3px;height:100%;"></span><span style="width:2px;height:60%;"></span><span style="width:4px;height:100%;"></span>
+        </div>
+        <p class="book-note">TRACKING NO. SUC-2026-STRATEGY-CALL</p>
+      </div>
+    </div>
+  </section>
 
-            // --- 5. Pure JavaScript Analytical Rendering Engine (No External Canvas Libs) ---
-            function generateMockPathData(width, height, pointsCount) {
-                let coords = [];
-                for (let i = 0; i < pointsCount; i++) {
-                    let x = (width / (pointsCount - 1)) * i;
-                    let y = height - (Math.random() * (height * 0.6) + (height * 0.2));
-                    coords.push({x, y});
-                }
-                return coords;
-            }
+</main>
 
-            function drawVanillaMiniLineChart(canvasId) {
-                const canvas = document.getElementById(canvasId);
-                if (!canvas) return;
-                const ctx = canvas.getContext("2d");
-                const w = canvas.width;
-                const h = canvas.height;
-                
-                ctx.clearRect(0, 0, w, h);
-                const points = generateMockPathData(w, h, 7);
-                
-                // Draw Fill Gradient
-                ctx.beginPath();
-                ctx.moveTo(0, h);
-                points.forEach(p => ctx.lineTo(p.x, p.y));
-                ctx.lineTo(w, h);
-                ctx.closePath();
-                let fillGlow = ctx.createLinearGradient(0, 0, 0, h);
-                fillGlow.addColorStop(0, "rgba(255, 77, 141, 0.15)");
-                fillGlow.addColorStop(1, "transparent");
-                ctx.fillStyle = fillGlow;
-                ctx.fill();
+<footer>
+  <div class="wrap footer-inner">
+    <span class="label">© 2026 Ship Utah Consulting</span>
+    <span class="label">Handled with care · Utah, USA</span>
+  </div>
+</footer>
 
-                // Draw Stroke Trend Line
-                ctx.beginPath();
-                ctx.moveTo(points[0].x, points[0].y);
-                for(let i=1; i<points.length; i++){
-                    ctx.lineTo(points[i].x, points[i].y);
-                }
-                ctx.strokeStyle = "#FF4D8D";
-                ctx.lineWidth = 2;
-                ctx.stroke();
-            }
+<!-- ---------- MOBILE STICKY CTA ---------- -->
+<div class="mobile-sticky-cta" id="mobileStickyCta">
+  <a href="#book" class="btn btn-primary">Book a Strategy Call</a>
+</div>
 
-            // --- 6. Intersectional Viewport Counter Metric Engine ---
-            const counters = document.querySelectorAll(".counter");
-            
-            function initializeCounters(elements) {
-                elements.forEach(counter => {
-                    const target = +counter.getAttribute("data-target");
-                    const decimals = counter.getAttribute("data-decimals") ? parseInt(counter.getAttribute("data-decimals")) : 0;
-                    let current = 0;
-                    const step = target / 60; // 60 frame rendering loops
+<!-- ---------- CHAT WIDGET ---------- -->
+<div class="chat-widget" id="chatWidget">
+  <div class="chat-bubble-tip" id="chatBubbleTip">👋 Got questions about pricing or PostalMate? Chat with us!</div>
+  <button class="chat-launcher" id="chatLauncher" type="button" aria-expanded="false" aria-controls="chatPanel">
+    <span class="chat-launcher-icon">📦</span>
+    <span class="status-dot" id="launcherDot"></span>
+  </button>
 
-                    function increment() {
-                        current += step;
-                        if (current < target) {
-                            counter.textContent = current.toLocaleString(undefined, {minimumFractionDigits: decimals, maximumFractionDigits: decimals});
-                            requestAnimationFrame(increment);
-                        } else {
-                            counter.textContent = target.toLocaleString(undefined, {minimumFractionDigits: decimals, maximumFractionDigits: decimals});
-                        }
-                    }
-                    increment();
-                });
-            }
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Chat with Ship Utah Consulting">
+    <div class="chat-head">
+      <div>
+        <strong>Ship Utah Consulting</strong>
+        <div class="chat-status">
+          <span class="status-dot" id="panelDot"></span>
+          <span id="statusText">Checking status…</span>
+        </div>
+      </div>
+      <button class="chat-close" id="chatClose" type="button" aria-label="Close chat">×</button>
+    </div>
 
-            // --- 7. Intersection Observer for Scroll Reveals and Counters ---
-            const revealItems = document.querySelectorAll(".scroll-reveal, .ig-post");
-            let dashboardTriggered = false;
+    <div class="chat-body" id="chatBody">
+      <div class="msg bot">Hi! I'm the Ship Utah assistant 📦 Quick question so I can point you the right way —</div>
+      <div class="chat-suggestions" id="chatSuggestions">
+        <button type="button" class="segment-btn" data-segment="A">🆕 I don't have a store yet</button>
+        <button type="button" class="segment-btn" data-segment="B">🏪 I already own a store</button>
+        <button type="button" data-q="How much does everything cost?">Just show me pricing</button>
+      </div>
+    </div>
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("revealed");
-                        
-                        // Trigger nested layout counters inside post feeds or metrics
-                        const innerCounters = entry.target.querySelectorAll(".counter");
-                        if (innerCounters.length > 0 && !entry.target.classList.contains('counted-done')) {
-                            initializeCounters(innerCounters);
-                            entry.target.classList.add('counted-done');
-                        }
+    <form class="chat-input-row" id="chatForm">
+      <input type="text" id="chatInput" placeholder="Type a question…" autocomplete="off" aria-label="Type your question">
+      <button type="submit" aria-label="Send message">→</button>
+    </form>
 
-                        // Initialize canvas drawings if dashboard arrives
-                        if (entry.target.id === "dashboard" && !dashboardTriggered) {
-                            dashboardTriggered = true;
-                            setTimeout(() => {
-                                drawVanillaMiniLineChart("chartFollowers");
-                                drawVanillaMiniLineChart("chartReach");
-                                drawVanillaMiniLineChart("chartEngagement");
-                                drawVanillaMiniLineChart("chartLeads");
-                                drawVanillaMiniLineChart("chartROAS");
-                                drawVanillaMiniLineChart("chartViews");
-                            }, 300);
-                        }
-                    }
-                });
-            }, { threshold: 0.15 });
+    <div class="chat-live" id="chatLive"></div>
+  </div>
+</div>
 
-            revealItems.forEach(item => observer.observe(item));
-            const dashSec = document.getElementById("dashboard");
-            if(dashSec) observer.observe(dashSec);
+<script>
+  // ---------- Unboxing sound effects (synthesized, no audio files needed) ----------
+  var SoundFX = (function(){
+    var ctx = null;
+    var muted = false;
 
-            // --- 8. Testimonial Carousel Infinite Loop Handler ---
-            const track = document.getElementById("sliderTrack");
-            const dotsContainer = document.getElementById("sliderDots");
-            const initialCards = document.querySelectorAll(".testimonial-card");
-            const cardWidth = 450; 
-            const gap = 24; 
-            let activeIdx = 0;
+    function getCtx(){
+      if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
+      return ctx;
+    }
 
-            // Build functional indicator dots
-            initialCards.forEach((_, idx) => {
-                const dotElem = document.createElement("div");
-                dotElem.classList.add("dot");
-                if(idx === 0) dotElem.classList.add("active");
-                dotElem.addEventListener("click", () => shiftTo(idx));
-                dotsContainer.appendChild(dotElem);
-            });
+    function noiseBuffer(duration){
+      var c = getCtx();
+      var buffer = c.createBuffer(1, c.sampleRate * duration, c.sampleRate);
+      var data = buffer.getChannelData(0);
+      for (var i = 0; i < data.length; i++){ data[i] = Math.random() * 2 - 1; }
+      return buffer;
+    }
 
-            const totalDots = dotsContainer.children;
+    function tapeRip(){
+      var c = getCtx();
+      var src = c.createBufferSource();
+      src.buffer = noiseBuffer(0.5);
+      var band = c.createBiquadFilter();
+      band.type = 'bandpass';
+      band.frequency.setValueAtTime(2200, c.currentTime);
+      band.frequency.exponentialRampToValueAtTime(600, c.currentTime + 0.45);
+      band.Q.value = 1.2;
+      var gain = c.createGain();
+      gain.gain.setValueAtTime(0.0001, c.currentTime);
+      gain.gain.linearRampToValueAtTime(0.5, c.currentTime + 0.04);
+      gain.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 0.48);
+      src.connect(band); band.connect(gain); gain.connect(c.destination);
+      src.start();
+    }
 
-            function shiftTo(idx) {
-                activeIdx = idx;
-                const offset = activeIdx * (cardWidth + gap);
-                track.style.transform = `translateX(-${offset}px)`;
-                track.style.transition = "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)";
-                
-                // Update Indicator Layouts
-                Array.from(totalDots).forEach((d, i) => {
-                    d.classList.toggle("active", i === activeIdx);
-                });
-            }
+    function cardboardFlap(delaySec){
+      var c = getCtx();
+      var t0 = c.currentTime + delaySec;
+      var src = c.createBufferSource();
+      src.buffer = noiseBuffer(0.18);
+      var low = c.createBiquadFilter();
+      low.type = 'lowpass';
+      low.frequency.value = 900 + Math.random() * 200;
+      var gain = c.createGain();
+      gain.gain.setValueAtTime(0.0001, t0);
+      gain.gain.linearRampToValueAtTime(0.35, t0 + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.001, t0 + 0.17);
+      src.connect(low); low.connect(gain); gain.connect(c.destination);
+      src.start(t0);
+    }
 
-            // Auto Advance Loop Logic
-            setInterval(() => {
-                activeIdx = (activeIdx + 1) % initialCards.length;
-                shiftTo(activeIdx);
-            }, 4500);
+    function revealChime(delaySec){
+      var c = getCtx();
+      [523.25, 659.25].forEach(function(freq, i){
+        var osc = c.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        var gain = c.createGain();
+        var t0 = c.currentTime + delaySec + i * 0.09;
+        gain.gain.setValueAtTime(0.0001, t0);
+        gain.gain.linearRampToValueAtTime(0.22, t0 + 0.03);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.4);
+        osc.connect(gain); gain.connect(c.destination);
+        osc.start(t0); osc.stop(t0 + 0.45);
+      });
+    }
 
-            // --- 9. Mobile Responsive Menu Toggle ---
-            const mobileToggle = document.getElementById("mobileToggle");
-            const navMenu = document.querySelector(".nav-menu");
+    return {
+      playUnboxSequence: function(){
+        if (muted) return;
+        try{
+          tapeRip();
+          [0.55, 0.68, 0.78, 0.9].forEach(function(d){ cardboardFlap(d); });
+          revealChime(1.4);
+        } catch(e){ /* Web Audio unavailable — fail silently */ }
+      },
+      playChimeOnly: function(){
+        if (muted) return;
+        try{ revealChime(0.05); } catch(e){}
+      },
+      toggleMute: function(){ muted = !muted; return muted; },
+      isMuted: function(){ return muted; }
+    };
+  })();
 
-            mobileToggle.addEventListener("click", () => {
-                navMenu.style.display = navMenu.style.display === "flex" ? "none" : "flex";
-                if(navMenu.style.display === "flex") {
-                    navMenu.style.position = "absolute";
-                    navMenu.style.top = "100%";
-                    navMenu.style.left = "0";
-                    navMenu.style.width = "100%";
-                    navMenu.style.flexDirection = "column";
-                    navMenu.style.background = "#0A0A0A";
-                    navMenu.style.padding = "20px";
-                    navMenu.style.borderBottom = "1px solid rgba(255,255,255,0.05)";
-                }
-            });
+  // Box-opening intro — triggered by user click/tap/keypress on the box
+  (function(){
+    var overlay = document.getElementById('boxOverlay');
+    var openBtn = document.getElementById('openBtn');
+    var muteBtn = document.getElementById('muteToggle');
+    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (muteBtn){
+      muteBtn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var isMuted = SoundFX.toggleMute();
+        muteBtn.textContent = isMuted ? '🔇' : '🔊';
+        muteBtn.setAttribute('aria-label', isMuted ? 'Unmute sound' : 'Mute sound');
+      });
+    }
+
+    openBtn.addEventListener('click', function(){
+      if (prefersReduced){
+        SoundFX.playChimeOnly();
+        overlay.classList.add('done');
+        document.body.classList.add('opened');
+        return;
+      }
+      SoundFX.playUnboxSequence();
+      overlay.classList.add('play');
+      setTimeout(function(){
+        overlay.classList.add('done');
+        document.body.classList.add('opened');
+      }, 1550);
+    });
+  })();
+
+  // Mobile sticky CTA — show after scrolling past the hero, hide near the real booking section
+  (function(){
+    var bar = document.getElementById('mobileStickyCta');
+    var hero = document.querySelector('.hero');
+    var bookSection = document.getElementById('book');
+    if (!bar || !hero || !bookSection) return;
+
+    var pastHero = false, nearBook = false;
+
+    var heroObs = new IntersectionObserver(function(entries){
+      pastHero = !entries[0].isIntersecting;
+      render();
+    }, { rootMargin: '0px 0px -85% 0px' });
+    heroObs.observe(hero);
+
+    var bookObs = new IntersectionObserver(function(entries){
+      nearBook = entries[0].isIntersecting;
+      render();
+    }, { threshold: 0.15 });
+    bookObs.observe(bookSection);
+
+    function render(){
+      bar.classList.toggle('show', pastHero && !nearBook);
+    }
+  })();
+
+  // Scroll reveal
+  (function(){
+    var items = document.querySelectorAll('.reveal');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(function(el){ io.observe(el); });
+  })();
+
+  // ---------- Online / offline status ----------
+  // Checks the VISITOR'S local browser time against business hours below.
+  // Replace these hours with your real schedule and timezone logic if needed.
+  function isOnlineNow(){
+    var now = new Date();
+    var day = now.getDay();      // 0 = Sun ... 6 = Sat
+    var hour = now.getHours();
+    if (day === 0) return false;                 // closed Sunday
+    if (day === 6) return hour >= 10 && hour < 14; // Sat 10am–2pm
+    return hour >= 9 && hour < 17;                 // Mon–Fri 9am–5pm
+  }
+
+  (function(){
+    var online = isOnlineNow();
+    var dots = [document.getElementById('launcherDot'), document.getElementById('panelDot')];
+    var statusText = document.getElementById('statusText');
+    dots.forEach(function(d){ if (d) d.classList.toggle('online', online); });
+    if (statusText){
+      statusText.textContent = online ? "We're online — chat now" : "We're away — leave a message";
+    }
+  })();
+
+  // ---------- Carrier overcharge calculator ----------
+  (function(){
+    var input = document.getElementById('calcSpend');
+    var slider = document.getElementById('calcSlider');
+    var lowOut = document.getElementById('calcLow');
+    if (!input || !slider) return;
+
+    function format(n){ return '$' + Math.round(n).toLocaleString('en-US'); }
+
+    function update(spend){
+      spend = Math.max(0, Number(spend) || 0);
+      var low = spend * 0.05;
+      var high = spend * 0.15;
+      lowOut.textContent = format(low) + '\u2013' + format(high);
+    }
+
+    input.addEventListener('input', function(){
+      slider.value = input.value || 0;
+      update(input.value);
+    });
+    slider.addEventListener('input', function(){
+      input.value = slider.value;
+      update(slider.value);
+    });
+
+    update(slider.value);
+  })();
+
+  // ---------- Chat widget open/close, entrance, and attention bubble ----------
+  (function(){
+    var widget = document.getElementById('chatWidget');
+    var launcher = document.getElementById('chatLauncher');
+    var closeBtn = document.getElementById('chatClose');
+    var bubble = document.getElementById('chatBubbleTip');
+    var bubbleShown = false;
+
+    function openChat(){
+      widget.classList.add('open');
+      launcher.setAttribute('aria-expanded', 'true');
+      hideBubble();
+      document.getElementById('chatInput').focus();
+    }
+    function hideBubble(){ bubble.classList.remove('show'); }
+
+    launcher.addEventListener('click', function(){
+      var isOpen = widget.classList.toggle('open');
+      launcher.setAttribute('aria-expanded', isOpen);
+      hideBubble();
+      if (isOpen) document.getElementById('chatInput').focus();
+    });
+    closeBtn.addEventListener('click', function(){
+      widget.classList.remove('open');
+      launcher.setAttribute('aria-expanded', 'false');
+    });
+    bubble.addEventListener('click', openChat);
+
+    // Reveal the launcher shortly after the box opens, then entice with a bubble once
+    var checkOpened = setInterval(function(){
+      if (document.body.classList.contains('opened')){
+        clearInterval(checkOpened);
+        setTimeout(function(){ widget.classList.add('ready'); }, 500);
+        setTimeout(function(){
+          if (!bubbleShown && !widget.classList.contains('open')){
+            bubbleShown = true;
+            bubble.classList.add('show');
+            setTimeout(hideBubble, 7000);
+          }
+        }, 4500);
+      }
+    }, 200);
+  })();
+
+  // ---------- FAQ bot (rule-based keyword matching, no external API) ----------
+  (function(){
+    // ---- Full product map ----
+    var faqData = [
+      { kw:['price','pricing','cost','how much','rate','fee'],
+        a:"Here's the lineup: PostageSync is $19&ndash;$49/mo, PostalMate Masterclass is $1,297, PostalMate Profit Maximizer is $1,997, In-Store Training is $997&ndash;$1,497/day, Elite Membership is $5,997/6 months, and Store Buildout starts at $14,997. Full details are in the Services section above &mdash; want me to point you to the right one for your stage?" },
+      { kw:['postalmate','cashmate','audit','software setup'],
+        a:"There are two PostalMate options: the Masterclass ($1,297) is a full walk-through of how the software works, and the Profit Maximizer ($1,997) is a done-for-you remote setup and optimization of PostalMate, CashMate, and mailboxes to lock in peak margins." },
+      { kw:['mentorship','coaching','ongoing','mentor','elite','membership'],
+        a:"Elite Membership is $5,997 for a 6-month 1:1 mentorship — 4 scheduled video calls a month, weekly group webinars, goal setting, and a private community. Payment plans are available." },
+      { kw:['in-store','in store','training','hands on','hands-on'],
+        a:"In-Store Training happens at Ship Utah in person — $997/day for Elite members, $1,497/day otherwise. Covers packing demos, retail best practices, and mailbox sales coaching." },
+      { kw:['buildout','build out','lease','layout','store design','contractor','new location','open a store','opening'],
+        a:"Store Buildout starts at $14,997 (plus materials) and covers full physical design and installation — customer stations, mailbox holders, package shelving — with travel, lodging, and the setup team's transportation included. It starts with a $199 90-minute consultation, which is fully credited toward the buildout if you move forward." },
+      { kw:['postagesync','carrier invoice','invoice audit','overcharge','shipping invoice','carrier bill','ups fedex dhl'],
+        a:"PostageSync automatically cross-checks your UPS, FedEx, DHL, and USPS invoices against your PostalMate/ShipRite quotes and flags overcharges in under 5 minutes. Basic is $19/mo, Pro is $49/mo and adds 1-click dispute letters, spend dashboards, and carrier scorecards. Most stores find real money hiding in those invoices." },
+      { kw:['google','business profile','gbp'],
+        a:"The Google Business Profile package is $197 &mdash; a full profile audit, optimization, photo setup, and review-management strategy." },
+      { kw:['own','already','new owner','starting','start','don\u2019t have','dont have'],
+        a:"You don't need to already own a mail center yet. We work with owners at every stage — from picking a location and negotiating a first lease, to optimizing a store that's already open." },
+      { kw:['book','call','schedule','appointment','meeting','consult'],
+        a:'You can book a free strategy call any time — <a href="#book">jump to the booking section</a> and grab a time that works.' },
+      { kw:['cancel','contract','commitment','lock in'],
+        a:"No long-term contracts — Elite Membership has a flexible payment plan and most services are one-time engagements." },
+      { kw:['hour','open','available','human','real person','agent'],
+        a: isOnlineNow()
+          ? "We're online right now — feel free to book a call or send us a message and we'll reply shortly."
+          : "We're away at the moment, but leave your question here (or book a call) and we'll follow up as soon as we're back." },
+      { kw:['testimonial','review','result','success','anthony'],
+        a:"Store owners talk about hands-on, in-person mentorship — including one who negotiated a store purchase down from $35K to $10K. See the full stories in the testimonials section above." },
+
+      // ---- Objection handling pivots (multi-word phrases score higher, so these outrank generic matches) ----
+      { kw:['too expensive','cant afford','can\u2019t afford','too pricey','out of budget','buildout too much','14997 too much','14,997 too much','not ready to spend'],
+        a:"Totally fair — $14,997 is a real investment to put down before you've opened. Most people in that spot start with the <strong>$199, 90-minute consultation</strong> instead: we map out your space and plan design together. If you move forward with the full Buildout later, that $199 is fully credited back — so the first step is essentially risk-free." },
+      { kw:['no time for masterclass','dont have a whole day','don\u2019t have a whole day','too long masterclass','no time to sit through','too busy for masterclass','whole day for masterclass'],
+        a:"If you don't have time to sit through a full day of training, that's actually the case <em>for</em> the <strong>PostalMate Profit Maximizer ($1,997)</strong> instead of the Masterclass. It's a remote, hands-off setup — we optimize your settings, pricing sheets, and inventory backend for you, so you get the result without spending the day in the software yourself." },
+      { kw:['is postagesync safe','postagesync safe','data safe','data privacy','is my data','secure invoice'],
+        a:"Good question — your PostageSync data and carrier rates are entirely isolated to your account and never shared. Instead of a manager spending hours cross-referencing tracking numbers in spreadsheets, PostageSync maps your columns once and flags every overcharge or duplicate invoice automatically, in under five minutes." }
+    ];
+    var fallback = 'I don\u2019t have an exact answer for that yet. Want to <a href="#book">book a strategy call</a>, or try asking about pricing, PostalMate, PostageSync, or buildouts?';
+
+    function findAnswer(text){
+      var q = text.toLowerCase();
+      var best = null, bestScore = 0;
+      faqData.forEach(function(item){
+        var score = 0;
+        item.kw.forEach(function(k){
+          if (q.indexOf(k) !== -1) score += 1 + (k.split(' ').length - 1) * 0.75; // reward specific phrases
         });
-    </script>
+        if (score > bestScore){ bestScore = score; best = item; }
+      });
+      return best ? best.a : fallback;
+    }
+
+    // ---- High-intent detection → lead capture flow ----
+    var highIntentKw = ['sign me up','ready to buy','i want to book','lock in','get started','let\u2019s do this','lets do this','ready to start','sign up','purchase'];
+    function isHighIntent(text){
+      var q = text.toLowerCase();
+      return highIntentKw.some(function(k){ return q.indexOf(k) !== -1; });
+    }
+    var emailRe = /[^\s@]+@[^\s@]+\.[^\s@]+/;
+    var phoneRe = /(\+?\d[\d\s().-]{6,}\d)/;
+    var lead = { state:'idle', email:null, phone:null };
+
+    var chatBody = document.getElementById('chatBody');
+    var chatForm = document.getElementById('chatForm');
+    var chatInput = document.getElementById('chatInput');
+    var chatLive = document.getElementById('chatLive');
+    var suggestions = document.getElementById('chatSuggestions');
+
+    function addMessage(text, who){
+      var div = document.createElement('div');
+      div.className = 'msg ' + who;
+      div.innerHTML = text;
+      chatBody.appendChild(div);
+      chatBody.scrollTop = chatBody.scrollHeight;
+      if (who === 'bot' && chatLive) chatLive.textContent = text.replace(/<[^>]+>/g,'');
+    }
+
+    function showTyping(){
+      var t = document.createElement('div');
+      t.className = 'typing-dots';
+      t.id = 'typingIndicator';
+      t.innerHTML = '<span></span><span></span><span></span>';
+      chatBody.appendChild(t);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+    function hideTyping(){
+      var t = document.getElementById('typingIndicator');
+      if (t) t.remove();
+    }
+
+    function setSuggestions(list){
+      suggestions.innerHTML = '';
+      list.forEach(function(item){
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('data-q', item.q);
+        b.textContent = item.label;
+        suggestions.appendChild(b);
+      });
+    }
+
+    // NOTE: This is a static site with no backend, so leads can't be saved to a database automatically.
+    // The "Send" button below opens a pre-filled email via mailto: — replace the address with your real inbox.
+    var LEAD_INBOX = 'info@shiputahconsulting.com';
+
+    function sendReply(botText, delay){
+      showTyping();
+      setTimeout(function(){
+        hideTyping();
+        addMessage(botText, 'bot');
+      }, delay || 700);
+    }
+
+    function handleQuestion(text){
+      if (!text.trim()) return;
+      addMessage(text.replace(/</g,'&lt;'), 'user');
+      chatInput.value = '';
+
+      // --- Lead capture state machine ---
+      if (lead.state === 'awaiting_email'){
+        var em = text.match(emailRe);
+        if (em){
+          lead.email = em[0];
+          lead.state = 'awaiting_phone';
+          sendReply("Got it — and a phone number, in case a quick call is easier?");
+          return;
+        }
+      }
+      if (lead.state === 'awaiting_phone'){
+        var ph = text.match(phoneRe);
+        lead.phone = ph ? ph[0] : text.trim();
+        lead.state = 'idle';
+        var subject = encodeURIComponent('New strategy call request from the website');
+        var body = encodeURIComponent('Email: ' + lead.email + '\nPhone: ' + lead.phone + '\n\nSent from the Ship Utah chat assistant.');
+        var mailtoLink = 'mailto:' + LEAD_INBOX + '?subject=' + subject + '&body=' + body;
+        sendReply('Perfect — <a href="' + mailtoLink + '">tap here to send that straight to our team</a>, or just <a href="#book">book your call directly</a> and skip the email.');
+        return;
+      }
+      if (isHighIntent(text)){
+        lead.state = 'awaiting_email';
+        sendReply("Love it — let's get your strategy session locked in. What's the best email to tie to your store profile?");
+        return;
+      }
+
+      // --- Normal FAQ matching ---
+      sendReply(findAnswer(text));
+    }
+
+    chatForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      handleQuestion(chatInput.value);
+    });
+
+    suggestions.addEventListener('click', function(e){
+      var segBtn = e.target.closest('button[data-segment]');
+      if (segBtn){
+        var seg = segBtn.getAttribute('data-segment');
+        addMessage(segBtn.textContent, 'user');
+        if (seg === 'A'){
+          sendReply("Got it — for someone getting a store off the ground, most people start with the <strong>$199, 90-minute consultation</strong> (credited toward a full Buildout later), the <strong>Store Buildout ($14,997+)</strong>, or <strong>Elite Membership ($5,997)</strong> for hands-on mentorship through launch. What sounds closest to what you need?");
+          setTimeout(function(){
+            setSuggestions([
+              { q:'Tell me about the $199 consultation', label:'$199 consultation' },
+              { q:'How does Store Buildout work?', label:'Store Buildout' },
+              { q:'What is Elite Membership?', label:'Elite Membership' },
+              { q:'How do I book a call?', label:'Book a call' }
+            ]);
+          }, 750);
+        } else {
+          sendReply("Perfect — for an existing store, the fastest wins are usually the <strong>PostalMate Profit Maximizer ($1,997)</strong>, <strong>PostageSync ($19&ndash;$49/mo)</strong> for catching carrier overcharges, or <strong>In-Store Training</strong> if your team needs it. What's the priority right now?");
+          setTimeout(function(){
+            setSuggestions([
+              { q:'What is the PostalMate Profit Maximizer?', label:'PostalMate' },
+              { q:'What is PostageSync?', label:'PostageSync' },
+              { q:'Tell me about In-Store Training', label:'In-Store Training' },
+              { q:'How do I book a call?', label:'Book a call' }
+            ]);
+          }, 750);
+        }
+        return;
+      }
+      var btn = e.target.closest('button[data-q]');
+      if (btn) handleQuestion(btn.getAttribute('data-q'));
+    });
+  })();
+</script>
+
 </body>
 </html>

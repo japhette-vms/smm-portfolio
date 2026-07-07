@@ -321,6 +321,7 @@
         .hero-ctas {
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
             gap: 20px;
         }
         .btn {
@@ -563,6 +564,72 @@
             width: 100%;
             background: #000;
             overflow: hidden;
+        }
+        .carousel-track {
+            display: flex;
+            width: 100%;
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .carousel-track > img, .carousel-track > video {
+            width: 100%;
+            flex-shrink: 0;
+            display: block;
+        }
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.55);
+            border: none;
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 16px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+            z-index: 4;
+        }
+        .carousel-arrow:hover { background: var(--accent); }
+        .carousel-arrow.prev { left: 12px; }
+        .carousel-arrow.next { right: 12px; }
+        .carousel-dots {
+            position: absolute;
+            bottom: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 4;
+        }
+        .carousel-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.45);
+            border: none;
+            padding: 0;
+            transition: var(--transition-smooth);
+        }
+        .carousel-dot.active {
+            background: #fff;
+            width: 16px;
+            border-radius: 4px;
+        }
+        .carousel-counter {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.55);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            z-index: 4;
         }
         .post-image, .post-video {
             width: 100%;
@@ -1184,6 +1251,7 @@
             <div class="hero-ctas" style="margin-top:40px;">
                 <a href="#feed" class="btn btn-primary">View My Work</a>
                 <a href="#contact" class="btn btn-secondary">Let's Work Together</a>
+                <a href="https://japhette-vms.github.io/suc/" class="btn btn-secondary" target="_blank" rel="noopener">CLICK ME ANTHONY</a>
             </div>
         </div>
     </section>
@@ -1296,8 +1364,17 @@
                         </div>
                         <div class="post-options">•••</div>
                     </div>
-                    <div class="post-media-wrapper">
-                        <video controls src="chicken1.mp4" class="post-video" poster="https://images.unsplash.com/photo-1562967914-608f82629710?w=800&auto=format&fit=crop&q=80"></video>
+                    <div class="post-media-wrapper" data-carousel>
+                        <div class="carousel-track">
+                            <video controls src="chicken1.mp4.mp4" poster="https://images.unsplash.com/photo-1562967914-608f82629710?w=800&auto=format&fit=crop&q=80"></video>
+                            <video controls src="chicken2.mp4.mp4"></video>
+                            <video controls src="chicken3.mp4.mp4"></video>
+                            <video controls src="chicken4.mp4.mp4"></video>
+                        </div>
+                        <button class="carousel-arrow prev" aria-label="Previous video">‹</button>
+                        <button class="carousel-arrow next" aria-label="Next video">›</button>
+                        <div class="carousel-counter">1/4</div>
+                        <div class="carousel-dots"></div>
                     </div>
                     <div class="post-actions-bar">
                         <div class="actions-left">
@@ -1335,8 +1412,19 @@
                         </div>
                         <div class="post-options">•••</div>
                     </div>
-                    <div class="post-media-wrapper">
-                        <img src="angkas1.jpg" width="800" height="800" class="post-image" alt="Angkas real-time trend graphic campaign" onerror="imgFallback(this,'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&auto=format&fit=crop&q=80')">
+                    <div class="post-media-wrapper" data-carousel>
+                        <div class="carousel-track">
+                            <img src="angkas1.jpg.jpg" width="800" height="800" alt="Angkas campaign visual 1" onerror="imgFallback(this,'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&auto=format&fit=crop&q=80')">
+                            <img src="angkas2.jpg.jpg" width="800" height="800" alt="Angkas campaign visual 2" onerror="imgFallback(this,'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&auto=format&fit=crop&q=80')">
+                            <img src="angkas3.jpg.jpg" width="800" height="800" alt="Angkas campaign visual 3" onerror="imgFallback(this,'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&auto=format&fit=crop&q=80')">
+                            <img src="angkas4.jpg.jpg" width="800" height="800" alt="Angkas campaign visual 4" onerror="imgFallback(this,'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&auto=format&fit=crop&q=80')">
+                            <img src="angkas5.jpg.jpg" width="800" height="800" alt="Angkas campaign visual 5" onerror="imgFallback(this,'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&auto=format&fit=crop&q=80')">
+                            <img src="angkas6.jpg.jpg" width="800" height="800" alt="Angkas campaign visual 6" onerror="imgFallback(this,'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&auto=format&fit=crop&q=80')">
+                        </div>
+                        <button class="carousel-arrow prev" aria-label="Previous photo">‹</button>
+                        <button class="carousel-arrow next" aria-label="Next photo">›</button>
+                        <div class="carousel-counter">1/6</div>
+                        <div class="carousel-dots"></div>
                     </div>
                     <div class="post-actions-bar">
                         <div class="actions-left">
@@ -1970,6 +2058,57 @@
                     tooltip.style.top = `${rect.top}px`;
                 });
                 story.addEventListener("blur", () => { tooltip.style.opacity = "0"; });
+            });
+
+            // --- 4b. Multi-Image / Multi-Video Carousel Controller ---
+            document.querySelectorAll("[data-carousel]").forEach(wrapper => {
+                const track = wrapper.querySelector(".carousel-track");
+                const slides = Array.from(track.children);
+                const prevBtn = wrapper.querySelector(".carousel-arrow.prev");
+                const nextBtn = wrapper.querySelector(".carousel-arrow.next");
+                const dotsWrap = wrapper.querySelector(".carousel-dots");
+                const counterEl = wrapper.querySelector(".carousel-counter");
+                let index = 0;
+
+                if (slides.length <= 1) {
+                    if (prevBtn) prevBtn.style.display = "none";
+                    if (nextBtn) nextBtn.style.display = "none";
+                    if (counterEl) counterEl.style.display = "none";
+                    return;
+                }
+
+                slides.forEach((_, i) => {
+                    const dot = document.createElement("button");
+                    dot.className = "carousel-dot" + (i === 0 ? " active" : "");
+                    dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
+                    dot.addEventListener("click", () => goTo(i));
+                    dotsWrap.appendChild(dot);
+                });
+                const dots = Array.from(dotsWrap.children);
+
+                function goTo(i) {
+                    // pause any playing video before moving away from it
+                    const current = slides[index];
+                    if (current && current.tagName === "VIDEO") current.pause();
+
+                    index = (i + slides.length) % slides.length;
+                    track.style.transform = `translateX(-${index * 100}%)`;
+                    dots.forEach((d, di) => d.classList.toggle("active", di === index));
+                    if (counterEl) counterEl.textContent = `${index + 1}/${slides.length}`;
+                }
+
+                prevBtn.addEventListener("click", () => goTo(index - 1));
+                nextBtn.addEventListener("click", () => goTo(index + 1));
+
+                // Touch swipe support
+                let touchStartX = 0;
+                track.addEventListener("touchstart", (e) => {
+                    touchStartX = e.touches[0].clientX;
+                }, { passive: true });
+                track.addEventListener("touchend", (e) => {
+                    const dx = e.changedTouches[0].clientX - touchStartX;
+                    if (Math.abs(dx) > 40) goTo(dx < 0 ? index + 1 : index - 1);
+                }, { passive: true });
             });
 
             // --- 5. Deterministic Analytics Data Engine (no more random re-renders) ---

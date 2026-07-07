@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Japhette Alec Pulido — SMM Portfolio</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&display=swap');
         
         * {
             box-sizing: border-box;
@@ -30,10 +30,22 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
-        .header-container {
+        .header-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 25px;
+            align-items: center;
             border-left: 5px solid #FF6B35;
             padding-left: 20px;
             margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #E2E8F0;
         }
 
         h1 {
@@ -88,7 +100,6 @@
             border-radius: 0 4px 4px 0;
         }
 
-        /* Video Grid Layout (Chicken Chingu) */
         .video-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -101,17 +112,6 @@
             border: 1px solid #E2E8F0;
             border-radius: 6px;
             overflow: hidden;
-        }
-
-        .video-placeholder {
-            width: 100%;
-            aspect-ratio: 9 / 16;
-            background-color: #EDF2F7;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #A0AEC0;
-            font-size: 12px;
         }
 
         video {
@@ -128,7 +128,6 @@
             border-top: 1px solid #E2E8F0;
         }
 
-        /* Image Grid Layout (Angkas) */
         .image-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -143,24 +142,12 @@
             overflow: hidden;
         }
 
-        .image-placeholder {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            background-color: #EDF2F7;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #A0AEC0;
-            font-size: 12px;
-        }
-
-        img {
+        .portfolio-img-asset {
             width: 100%;
             aspect-ratio: 1 / 1;
             object-fit: cover;
         }
 
-        /* Zapatos Link Block */
         .link-container {
             text-align: center;
             padding: 30px 10px;
@@ -186,76 +173,93 @@
         .portfolio-btn:hover {
             background-color: #E05322;
         }
+
+        @media (max-width: 600px) {
+            .header-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                border-left: none;
+                border-top: 5px solid #FF6B35;
+                padding-left: 0;
+                padding-top: 15px;
+            }
+            .profile-img {
+                margin: 0 auto;
+            }
+            .contact-info {
+                justify-content: center;
+            }
+            .contact-item {
+                margin-right: 15px;
+                margin-left: 15px;
+            }
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Header -->
-        <div class="header-container">
-            <h1>Japhette Alec Pulido</h1>
-            <div class="subtitle">Social Media Portfolio</div>
-            <div class="contact-info">
-                <div class="contact-item"><strong>Email:</strong> jap.pulido789@gmail.com</div>
-                <div class="contact-item"><strong>Phone:</strong> 09569027896</div>
-                <div class="contact-item"><strong>Location:</strong> Tondo, Manila</div>
+        <!-- Header with Profile Photo Placement -->
+        <div class="header-grid">
+            <img src="profile.jpg" alt="Japhette Alec Pulido" class="profile-img">
+            <div>
+                <h1>Japhette Alec Pulido</h1>
+                <div class="subtitle">Social Media Portfolio</div>
+                <div class="contact-info">
+                    <div class="contact-item"><strong>Email:</strong> jap.pulido789@gmail.com</div>
+                    <div class="contact-item"><strong>Phone:</strong> 09569027896</div>
+                    <div class="contact-item"><strong>Location:</strong> Tondo, Manila</div>
+                </div>
             </div>
         </div>
 
         <!-- Case Study 1: Chicken Chingu -->
-        <h2>Chicken Chingu — Social Media Creative</h2>
+        <h2>Chicken Chingu | Social Media Creative</h2>
         <div class="strategy-box">
             <strong>Strategy:</strong> Created and invented high-retention food reels tailored to lifestyle consumers[cite: 3]. Focused on strong hooks, fast editing, and unique campaign angles to drive local consumer foot traffic rather than using generic templates[cite: 3].
         </div>
         
         <div class="video-grid">
-            <!-- Video 1 -->
             <div class="video-card">
-                <!-- Replace src="" with your video file paths or upload them to github and reference them -->
-                <video controls src="chicken1.mp4" poster=""></video>
+                <video controls src="chicken1.mp4.mp4"></video>
                 <div class="media-caption">Hook-Focused Menu Highlight</div>
             </div>
-            <!-- Video 2 -->
             <div class="video-card">
-                <video controls src="chicken2.mp4" poster=""></video>
+                <video controls src="chicken2.mp4.mp4"></video>
                 <div class="media-caption">Trending Audio Execution</div>
             </div>
-            <!-- Video 3 -->
             <div class="video-card">
-                <video controls src="chicken3.mp4" poster=""></video>
+                <video controls src="chicken3.mp4.mp4"></video>
                 <div class="media-caption">Promotional Campaign Reel</div>
             </div>
-            <!-- Video 4 -->
             <div class="video-card">
-                <video controls src="chicken4.mp4" poster=""></video>
+                <video controls src="chicken4.mp4.mp4"></video>
                 <div class="media-caption">Engagement/ASMR Concept</div>
             </div>
         </div>
 
         <!-- Case Study 2: Angkas -->
-        <h2>Angkas — Real-Time Trend Hijacking</h2>
+        <h2>Angkas | Real-Time Trend Hijacking</h2>
         <div class="strategy-box">
             <strong>Strategy:</strong> Actively monitored pop culture, internet conversations, and breaking news on standby[cite: 3]. Instantly shipped witty, hyper-targeted social graphics within minutes to capture viral attention and maximize organic brand visibility[cite: 3].
         </div>
 
         <div class="image-grid">
-            <!-- Pictures 1 to 6 (Replace src with your image filenames) -->
-            <div class="image-card"><img src="angkas1.png" alt="Angkas Creative Asset"><div class="media-caption">Trend Jacking Asset 1</div></div>
-            <div class="image-card"><img src="angkas2.png" alt="Angkas Creative Asset"><div class="media-caption">Trend Jacking Asset 2</div></div>
-            <div class="image-card"><img src="angkas3.png" alt="Angkas Creative Asset"><div class="media-caption">Trend Jacking Asset 3</div></div>
-            <div class="image-card"><img src="angkas4.png" alt="Angkas Creative Asset"><div class="media-caption">Trend Jacking Asset 4</div></div>
-            <div class="image-card"><img src="angkas5.png" alt="Angkas Creative Asset"><div class="media-caption">Trend Jacking Asset 5</div></div>
-            <div class="image-card"><img src="angkas6.png" alt="Angkas Creative Asset"><div class="media-caption">Trend Jacking Asset 6</div></div>
+            <div class="image-card"><img class="portfolio-img-asset" src="angkas1.jpg.jpg" alt="Angkas Creative Asset"><div class="media-caption">Trend Jacking Asset 1</div></div>
+            <div class="image-card"><img class="portfolio-img-asset" src="angkas2.jpg.jpg" alt="Angkas Creative Asset"><div class="media-caption">Trend Jacking Asset 2</div></div>
+            <div class="image-card"><img class="portfolio-img-asset" src="angkas3.jpg.jpg" alt="Angkas Creative Asset"><div class="media-caption">Trend Jacking Asset 3</div></div>
+            <div class="image-card"><img class="portfolio-img-asset" src="angkas4.jpg.jpg" alt="Angkas Creative Asset"><div class="media-caption">Trend Jacking Asset 4</div></div>
+            <div class="image-card"><img class="portfolio-img-asset" src="angkas5.jpg.jpg" alt="Angkas Creative Asset"><div class="media-caption">Trend Jacking Asset 5</div></div>
+            <div class="image-card"><img class="portfolio-img-asset" src="angkas6.jpg.jpg" alt="Angkas Creative Asset"><div class="media-caption">Trend Jacking Asset 6</div></div>
         </div>
 
         <!-- Case Study 3: Zapatos -->
-        <h2>Zapatos — E-Commerce Storefront Strategy</h2>
+        <h2>Zapatos | E-Commerce Storefront Strategy</h2>
         <div class="strategy-box">
             <strong>Strategy:</strong> Handled end-to-end e-commerce store visual identity[cite: 3]. Ran organic marketing funnels through dynamic video content, catalog staging, and product reels designed to funnel followers directly into direct message inquiries and processed sales[cite: 3].
         </div>
 
         <div class="link-container">
-            <!-- Replace the href below with your actual Instagram link -->
             <a href="https://instagram.com/your_zapatos_handle" target="_blank" class="portfolio-btn">View Live Instagram Grid Portfolio</a>
         </div>
     </div>

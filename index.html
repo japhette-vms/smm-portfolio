@@ -152,7 +152,7 @@
         .floating-cta {
             position: fixed;
             bottom: 30px;
-            right: 30px;
+            left: 30px;
             background: var(--accent);
             color: var(--text-prime);
             padding: 12px 24px;
@@ -512,6 +512,35 @@
         }
 
         /* --- Immersive Instagram-Feed Section Architecture --- */
+        .feed-filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin: 0 0 45px 0;
+            flex-wrap: wrap;
+        }
+        .feed-filter-tab {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--text-muted);
+            font-family: var(--font-head);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 10px 22px;
+            border-radius: 30px;
+            transition: var(--transition-smooth);
+        }
+        .feed-filter-tab:hover {
+            border-color: var(--accent);
+            color: var(--text-prime);
+        }
+        .feed-filter-tab.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--text-prime);
+        }
         .feed-container {
             max-width: 680px;
             margin: 0 auto;
@@ -564,72 +593,6 @@
             width: 100%;
             background: #000;
             overflow: hidden;
-        }
-        .carousel-track {
-            display: flex;
-            width: 100%;
-            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .carousel-track > img, .carousel-track > video {
-            width: 100%;
-            flex-shrink: 0;
-            display: block;
-        }
-        .carousel-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.55);
-            border: none;
-            color: #fff;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            font-size: 16px;
-            line-height: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s ease;
-            z-index: 4;
-        }
-        .carousel-arrow:hover { background: var(--accent); }
-        .carousel-arrow.prev { left: 12px; }
-        .carousel-arrow.next { right: 12px; }
-        .carousel-dots {
-            position: absolute;
-            bottom: 14px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 6px;
-            z-index: 4;
-        }
-        .carousel-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.45);
-            border: none;
-            padding: 0;
-            transition: var(--transition-smooth);
-        }
-        .carousel-dot.active {
-            background: #fff;
-            width: 16px;
-            border-radius: 4px;
-        }
-        .carousel-counter {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(0, 0, 0, 0.55);
-            color: #fff;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 3px 10px;
-            border-radius: 20px;
-            z-index: 4;
         }
         .post-image, .post-video {
             width: 100%;
@@ -706,116 +669,6 @@
             font-size: 10px;
             color: var(--text-muted);
             letter-spacing: 0.5px;
-        }
-
-        /* --- GitHub / Open Source Feed Card --- */
-        .github-post {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: var(--corner);
-            overflow: hidden;
-            box-shadow: 0 30px 60px -20px rgba(0,0,0,0.7);
-        }
-        .github-post-body {
-            padding: 24px;
-        }
-        .github-intro {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 20px;
-        }
-        .github-icon-badge {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: #0d1117;
-            border: 1px solid rgba(255,255,255,0.08);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        .github-intro h3 {
-            font-family: var(--font-head);
-            font-size: 16px;
-            margin-bottom: 4px;
-        }
-        .github-intro p {
-            font-size: 12.5px;
-            color: var(--text-muted);
-        }
-        .repo-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .repo-card {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 16px;
-            background: rgba(255, 255, 255, 0.015);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 14px;
-            padding: 16px 18px;
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition-smooth);
-        }
-        .repo-card:hover {
-            border-color: var(--accent);
-            background: rgba(255, 77, 141, 0.04);
-            transform: translateY(-2px);
-        }
-        .repo-card-main { flex: 1; }
-        .repo-name {
-            font-family: var(--font-head);
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--text-prime);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .repo-lang-dot {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-        .repo-desc {
-            font-size: 12.5px;
-            color: var(--text-muted);
-            margin-top: 6px;
-            line-height: 1.5;
-        }
-        .repo-meta {
-            display: flex;
-            gap: 14px;
-            margin-top: 10px;
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-        .repo-arrow {
-            color: var(--accent);
-            font-size: 16px;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-        .github-cta-row {
-            margin-top: 18px;
-            display: flex;
-            justify-content: flex-end;
-        }
-        .github-cta-row a {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--accent);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
         /* --- Performance Analytics Dashboard Ecosystem --- */
@@ -951,46 +804,6 @@
             transition: opacity 0.15s ease;
             white-space: nowrap;
             z-index: 5;
-        }
-
-        /* --- Distribution Masonry Asset Repository --- */
-        .masonry-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            grid-auto-rows: 240px;
-            gap: 20px;
-        }
-        .masonry-item {
-            position: relative;
-            background: var(--bg-card);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-        }
-        .item-vertical { grid-row: span 2; }
-        .item-wide { grid-column: span 2; }
-        .masonry-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s var(--transition-smooth);
-        }
-        .masonry-item:hover img { transform: scale(1.05); }
-        .masonry-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            display: flex;
-            align-items: flex-end;
-            padding: 20px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .masonry-item:hover .masonry-overlay { opacity: 1; }
-        .masonry-overlay span {
-            font-family: var(--font-head);
-            font-size: 14px;
-            font-weight: 600;
         }
 
         /* --- Automation Stack Elements --- */
@@ -1351,30 +1164,27 @@
     <section id="feed" class="feed-section">
         <div class="container">
             <h2>Featured Framework Feed</h2>
+            <p class="section-sub">Illustrative campaign examples and representative performance figures from managed accounts. Use the filters below to browse by format.</p>
+            <div class="feed-filter-tabs" role="tablist" aria-label="Filter feed by media type">
+                <button class="feed-filter-tab active" data-filter="all" role="tab" aria-selected="true">All Posts</button>
+                <button class="feed-filter-tab" data-filter="video" role="tab" aria-selected="false">Videos</button>
+                <button class="feed-filter-tab" data-filter="photo" role="tab" aria-selected="false">Graphics</button>
+            </div>
             <div class="feed-container">
 
-                <article class="ig-post scroll-reveal">
+                <article class="ig-post scroll-reveal" data-type="video">
                     <div class="post-header">
                         <div class="post-header-left">
                             <img src="profile.jpg" width="38" height="38" class="post-avatar" alt="Avatar" onerror="imgFallback(this,'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80')">
                             <div>
                                 <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
-                                <div class="post-location">Chicken Chingu — Social Media Creative</div>
+                                <div class="post-location">Chicken Chingu — Clip 1 of 4</div>
                             </div>
                         </div>
                         <div class="post-options">•••</div>
                     </div>
-                    <div class="post-media-wrapper" data-carousel>
-                        <div class="carousel-track">
-                            <video controls src="chicken1.mp4.mp4" poster="https://images.unsplash.com/photo-1562967914-608f82629710?w=800&auto=format&fit=crop&q=80"></video>
-                            <video controls src="chicken2.mp4.mp4"></video>
-                            <video controls src="chicken3.mp4.mp4"></video>
-                            <video controls src="chicken4.mp4.mp4"></video>
-                        </div>
-                        <button class="carousel-arrow prev" aria-label="Previous video">‹</button>
-                        <button class="carousel-arrow next" aria-label="Next video">›</button>
-                        <div class="carousel-counter">1/4</div>
-                        <div class="carousel-dots"></div>
+                    <div class="post-media-wrapper">
+                        <video controls src="chicken1.mp4.mp4" class="post-video" poster="https://images.unsplash.com/photo-1562967914-608f82629710?w=800&auto=format&fit=crop&q=80"></video>
                     </div>
                     <div class="post-actions-bar">
                         <div class="actions-left">
@@ -1401,30 +1211,115 @@
                     <div class="post-date">MARCH 15, 2024</div>
                 </article>
 
-                <article class="ig-post scroll-reveal">
+                <article class="ig-post scroll-reveal" data-type="video">
                     <div class="post-header">
                         <div class="post-header-left">
                             <img src="profile.jpg" width="38" height="38" class="post-avatar" alt="Avatar" onerror="imgFallback(this,'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80')">
                             <div>
                                 <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
-                                <div class="post-location">Angkas — Real-Time Trend Hijacking</div>
+                                <div class="post-location">Chicken Chingu — Clip 2 of 4</div>
                             </div>
                         </div>
                         <div class="post-options">•••</div>
                     </div>
-                    <div class="post-media-wrapper" data-carousel>
-                        <div class="carousel-track">
-                            <img src="angkas1.jpg.jpg" width="800" height="800" alt="Angkas campaign visual 1" onerror="imgFallback(this,'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&auto=format&fit=crop&q=80')">
-                            <img src="angkas2.jpg.jpg" width="800" height="800" alt="Angkas campaign visual 2" onerror="imgFallback(this,'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&auto=format&fit=crop&q=80')">
-                            <img src="angkas3.jpg.jpg" width="800" height="800" alt="Angkas campaign visual 3" onerror="imgFallback(this,'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&auto=format&fit=crop&q=80')">
-                            <img src="angkas4.jpg.jpg" width="800" height="800" alt="Angkas campaign visual 4" onerror="imgFallback(this,'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&auto=format&fit=crop&q=80')">
-                            <img src="angkas5.jpg.jpg" width="800" height="800" alt="Angkas campaign visual 5" onerror="imgFallback(this,'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&auto=format&fit=crop&q=80')">
-                            <img src="angkas6.jpg.jpg" width="800" height="800" alt="Angkas campaign visual 6" onerror="imgFallback(this,'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&auto=format&fit=crop&q=80')">
+                    <div class="post-media-wrapper">
+                        <video controls src="chicken2.mp4.mp4" class="post-video"></video>
+                    </div>
+                    <div class="post-actions-bar">
+                        <div class="actions-left">
+                            <button class="like-btn" aria-label="Like this post">❤️</button>
+                            <button aria-label="Comment on this post">💬</button>
+                            <button aria-label="Share this post">🚀</button>
                         </div>
-                        <button class="carousel-arrow prev" aria-label="Previous photo">‹</button>
-                        <button class="carousel-arrow next" aria-label="Next photo">›</button>
-                        <div class="carousel-counter">1/6</div>
-                        <div class="carousel-dots"></div>
+                        <div class="actions-right">
+                            <button aria-label="Save this post">📥</button>
+                        </div>
+                    </div>
+                    <div class="post-likes"><span class="counter" data-target="1180">0</span> likes</div>
+                    <div class="post-caption">
+                        <strong>jap.studio</strong> 🍗 Behind-the-scenes hook variant for the same campaign — testing a different opening frame to compare retention against Clip 1.
+                        <span class="hashtags">#chickenchingu #contenttesting #hookvariation</span>
+                    </div>
+                    <div class="post-date">MARCH 16, 2024</div>
+                </article>
+
+                <article class="ig-post scroll-reveal" data-type="video">
+                    <div class="post-header">
+                        <div class="post-header-left">
+                            <img src="profile.jpg" width="38" height="38" class="post-avatar" alt="Avatar" onerror="imgFallback(this,'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80')">
+                            <div>
+                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
+                                <div class="post-location">Chicken Chingu — Clip 3 of 4</div>
+                            </div>
+                        </div>
+                        <div class="post-options">•••</div>
+                    </div>
+                    <div class="post-media-wrapper">
+                        <video controls src="chicken3.mp4.mp4" class="post-video"></video>
+                    </div>
+                    <div class="post-actions-bar">
+                        <div class="actions-left">
+                            <button class="like-btn" aria-label="Like this post">❤️</button>
+                            <button aria-label="Comment on this post">💬</button>
+                            <button aria-label="Share this post">🚀</button>
+                        </div>
+                        <div class="actions-right">
+                            <button aria-label="Save this post">📥</button>
+                        </div>
+                    </div>
+                    <div class="post-likes"><span class="counter" data-target="1305">0</span> likes</div>
+                    <div class="post-caption">
+                        <strong>jap.studio</strong> 🎬 Kitchen process cutdown — showing the food prep angle that pulled the strongest comments on this campaign.
+                        <span class="hashtags">#chickenchingu #processcontent #kitchenreels</span>
+                    </div>
+                    <div class="post-date">MARCH 18, 2024</div>
+                </article>
+
+                <article class="ig-post scroll-reveal" data-type="video">
+                    <div class="post-header">
+                        <div class="post-header-left">
+                            <img src="profile.jpg" width="38" height="38" class="post-avatar" alt="Avatar" onerror="imgFallback(this,'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80')">
+                            <div>
+                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
+                                <div class="post-location">Chicken Chingu — Clip 4 of 4</div>
+                            </div>
+                        </div>
+                        <div class="post-options">•••</div>
+                    </div>
+                    <div class="post-media-wrapper">
+                        <video controls src="chicken4.mp4.mp4" class="post-video"></video>
+                    </div>
+                    <div class="post-actions-bar">
+                        <div class="actions-left">
+                            <button class="like-btn" aria-label="Like this post">❤️</button>
+                            <button aria-label="Comment on this post">💬</button>
+                            <button aria-label="Share this post">🚀</button>
+                        </div>
+                        <div class="actions-right">
+                            <button aria-label="Save this post">📥</button>
+                        </div>
+                    </div>
+                    <div class="post-likes"><span class="counter" data-target="1620">0</span> likes</div>
+                    <div class="post-caption">
+                        <strong>jap.studio</strong> 🔥 Closing cut of the series — the highest-retention edit of the batch, used as the anchor ad creative.
+                        <span class="hashtags">#chickenchingu #adcreative #closingedit</span>
+                    </div>
+                    <div class="post-date">MARCH 20, 2024</div>
+                </article>
+
+                <article class="ig-post scroll-reveal" data-type="photo">
+                    <div class="post-header">
+                        <div class="post-header-left">
+                            <img src="profile.jpg" width="38" height="38" class="post-avatar" alt="Avatar" onerror="imgFallback(this,'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80')">
+                            <div>
+                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
+                                <div class="post-location">Angkas — Visual 1 of 6</div>
+                            </div>
+                        </div>
+                        <div class="post-options">•••</div>
+                    </div>
+                    <div class="post-media-wrapper">
+                        <img src="angkas1.jpg.jpg" width="800" height="800" class="post-image" alt="Angkas campaign visual 1" onerror="imgFallback(this,'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&auto=format&fit=crop&q=80')">
                     </div>
                     <div class="post-actions-bar">
                         <div class="actions-left">
@@ -1451,7 +1346,167 @@
                     <div class="post-date">APRIL 20, 2025</div>
                 </article>
 
-                <article class="ig-post scroll-reveal">
+                <article class="ig-post scroll-reveal" data-type="photo">
+                    <div class="post-header">
+                        <div class="post-header-left">
+                            <img src="profile.jpg" width="38" height="38" class="post-avatar" alt="Avatar" onerror="imgFallback(this,'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80')">
+                            <div>
+                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
+                                <div class="post-location">Angkas — Visual 2 of 6</div>
+                            </div>
+                        </div>
+                        <div class="post-options">•••</div>
+                    </div>
+                    <div class="post-media-wrapper">
+                        <img src="angkas2.jpg.jpg" width="800" height="800" class="post-image" alt="Angkas campaign visual 2" onerror="imgFallback(this,'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&auto=format&fit=crop&q=80')">
+                    </div>
+                    <div class="post-actions-bar">
+                        <div class="actions-left">
+                            <button class="like-btn" aria-label="Like this post">❤️</button>
+                            <button aria-label="Comment on this post">💬</button>
+                            <button aria-label="Share this post">🚀</button>
+                        </div>
+                        <div class="actions-right">
+                            <button aria-label="Save this post">📥</button>
+                        </div>
+                    </div>
+                    <div class="post-likes"><span class="counter" data-target="2960">0</span> likes</div>
+                    <div class="post-caption">
+                        <strong>jap.studio</strong> 🛵 Second angle from the same drop — a witty caption variant that leaned harder into local slang for extra shares.
+                        <span class="hashtags">#angkas #trendhijacking #localvoice</span>
+                    </div>
+                    <div class="post-date">APRIL 21, 2025</div>
+                </article>
+
+                <article class="ig-post scroll-reveal" data-type="photo">
+                    <div class="post-header">
+                        <div class="post-header-left">
+                            <img src="profile.jpg" width="38" height="38" class="post-avatar" alt="Avatar" onerror="imgFallback(this,'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80')">
+                            <div>
+                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
+                                <div class="post-location">Angkas — Visual 3 of 6</div>
+                            </div>
+                        </div>
+                        <div class="post-options">•••</div>
+                    </div>
+                    <div class="post-media-wrapper">
+                        <img src="angkas3.jpg.jpg" width="800" height="800" class="post-image" alt="Angkas campaign visual 3" onerror="imgFallback(this,'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&auto=format&fit=crop&q=80')">
+                    </div>
+                    <div class="post-actions-bar">
+                        <div class="actions-left">
+                            <button class="like-btn" aria-label="Like this post">❤️</button>
+                            <button aria-label="Comment on this post">💬</button>
+                            <button aria-label="Share this post">🚀</button>
+                        </div>
+                        <div class="actions-right">
+                            <button aria-label="Save this post">📥</button>
+                        </div>
+                    </div>
+                    <div class="post-likes"><span class="counter" data-target="3210">0</span> likes</div>
+                    <div class="post-caption">
+                        <strong>jap.studio</strong> 📈 The graphic that triggered the biggest share spike in the whole framework — timed to a trending moment within the hour.
+                        <span class="hashtags">#angkas #newsjacking #realtimemarketing</span>
+                    </div>
+                    <div class="post-date">APRIL 22, 2025</div>
+                </article>
+
+                <article class="ig-post scroll-reveal" data-type="photo">
+                    <div class="post-header">
+                        <div class="post-header-left">
+                            <img src="profile.jpg" width="38" height="38" class="post-avatar" alt="Avatar" onerror="imgFallback(this,'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80')">
+                            <div>
+                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
+                                <div class="post-location">Angkas — Visual 4 of 6</div>
+                            </div>
+                        </div>
+                        <div class="post-options">•••</div>
+                    </div>
+                    <div class="post-media-wrapper">
+                        <img src="angkas4.jpg.jpg" width="800" height="800" class="post-image" alt="Angkas campaign visual 4" onerror="imgFallback(this,'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&auto=format&fit=crop&q=80')">
+                    </div>
+                    <div class="post-actions-bar">
+                        <div class="actions-left">
+                            <button class="like-btn" aria-label="Like this post">❤️</button>
+                            <button aria-label="Comment on this post">💬</button>
+                            <button aria-label="Share this post">🚀</button>
+                        </div>
+                        <div class="actions-right">
+                            <button aria-label="Save this post">📥</button>
+                        </div>
+                    </div>
+                    <div class="post-likes"><span class="counter" data-target="2780">0</span> likes</div>
+                    <div class="post-caption">
+                        <strong>jap.studio</strong> 🎯 Follow-up graphic keeping the momentum going after the initial spike, reinforcing the same visual identity.
+                        <span class="hashtags">#angkas #brandconsistency #followupcontent</span>
+                    </div>
+                    <div class="post-date">APRIL 23, 2025</div>
+                </article>
+
+                <article class="ig-post scroll-reveal" data-type="photo">
+                    <div class="post-header">
+                        <div class="post-header-left">
+                            <img src="profile.jpg" width="38" height="38" class="post-avatar" alt="Avatar" onerror="imgFallback(this,'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80')">
+                            <div>
+                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
+                                <div class="post-location">Angkas — Visual 5 of 6</div>
+                            </div>
+                        </div>
+                        <div class="post-options">•••</div>
+                    </div>
+                    <div class="post-media-wrapper">
+                        <img src="angkas5.jpg.jpg" width="800" height="800" class="post-image" alt="Angkas campaign visual 5" onerror="imgFallback(this,'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&auto=format&fit=crop&q=80')">
+                    </div>
+                    <div class="post-actions-bar">
+                        <div class="actions-left">
+                            <button class="like-btn" aria-label="Like this post">❤️</button>
+                            <button aria-label="Comment on this post">💬</button>
+                            <button aria-label="Share this post">🚀</button>
+                        </div>
+                        <div class="actions-right">
+                            <button aria-label="Save this post">📥</button>
+                        </div>
+                    </div>
+                    <div class="post-likes"><span class="counter" data-target="2510">0</span> likes</div>
+                    <div class="post-caption">
+                        <strong>jap.studio</strong> 💬 Community-facing variant with a direct call-to-action, designed to drive comment volume for the algorithm boost.
+                        <span class="hashtags">#angkas #communitymanagement #ctadesign</span>
+                    </div>
+                    <div class="post-date">APRIL 24, 2025</div>
+                </article>
+
+                <article class="ig-post scroll-reveal" data-type="photo">
+                    <div class="post-header">
+                        <div class="post-header-left">
+                            <img src="profile.jpg" width="38" height="38" class="post-avatar" alt="Avatar" onerror="imgFallback(this,'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80')">
+                            <div>
+                                <div class="post-username">jap.studio <span class="verified-badge">●</span></div>
+                                <div class="post-location">Angkas — Visual 6 of 6</div>
+                            </div>
+                        </div>
+                        <div class="post-options">•••</div>
+                    </div>
+                    <div class="post-media-wrapper">
+                        <img src="angkas6.jpg.jpg" width="800" height="800" class="post-image" alt="Angkas campaign visual 6" onerror="imgFallback(this,'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&auto=format&fit=crop&q=80')">
+                    </div>
+                    <div class="post-actions-bar">
+                        <div class="actions-left">
+                            <button class="like-btn" aria-label="Like this post">❤️</button>
+                            <button aria-label="Comment on this post">💬</button>
+                            <button aria-label="Share this post">🚀</button>
+                        </div>
+                        <div class="actions-right">
+                            <button aria-label="Save this post">📥</button>
+                        </div>
+                    </div>
+                    <div class="post-likes"><span class="counter" data-target="3390">0</span> likes</div>
+                    <div class="post-caption">
+                        <strong>jap.studio</strong> 🏁 Closing visual of the campaign wave — wrapped the framework with a recap graphic summarizing total reach.
+                        <span class="hashtags">#angkas #campaignwrap #recapgraphic</span>
+                    </div>
+                    <div class="post-date">APRIL 25, 2025</div>
+                </article>
+
+                <article class="ig-post scroll-reveal" data-type="photo">
                     <div class="post-header">
                         <div class="post-header-left">
                             <img src="profile.jpg" width="38" height="38" class="post-avatar" alt="Avatar" onerror="imgFallback(this,'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80')">
@@ -1490,7 +1545,7 @@
                     <div class="post-date">OCTOBER 12, 2024</div>
                 </article>
 
-                <article class="ig-post scroll-reveal">
+                <article class="ig-post scroll-reveal" data-type="photo">
                     <div class="post-header">
                         <div class="post-header-left">
                             <img src="profile.jpg" width="38" height="38" class="post-avatar" alt="Avatar" onerror="imgFallback(this,'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80')">
@@ -1529,7 +1584,7 @@
                     <div class="post-date">JANUARY 08, 2026</div>
                 </article>
 
-                <article class="ig-post scroll-reveal">
+                <article class="ig-post scroll-reveal" data-type="photo">
                     <div class="post-header">
                         <div class="post-header-left">
                             <img src="profile.jpg" width="38" height="38" class="post-avatar" alt="Avatar" onerror="imgFallback(this,'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80')">
@@ -1568,7 +1623,7 @@
                     <div class="post-date">FEBRUARY 14, 2026</div>
                 </article>
 
-                <article class="ig-post scroll-reveal">
+                <article class="ig-post scroll-reveal" data-type="photo">
                     <div class="post-header">
                         <div class="post-header-left">
                             <img src="profile.jpg" width="38" height="38" class="post-avatar" alt="Avatar" onerror="imgFallback(this,'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80')">
@@ -1607,7 +1662,7 @@
                     <div class="post-date">MAY 02, 2026</div>
                 </article>
 
-                <article class="ig-post scroll-reveal">
+                <article class="ig-post scroll-reveal" data-type="photo">
                     <div class="post-header">
                         <div class="post-header-left">
                             <img src="profile.jpg" width="38" height="38" class="post-avatar" alt="Avatar" onerror="imgFallback(this,'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80')">
@@ -1646,7 +1701,7 @@
                     <div class="post-date">JUNE 19, 2026</div>
                 </article>
 
-                <article class="ig-post scroll-reveal">
+                <article class="ig-post scroll-reveal" data-type="photo">
                     <div class="post-header">
                         <div class="post-header-left">
                             <img src="profile.jpg" width="38" height="38" class="post-avatar" alt="Avatar" onerror="imgFallback(this,'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80')">
@@ -1685,48 +1740,6 @@
                     <div class="post-date">JULY 01, 2026</div>
                 </article>
 
-                <article class="github-post scroll-reveal">
-                    <div class="github-post-body">
-                        <div class="github-intro">
-                            <div class="github-icon-badge" aria-hidden="true">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff"><path d="M12 .5C5.73.5.98 5.24.98 11.5c0 5 3.24 9.24 7.74 10.74.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.15.69-3.81-1.34-3.81-1.34-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.94.1-.73.39-1.22.71-1.5-2.51-.29-5.15-1.26-5.15-5.6 0-1.24.44-2.25 1.16-3.04-.12-.29-.5-1.44.11-3 0 0 .95-.3 3.12 1.16a10.8 10.8 0 0 1 5.68 0c2.16-1.46 3.11-1.16 3.11-1.16.62 1.56.23 2.71.11 3 .73.79 1.16 1.8 1.16 3.04 0 4.35-2.65 5.31-5.17 5.59.4.35.76 1.04.76 2.09 0 1.51-.01 2.72-.01 3.09 0 .3.2.65.79.54A10.52 10.52 0 0 0 23.02 11.5C23.02 5.24 18.27.5 12 .5z"/></svg>
-                            </div>
-                            <div>
-                                <h3>Open-Source Toolkit on GitHub</h3>
-                                <p>Free templates, prompt libraries, and automation scripts I build and maintain in the open.</p>
-                            </div>
-                        </div>
-                        <div class="repo-list">
-                            <a class="repo-card" href="https://github.com" target="_blank" rel="noopener">
-                                <div class="repo-card-main">
-                                    <div class="repo-name"><span class="repo-lang-dot" style="background:#f1e05a;"></span>Content Hook Prompt Library</div>
-                                    <div class="repo-desc">A categorized set of AI prompt templates for hooks, captions, and CTAs across Reels, TikTok, and carousels.</div>
-                                    <div class="repo-meta"><span>⭐ Stars</span><span>🍴 Forks</span><span>JavaScript</span></div>
-                                </div>
-                                <div class="repo-arrow">↗</div>
-                            </a>
-                            <a class="repo-card" href="https://github.com" target="_blank" rel="noopener">
-                                <div class="repo-card-main">
-                                    <div class="repo-name"><span class="repo-lang-dot" style="background:#3572A5;"></span>n8n Content Pipeline Automations</div>
-                                    <div class="repo-desc">Ready-to-import n8n workflows that auto-repurpose long-form video into platform-native cutdowns and captions.</div>
-                                    <div class="repo-meta"><span>⭐ Stars</span><span>🍴 Forks</span><span>Python</span></div>
-                                </div>
-                                <div class="repo-arrow">↗</div>
-                            </a>
-                            <a class="repo-card" href="https://github.com" target="_blank" rel="noopener">
-                                <div class="repo-card-main">
-                                    <div class="repo-name"><span class="repo-lang-dot" style="background:#563d7c;"></span>Analytics Reporting Templates</div>
-                                    <div class="repo-desc">Notion + spreadsheet templates for tracking reach, engagement, and lead attribution across client accounts.</div>
-                                    <div class="repo-meta"><span>⭐ Stars</span><span>🍴 Forks</span><span>CSS</span></div>
-                                </div>
-                                <div class="repo-arrow">↗</div>
-                            </a>
-                        </div>
-                        <div class="github-cta-row">
-                            <a href="https://github.com" target="_blank" rel="noopener">View full GitHub profile ↗</a>
-                        </div>
-                    </div>
-                </article>
 
             </div>
         </div>
@@ -1818,45 +1831,6 @@
                         <canvas class="dash-chart" data-chart="views" width="220" height="80"></canvas>
                         <div class="dash-tooltip"></div>
                     </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="gallery-section scroll-reveal">
-        <div class="container">
-            <h2>Distribution Asset Repository</h2>
-            <div class="masonry-grid">
-                
-                <div class="masonry-item item-vertical">
-                    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&auto=format&fit=crop&q=80" width="600" height="480" loading="lazy" alt="Vertical Reels format example">
-                    <div class="masonry-overlay"><span>Instagram Reels Format</span></div>
-                </div>
-
-                <div class="masonry-item">
-                    <img src="https://images.unsplash.com/photo-1616469829581-73993eb86b02?w=600&auto=format&fit=crop&q=80" width="600" height="240" loading="lazy" alt="Carousel post strategy example">
-                    <div class="masonry-overlay"><span>Carousel Strategy Post</span></div>
-                </div>
-
-                <div class="masonry-item item-wide">
-                    <img src="https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=800&auto=format&fit=crop&q=80" width="800" height="240" loading="lazy" alt="High-conversion Facebook ad placement example">
-                    <div class="masonry-overlay"><span>High-Conversion Facebook Ad Placement</span></div>
-                </div>
-
-                <div class="masonry-item item-vertical">
-                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&auto=format&fit=crop&q=80" width="600" height="480" loading="lazy" alt="TikTok format hook example">
-                    <div class="masonry-overlay"><span>Dynamic TikTok Format Hook</span></div>
-                </div>
-
-                <div class="masonry-item">
-                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&auto=format&fit=crop&q=80" width="600" height="240" loading="lazy" alt="Instagram Stories distribution layout example">
-                    <div class="masonry-overlay"><span>Stories Distribution Layout</span></div>
-                </div>
-
-                <div class="masonry-item">
-                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&auto=format&fit=crop&q=80" width="600" height="240" loading="lazy" alt="User generated content example">
-                    <div class="masonry-overlay"><span>UGC Strategic Content Piece</span></div>
                 </div>
 
             </div>
@@ -2035,6 +2009,27 @@
                 }
             });
 
+            // --- 3b. Feed Filter Tabs (All / Videos / Graphics) ---
+            const feedTabs = document.querySelectorAll(".feed-filter-tab");
+            const feedPosts = document.querySelectorAll(".ig-post[data-type]");
+
+            feedTabs.forEach(tab => {
+                tab.addEventListener("click", () => {
+                    feedTabs.forEach(t => {
+                        t.classList.remove("active");
+                        t.setAttribute("aria-selected", "false");
+                    });
+                    tab.classList.add("active");
+                    tab.setAttribute("aria-selected", "true");
+
+                    const filter = tab.getAttribute("data-filter");
+                    feedPosts.forEach(post => {
+                        const show = filter === "all" || post.getAttribute("data-type") === filter;
+                        post.style.display = show ? "" : "none";
+                    });
+                });
+            });
+
             // --- 4. Instagram Highlight Stories Tooltip Render engine ---
             const stories = document.querySelectorAll(".story-circle");
             const tooltip = document.getElementById("storyTooltip");
@@ -2058,57 +2053,6 @@
                     tooltip.style.top = `${rect.top}px`;
                 });
                 story.addEventListener("blur", () => { tooltip.style.opacity = "0"; });
-            });
-
-            // --- 4b. Multi-Image / Multi-Video Carousel Controller ---
-            document.querySelectorAll("[data-carousel]").forEach(wrapper => {
-                const track = wrapper.querySelector(".carousel-track");
-                const slides = Array.from(track.children);
-                const prevBtn = wrapper.querySelector(".carousel-arrow.prev");
-                const nextBtn = wrapper.querySelector(".carousel-arrow.next");
-                const dotsWrap = wrapper.querySelector(".carousel-dots");
-                const counterEl = wrapper.querySelector(".carousel-counter");
-                let index = 0;
-
-                if (slides.length <= 1) {
-                    if (prevBtn) prevBtn.style.display = "none";
-                    if (nextBtn) nextBtn.style.display = "none";
-                    if (counterEl) counterEl.style.display = "none";
-                    return;
-                }
-
-                slides.forEach((_, i) => {
-                    const dot = document.createElement("button");
-                    dot.className = "carousel-dot" + (i === 0 ? " active" : "");
-                    dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
-                    dot.addEventListener("click", () => goTo(i));
-                    dotsWrap.appendChild(dot);
-                });
-                const dots = Array.from(dotsWrap.children);
-
-                function goTo(i) {
-                    // pause any playing video before moving away from it
-                    const current = slides[index];
-                    if (current && current.tagName === "VIDEO") current.pause();
-
-                    index = (i + slides.length) % slides.length;
-                    track.style.transform = `translateX(-${index * 100}%)`;
-                    dots.forEach((d, di) => d.classList.toggle("active", di === index));
-                    if (counterEl) counterEl.textContent = `${index + 1}/${slides.length}`;
-                }
-
-                prevBtn.addEventListener("click", () => goTo(index - 1));
-                nextBtn.addEventListener("click", () => goTo(index + 1));
-
-                // Touch swipe support
-                let touchStartX = 0;
-                track.addEventListener("touchstart", (e) => {
-                    touchStartX = e.touches[0].clientX;
-                }, { passive: true });
-                track.addEventListener("touchend", (e) => {
-                    const dx = e.changedTouches[0].clientX - touchStartX;
-                    if (Math.abs(dx) > 40) goTo(dx < 0 ? index + 1 : index - 1);
-                }, { passive: true });
             });
 
             // --- 5. Deterministic Analytics Data Engine (no more random re-renders) ---
@@ -2319,7 +2263,7 @@
             }
 
             // --- 7. Intersection Observer for Scroll Reveals, Feed Counters & Dashboard Boot ---
-            const revealItems = document.querySelectorAll(".scroll-reveal, .ig-post, .github-post");
+            const revealItems = document.querySelectorAll(".scroll-reveal, .ig-post");
             let dashboardTriggered = false;
 
             const observer = new IntersectionObserver((entries) => {
@@ -2373,5 +2317,18 @@
             });
         });
     </script>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6a4da4eee610081d4c88cc25/1jsvkogu5';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
 </body>
 </html>

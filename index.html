@@ -8,6 +8,9 @@
     <meta property="og:description" content="Content that attracts attention, builds communities, and converts followers into customers.">
     <meta property="og:type" content="website">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230A0A0A'/%3E%3Ctext x='50' y='68' font-size='55' text-anchor='middle' fill='%23FF4D8D' font-family='sans-serif' font-weight='700'%3EJ%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>Japhette Alec Pulido — AI Social Growth Studio</title>
     
     <style>
@@ -119,7 +122,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .loading-content {
             text-align: center;
@@ -175,134 +178,6 @@
             box-shadow: 0 15px 40px rgba(255, 77, 141, 0.5);
         }
 
-        /* --- AI Chat Widget --- */
-        .ai-chat-fab {
-            position: fixed;
-            bottom: 96px;
-            left: 30px;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background: var(--text-prime);
-            color: var(--bg-prime);
-            border: none;
-            font-size: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 91;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            transition: var(--transition-smooth);
-        }
-        .ai-chat-fab:hover {
-            transform: translateY(-4px) scale(1.05);
-        }
-        .ai-chat-panel {
-            position: fixed;
-            bottom: 96px;
-            left: 30px;
-            width: 320px;
-            max-width: calc(100vw - 48px);
-            height: 420px;
-            max-height: calc(100vh - 140px);
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-            z-index: 95;
-        }
-        .ai-chat-panel.open { display: flex; }
-        .ai-chat-header {
-            background: var(--accent);
-            color: var(--text-prime);
-            padding: 14px 18px;
-            font-family: var(--font-head);
-            font-weight: 700;
-            font-size: 13px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .ai-chat-header button {
-            background: none;
-            border: none;
-            color: var(--text-prime);
-            font-size: 18px;
-            line-height: 1;
-        }
-        .ai-chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .ai-chat-msg {
-            max-width: 85%;
-            padding: 9px 13px;
-            border-radius: 14px;
-            font-size: 13px;
-            line-height: 1.5;
-        }
-        .ai-chat-msg.bot {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-prime);
-            align-self: flex-start;
-            border-bottom-left-radius: 4px;
-        }
-        .ai-chat-msg.user {
-            background: var(--accent);
-            color: var(--text-prime);
-            align-self: flex-end;
-            border-bottom-right-radius: 4px;
-        }
-        .ai-chat-msg.typing {
-            color: var(--text-muted);
-            font-style: italic;
-        }
-        .ai-chat-input-row {
-            display: flex;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 10px;
-            gap: 8px;
-        }
-        .ai-chat-input-row input {
-            flex: 1;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 10px 14px;
-            color: var(--text-prime);
-            font-family: var(--font-body);
-            font-size: 13px;
-        }
-        .ai-chat-input-row input:focus { outline: none; border-color: var(--accent); }
-        .ai-chat-input-row button {
-            background: var(--accent);
-            color: var(--text-prime);
-            border: none;
-            border-radius: 20px;
-            padding: 0 16px;
-            font-weight: 700;
-            font-size: 13px;
-        }
-        .ai-chat-input-row button:disabled { opacity: 0.5; }
-
-        /* --- Premium Navigation --- */
-        nav {
-            position: sticky;
-            top: 0;
-            width: 100%;
-            z-index: 150;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-            background: rgba(10, 10, 10, 0.01);
-            transition: var(--transition-smooth);
-        }
-        nav.scrolled {
             background: rgba(10, 10, 10, 0.75);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
@@ -542,6 +417,51 @@
             color: var(--text-muted);
             font-size: 15px;
             line-height: 1.6;
+        }
+        .skills-bars {
+            margin-top: 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .skill-bar-label span {
+            font-size: 12px;
+            color: #ddd;
+            font-weight: 600;
+        }
+        .skill-bar-track {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            margin-top: 6px;
+            overflow: hidden;
+        }
+        .skill-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #ff8ab3);
+            border-radius: 6px;
+        }
+        .industries-row {
+            margin-top: 26px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+        }
+        .industries-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-right: 4px;
+        }
+        .industries-row .tag {
+            font-size: 11px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #ccc;
         }
         .about-mini-dash {
             display: flex;
@@ -991,7 +911,95 @@
             margin-left: -2px;
         }
 
+        /* --- Client Feedback Tiles --- */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .testimonial-tile {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: var(--corner);
+            padding: 28px 26px;
+            display: flex;
+            flex-direction: column;
+        }
+        .test-text {
+            font-size: 14px;
+            color: #E2E8F0;
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 22px;
+        }
+        .test-user {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: auto;
+        }
+        .test-avatar-fallback {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 77, 141, 0.15);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 13px;
+            flex-shrink: 0;
+        }
+        .test-name {
+            font-size: 13.5px;
+            font-weight: 700;
+        }
+        .test-role {
+            font-size: 11.5px;
+            color: var(--text-muted);
+        }
+
         /* --- Contact & Production Delivery Forms --- */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .process-step {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: var(--corner);
+            padding: 28px 24px;
+            position: relative;
+        }
+        .process-num {
+            font-family: var(--font-head);
+            font-size: 32px;
+            font-weight: 700;
+            color: rgba(255, 77, 141, 0.25);
+            margin-bottom: 10px;
+        }
+        .process-step h3 {
+            font-family: var(--font-head);
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .process-step p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .process-step:not(:last-child)::after {
+            content: "→";
+            position: absolute;
+            top: 32px;
+            right: -18px;
+            color: rgba(255, 77, 141, 0.4);
+            font-size: 18px;
+            z-index: 1;
+        }
         .contact-layout-box {
             background: var(--bg-card);
             border: 1px solid rgba(255, 255, 255, 0.03);
@@ -1088,17 +1096,172 @@
             outline-offset: 2px;
         }
 
-        /* --- Component Media Queries Breakpoints --- */
+        /* --- Portfolio Chooser Gate --- */
+        .portfolio-gate {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 24px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .gate-glow {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,77,141,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .gate-intro { position: relative; z-index: 1; margin-bottom: 50px; }
+        .gate-brand {
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 20px;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+        .gate-brand span { color: var(--accent); }
+        .gate-heading {
+            font-family: var(--font-head);
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+            max-width: 640px;
+        }
+        .gate-sub {
+            color: var(--text-muted);
+            font-size: 15px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        .gate-choice-grid {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+        .gate-choice-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 24px;
+            padding: 40px 34px;
+            width: 380px;
+            text-decoration: none;
+            color: var(--text-prime);
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            transition: var(--transition-smooth);
+        }
+        .gate-choice-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255,255,255,0.15);
+        }
+        .gate-choice-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin-bottom: 22px;
+        }
+        .gate-choice-card.smm .gate-choice-icon { background: rgba(255,77,141,0.12); }
+        .gate-choice-card.ea .gate-choice-icon { background: rgba(77,166,255,0.12); }
+        .gate-choice-card h2 {
+            font-family: var(--font-head);
+            font-size: 22px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .gate-choice-card p {
+            color: var(--text-muted);
+            font-size: 13.5px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        .gate-tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 26px;
+        }
+        .gate-tag-row .tag {
+            font-size: 11px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #ccc;
+        }
+        .gate-choice-cta {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-head);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .gate-choice-card.smm .gate-choice-cta { color: var(--accent); }
+        .gate-choice-card.ea .gate-choice-cta { color: #4da6ff; }
+        .gate-choice-card .arrow { transition: transform 0.3s ease; }
+        .gate-choice-card:hover .arrow { transform: translateX(4px); }
+
+        @media (max-width: 860px) {
+            .gate-heading { font-size: 28px; }
+            .gate-choice-card { width: 100%; max-width: 380px; }
+        }
         @media (max-width: 968px) {
-            .about-grid, .dashboard-grid, .stack-grid { grid-template-columns: 1fr; }
+            .about-grid, .dashboard-grid, .stack-grid, .process-grid, .testimonial-grid { grid-template-columns: 1fr; }
             .form-row { grid-template-columns: 1fr; }
             .item-wide { grid-column: span 1; }
             .nav-menu { display: none; }
             .mobile-toggle { display: flex; }
             .hero-name { font-size: 38px; }
             .dashboard-toolbar { flex-direction: column; align-items: flex-start; }
+            .process-step:not(:last-child)::after { display: none; }
         }
     </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Japhette Alec Pulido",
+        "jobTitle": "Social Media Manager",
+        "email": "mailto:jap.pulido789@gmail.com",
+        "telephone": "+639569027896",
+        "knowsAbout": [
+            "Social Media Management",
+            "Content Strategy",
+            "Short-Form Video Production",
+            "Trend Marketing",
+            "Paid Social Advertising",
+            "AI-Assisted Content Workflows"
+        ],
+        "makesOffer": {
+            "@type": "Offer",
+            "itemOffered": {
+                "@type": "Service",
+                "name": "Social Media Management & Growth Strategy",
+                "areaServed": "Global",
+                "serviceType": "Social Media Marketing"
+            }
+        }
+    }
+    </script>
 </head>
 <body>
 
@@ -1137,6 +1300,40 @@
         <span>Hire Me</span>
     </a>
 
+    <section id="portfolio-gate" class="portfolio-gate scroll-reveal">
+        <div class="gate-glow"></div>
+        <div class="gate-intro">
+            <div class="gate-brand">JAP<span>.STUDIO</span></div>
+            <h1 class="gate-heading">Which side of the work do you want to see?</h1>
+            <p class="gate-sub">Japhette Alec Pulido works across two disciplines — pick the portfolio that fits what you're looking for.</p>
+        </div>
+        <div class="gate-choice-grid">
+            <a href="#home" class="gate-choice-card smm">
+                <div class="gate-choice-icon">📱</div>
+                <h2>Social Media Management</h2>
+                <p>Content strategy, short-form video, trend hijacking, paid social, and AI-assisted content workflows for brands and local businesses.</p>
+                <div class="gate-tag-row">
+                    <span class="tag">Reels &amp; TikTok</span>
+                    <span class="tag">Trend Hijacking</span>
+                    <span class="tag">Content Strategy</span>
+                </div>
+                <div class="gate-choice-cta">View SMM Portfolio <span class="arrow">↓</span></div>
+            </a>
+
+            <a href="https://japhette-vms.github.io/" class="gate-choice-card ea">
+                <div class="gate-choice-icon">🗂️</div>
+                <h2>EA / Operations Manager</h2>
+                <p>Executive assistance, systems and process design, workflow automation, and day-to-day operations management.</p>
+                <div class="gate-tag-row">
+                    <span class="tag">Operations</span>
+                    <span class="tag">Systems &amp; SOPs</span>
+                    <span class="tag">Executive Support</span>
+                </div>
+                <div class="gate-choice-cta">View EA / Ops Portfolio <span class="arrow">→</span></div>
+            </a>
+        </div>
+    </section>
+
     <nav>
         <div class="nav-container">
             <a href="#" class="logo">JAP<span>.STUDIO</span></a>
@@ -1146,6 +1343,8 @@
                 <li><a href="#stories">Stories</a></li>
                 <li><a href="#feed">Portfolio</a></li>
                 <li><a href="#dashboard">Results</a></li>
+                <li><a href="#testimonials">Feedback</a></li>
+                <li><a href="#process">Process</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -1193,6 +1392,40 @@
                 <div class="about-card-large">
                     <h3>Mixing Creative Concepts with AI Workflows</h3>
                     <p>I am a Social Media Manager who focuses on building a real online presence that actually brings in customers. I don't just drop generic graphics onto a feed; I love scripting videos, designing clean layouts, and coming up with original campaign ideas from scratch. By mixing creative concepts with smart AI tools, I keep content pipelines active, run e-commerce shops smoothly, and convert attention into real business leads.</p>
+
+                    <div class="skills-bars">
+                        <div class="skill-bar-row">
+                            <div class="skill-bar-label"><span>Content Strategy &amp; Scripting</span></div>
+                            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:92%;"></div></div>
+                        </div>
+                        <div class="skill-bar-row">
+                            <div class="skill-bar-label"><span>Short-Form Video (Reels / TikTok)</span></div>
+                            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:95%;"></div></div>
+                        </div>
+                        <div class="skill-bar-row">
+                            <div class="skill-bar-label"><span>Real-Time Trend Hijacking</span></div>
+                            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%;"></div></div>
+                        </div>
+                        <div class="skill-bar-row">
+                            <div class="skill-bar-label"><span>AI Workflows &amp; Automation</span></div>
+                            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%;"></div></div>
+                        </div>
+                        <div class="skill-bar-row">
+                            <div class="skill-bar-label"><span>Paid Meta / TikTok Ads</span></div>
+                            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%;"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="industries-row">
+                        <span class="industries-label">Industries worked with:</span>
+                        <span class="tag">Food &amp; Beverage</span>
+                        <span class="tag">Transportation</span>
+                        <span class="tag">E-Commerce</span>
+                        <span class="tag">Fitness</span>
+                        <span class="tag">Travel</span>
+                        <span class="tag">Fashion</span>
+                        <span class="tag">Healthcare</span>
+                    </div>
                 </div>
                 <div class="about-mini-dash">
                     <div class="mini-stat">
@@ -1999,27 +2232,131 @@
         </div>
     </section>
 
+    <!--
+        SAMPLE CONTENT — these are placeholder quotes, not real client feedback.
+        Swap each one out for an actual message/DM/email from these (or other)
+        real collaborators before this section goes live for good.
+    -->
+    <section id="testimonials" class="testimonials-section scroll-reveal">
+        <div class="container">
+            <h2>Client Feedback</h2>
+            <p class="section-sub">Sample quotes shown for layout — swap in real client feedback before publishing.</p>
+            <div class="testimonial-grid">
+                <div class="testimonial-tile">
+                    <p class="test-text">"Our foot traffic picked up almost immediately after the Reels started rolling out. The food content finally looked like our brand."</p>
+                    <div class="test-user">
+                        <div class="test-avatar-fallback">JL</div>
+                        <div>
+                            <div class="test-name">Johmar Llanor</div>
+                            <div class="test-role">Chicken Chingu</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-tile">
+                    <p class="test-text">"The turnaround on trend-jacked graphics is what sold me. Something happens online and we have a post out within the hour."</p>
+                    <div class="test-user">
+                        <div class="test-avatar-fallback">PS</div>
+                        <div>
+                            <div class="test-name">Philip San Jose</div>
+                            <div class="test-role">Angkas</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-tile">
+                    <p class="test-text">"DM sales became an actual channel for us, not just an afterthought. The catalog visuals do a lot of the selling on their own now."</p>
+                    <div class="test-user">
+                        <div class="test-avatar-fallback">JG</div>
+                        <div>
+                            <div class="test-name">Jerome Galicia</div>
+                            <div class="test-role">Zapatos</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-tile">
+                    <p class="test-text">"Member sign-ups tie directly back to the short-form videos now — we can actually see which content brings people through the door."</p>
+                    <div class="test-user">
+                        <div class="test-avatar-fallback">VM</div>
+                        <div>
+                            <div class="test-name">Virgie Magno</div>
+                            <div class="test-role">Fit Body Boot Camp</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-tile">
+                    <p class="test-text">"The morning crowd noticeably grew after the aesthetic refresh. It finally feels like our socials match the space itself."</p>
+                    <div class="test-user">
+                        <div class="test-avatar-fallback">JG</div>
+                        <div>
+                            <div class="test-name">Jerald Galang</div>
+                            <div class="test-role">The Grind Cafe</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="process-section scroll-reveal">
+        <div class="container">
+            <h2>How We Work</h2>
+            <p class="section-sub">A straightforward process from first message to live campaign — no guesswork about what happens next.</p>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="process-num">01</div>
+                    <h3>Discover</h3>
+                    <p>A quick call or message thread to understand your brand, audience, and what "growth" actually means for you right now.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-num">02</div>
+                    <h3>Strategy</h3>
+                    <p>A content and channel plan built around your goals — what to post, where, how often, and what success looks like in 30/60/90 days.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-num">03</div>
+                    <h3>Create &amp; Launch</h3>
+                    <p>Scripts, visuals, and campaigns go into production. You review and approve before anything goes live.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-num">04</div>
+                    <h3>Report &amp; Refine</h3>
+                    <p>Regular check-ins on what's working, with the strategy adjusted around real performance data — not guesswork.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="contact" class="contact-section scroll-reveal">
         <div class="container">
             <div class="contact-layout-box">
                 <h2 class="cta-title">Let's Build Your Next Viral Campaign.</h2>
                 <p style="color:#64748B; font-size:14px; margin-bottom:40px; max-width:600px;">Combine creative visual strategy, target audience data loops, and smart AI workflow scaling to capture undisputed digital presence.</p>
                 
-                <form class="contact-form" onsubmit="event.preventDefault(); alert('Transmission initialized.');">
+                <!--
+                    This form now submits via Formspree (free, no backend needed).
+                    To activate it:
+                    1. Go to https://formspree.io and create a free account
+                    2. Create a new form, it'll give you an endpoint like
+                       https://formspree.io/f/xxxxabcd
+                    3. Replace YOUR_FORM_ID below with that ID
+                    Until you do this, submissions will fail with a 404 —
+                    check the browser console if testing before setup is done.
+                -->
+                <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contactForm">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="fullName">Full Name / Enterprise Title</label>
-                            <input id="fullName" type="text" placeholder="John Doe" required>
+                            <input id="fullName" name="name" type="text" placeholder="John Doe" required>
                         </div>
                         <div class="form-group">
                             <label for="contactEmail">Corporate Contact Email</label>
-                            <input id="contactEmail" type="email" placeholder="john@company.com" required>
+                            <input id="contactEmail" name="email" type="email" placeholder="john@company.com" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="messageDetails">Your Message</label>
-                        <textarea id="messageDetails" rows="5" placeholder="Tell me about your goals or where you're stuck right now..."></textarea>
+                        <textarea id="messageDetails" name="message" rows="5" placeholder="Tell me about your goals or where you're stuck right now..."></textarea>
                     </div>
+                    <p style="font-size:11px; color:#64748B; margin-top:-8px;">Your details are only used to reply to your message — never shared or sold.</p>
                     <button type="submit" class="btn btn-primary" style="align-self: flex-start;">Initialize Growth Sync</button>
                 </form>
             </div>
@@ -2050,19 +2387,19 @@
             const loadingScreen = document.getElementById("loadingScreen");
             const loadingProgress = document.getElementById("loadingProgress");
             let progress = 0;
-            
+
             const interval = setInterval(() => {
-                progress += Math.floor(Math.random() * 15) + 5;
+                progress += Math.floor(Math.random() * 25) + 15;
                 if (progress >= 100) {
                     progress = 100;
                     clearInterval(interval);
                     setTimeout(() => {
                         loadingScreen.style.opacity = "0";
-                        setTimeout(() => loadingScreen.style.display = "none", 600);
-                    }, 200);
+                        setTimeout(() => loadingScreen.style.display = "none", 300);
+                    }, 80);
                 }
                 loadingProgress.style.width = `${progress}%`;
-            }, 40);
+            }, 25);
 
             // --- 2. Adaptive Mouse Micro-Cursor Engine (fine pointers / mouse only) ---
             const hasFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -2413,6 +2750,46 @@
                 if (dashboardTriggered) renderDashboard(currentPeriod, false);
             });
 
+            // --- 7b. Contact Form AJAX Submission (Formspree) ---
+            const contactForm = document.getElementById("contactForm");
+            if (contactForm) {
+                const submitBtn = contactForm.querySelector("button[type='submit']");
+                let statusEl = document.createElement("p");
+                statusEl.style.cssText = "font-size:13px; margin-top:6px;";
+                contactForm.appendChild(statusEl);
+
+                contactForm.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+                    const originalLabel = submitBtn.textContent;
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = "Sending...";
+                    statusEl.textContent = "";
+
+                    try {
+                        const res = await fetch(contactForm.action, {
+                            method: "POST",
+                            body: new FormData(contactForm),
+                            headers: { "Accept": "application/json" }
+                        });
+
+                        if (res.ok) {
+                            statusEl.style.color = "#3ddc84";
+                            statusEl.textContent = "Message sent — I'll get back to you shortly.";
+                            contactForm.reset();
+                        } else {
+                            statusEl.style.color = "#ff6161";
+                            statusEl.textContent = "Couldn't send that. Please email jap.pulido789@gmail.com directly.";
+                        }
+                    } catch (err) {
+                        statusEl.style.color = "#ff6161";
+                        statusEl.textContent = "Network error — please email jap.pulido789@gmail.com directly.";
+                    } finally {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalLabel;
+                    }
+                });
+            }
+
             // --- 8. Mobile Responsive Menu Toggle ---
             const mobileToggle = document.getElementById("mobileToggle");
             const navMenu = document.querySelector(".nav-menu");
@@ -2434,91 +2811,6 @@
             });
         });
     </script>
-    <!-- AI Chat Widget: talks directly to your Vercel /api/chat endpoint -->
-    <button class="ai-chat-fab" id="aiChatFab" aria-label="Open AI assistant chat" aria-expanded="false">💬</button>
-    <div class="ai-chat-panel" id="aiChatPanel">
-        <div class="ai-chat-header">
-            <span>Ask jap.studio AI</span>
-            <button id="aiChatClose" aria-label="Close AI assistant chat">×</button>
-        </div>
-        <div class="ai-chat-messages" id="aiChatMessages">
-            <div class="ai-chat-msg bot">Hey! Ask me anything about services, pricing tiers, or how Japhette works. For anything specific, I'll flag it for a human follow-up.</div>
-        </div>
-        <div class="ai-chat-input-row">
-            <input type="text" id="aiChatInput" placeholder="Type your question..." aria-label="Your message">
-            <button id="aiChatSend">Send</button>
-        </div>
-    </div>
-
-    <script>
-        (function () {
-            // ⚠️ Replace this with your own Vercel endpoint if it differs.
-            const CHAT_API_URL = "https://tawk-ai-bot.vercel.app/api/chat";
-
-            const fab = document.getElementById("aiChatFab");
-            const panel = document.getElementById("aiChatPanel");
-            const closeBtn = document.getElementById("aiChatClose");
-            const messagesEl = document.getElementById("aiChatMessages");
-            const input = document.getElementById("aiChatInput");
-            const sendBtn = document.getElementById("aiChatSend");
-            const chatId = "web-" + Math.random().toString(36).slice(2, 10);
-
-            function togglePanel(open) {
-                const shouldOpen = open ?? !panel.classList.contains("open");
-                panel.classList.toggle("open", shouldOpen);
-                fab.setAttribute("aria-expanded", String(shouldOpen));
-                if (shouldOpen) input.focus();
-            }
-
-            fab.addEventListener("click", () => togglePanel());
-            closeBtn.addEventListener("click", () => togglePanel(false));
-
-            function addMessage(text, sender) {
-                const div = document.createElement("div");
-                div.className = `ai-chat-msg ${sender}`;
-                div.textContent = text;
-                messagesEl.appendChild(div);
-                messagesEl.scrollTop = messagesEl.scrollHeight;
-                return div;
-            }
-
-            async function sendMessage() {
-                const text = input.value.trim();
-                if (!text) return;
-
-                addMessage(text, "user");
-                input.value = "";
-                sendBtn.disabled = true;
-
-                const typingEl = addMessage("Typing...", "bot typing");
-
-                try {
-                    const res = await fetch(CHAT_API_URL, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ message: text, chatId })
-                    });
-
-                    if (!res.ok) throw new Error("Request failed");
-
-                    const data = await res.json();
-                    typingEl.remove();
-                    addMessage(data.reply || data.message || "Sorry, I couldn't get a reply just now.", "bot");
-                } catch (err) {
-                    typingEl.remove();
-                    addMessage("Something went wrong reaching the assistant. Please try again in a moment.", "bot");
-                } finally {
-                    sendBtn.disabled = false;
-                }
-            }
-
-            sendBtn.addEventListener("click", sendMessage);
-            input.addEventListener("keydown", (e) => {
-                if (e.key === "Enter") sendMessage();
-            });
-        })();
-    </script>
-
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
